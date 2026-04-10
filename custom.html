@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BLVKOUT — Custom Studio</title>
+  <link rel="stylesheet" href="styles/main.css" />
+  <link rel="stylesheet" href="styles/custom.css" />
+  <link rel="stylesheet" href="styles/responsive.css" />
+</head>
+<body>
+
+  <div class="scroll-progress" id="scrollProgress"></div>
+  <div class="cursor-dot" id="cursorDot"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+
+  <div class="ticker-bar">
+    <div class="ticker-track">
+      <span>FREE SHIPPING ON ORDERS OVER $150</span><span class="dot">·</span>
+      <span>NEW SS26 DROP — MONOLITH COLLECTION</span><span class="dot">·</span>
+      <span>CUSTOM STUDIO NOW LIVE</span><span class="dot">·</span>
+      <span>USE CODE BLVK10 FOR 10% OFF</span><span class="dot">·</span>
+      <span>FREE SHIPPING ON ORDERS OVER $150</span><span class="dot">·</span>
+      <span>NEW SS26 DROP — MONOLITH COLLECTION</span><span class="dot">·</span>
+      <span>CUSTOM STUDIO NOW LIVE</span><span class="dot">·</span>
+      <span>USE CODE BLVK10 FOR 10% OFF</span><span class="dot">·</span>
+    </div>
+  </div>
+
+  <nav>
+    <div class="nav-logo">BLVKOUT</div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="collections.html">Collections</a></li>
+      <li><a href="custom.html" style="color:var(--blue);">Custom</a></li>
+      <li><a href="product.html">Products</a></li>
+      <li><a href="wishlist.html">Wishlist</a></li>
+    </ul>
+    <div class="nav-search">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input type="text" placeholder="Search..." />
+    </div>
+    <div class="nav-actions">
+      <a href="profile.html" class="nav-icon-btn" title="Account">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+      </a>
+      <a href="cart.html" class="nav-icon-btn" title="Cart">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+        <span class="cart-count">3</span>
+      </a>
+    </div>
+    <button class="nav-hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <div class="nav-drawer" id="navDrawer">
+    <a href="index.html">Home</a>
+    <a href="collections.html">Collections</a>
+    <a href="custom.html">Custom</a>
+    <a href="product.html">Products</a>
+    <a href="wishlist.html">Wishlist</a>
+    <div class="nav-drawer-actions">
+      <a href="profile.html" class="btn-outline">Account</a>
+      <a href="cart.html" class="btn-blue">Cart (3)</a>
+    </div>
+  </div>
+
+  <!-- STUDIO LAYOUT -->
+  <div class="studio-layout">
+
+    <!-- LEFT PANEL -->
+    <aside class="studio-left">
+
+      <!-- PRODUCT INFO -->
+      <div class="studio-product-header">
+        <h1 class="studio-product-name">BLVCKOUT</h1>
+        <p class="studio-product-desc">Premium heavy weight cotton. Structural silhouette designed for permanent form. 280GSM precision knit.</p>
+        <a href="#" class="studio-size-guide">VIEW SIZE CHART →</a>
+      </div>
+
+      <!-- PRINT METHOD -->
+      <div class="studio-section">
+        <p class="studio-section-label">PRINT METHOD</p>
+        <div class="print-method-tabs">
+          <button class="print-tab active" data-method="dtg">DTG (DIRECT)</button>
+          <button class="print-tab" data-method="dtf">DTF (FILM)</button>
+        </div>
+      </div>
+
+      <!-- DESIGN UPLOAD -->
+      <div class="studio-section">
+        <p class="studio-section-label">EXPLORE DESIGN VAULT</p>
+        <div class="design-upload-zone glass-dark" id="uploadZone">
+          <div class="upload-icon">⬆</div>
+          <p class="upload-text">DROP FILES OR HIGH-RES PNG</p>
+          <input type="file" id="fileInput" accept="image/*" style="display:none;" />
+        </div>
+      </div>
+
+      <!-- PRINT LIBRARY -->
+      <div class="studio-section">
+        <p class="studio-section-label">PRINT LIBRARY</p>
+        <div class="print-library-grid">
+          <div class="print-lib-item active" onclick="selectPrint(this)">
+            <div class="img-placeholder img-dark"></div>
+          </div>
+          <div class="print-lib-item" onclick="selectPrint(this)">
+            <div class="img-placeholder img-medium"></div>
+          </div>
+          <div class="print-lib-item" onclick="selectPrint(this)">
+            <div class="img-placeholder" style="background:#555;"></div>
+          </div>
+          <div class="print-lib-item" onclick="selectPrint(this)">
+            <div class="img-placeholder" style="background:#333;"></div>
+          </div>
+          <div class="print-lib-item" onclick="selectPrint(this)">
+            <div class="img-placeholder" style="background:#777;"></div>
+          </div>
+          <div class="print-lib-item" onclick="selectPrint(this)">
+            <div class="img-placeholder" style="background:#444;"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- FABRIC SPECS -->
+      <div class="studio-specs-row">
+        <div class="studio-spec-card glass">
+          <div class="spec-card-label">FABRIC</div>
+          <div class="spec-card-val">100%<br>Organic</div>
+        </div>
+        <div class="studio-spec-card glass">
+          <div class="spec-card-label">WEIGHT</div>
+          <div class="spec-card-val">280<br>GSM</div>
+        </div>
+      </div>
+
+    </aside>
+
+    <!-- CENTER: CANVAS -->
+    <div class="studio-canvas">
+      <div class="canvas-product-preview">
+        <div class="canvas-garment">
+          <div class="img-placeholder img-dark" style="height:100%;border-radius:4px;"></div>
+          <!-- Print overlay -->
+          <div class="canvas-print-overlay" id="printOverlay">
+            <div class="canvas-print-img" id="printImg">
+              <div class="img-placeholder" style="background:rgba(255,255,255,0.08);border:1px dashed rgba(255,255,255,0.3);border-radius:4px;font-size:10px;color:rgba(255,255,255,0.4);letter-spacing:1px;">PRINT AREA</div>
+            </div>
+            <div class="canvas-resize-handle"></div>
+          </div>
+        </div>
+        <div class="canvas-zoom-controls glass-dark">
+          <button onclick="zoomCanvas(1)">+</button>
+          <button onclick="zoomCanvas(-1)">−</button>
+        </div>
+      </div>
+      <div class="canvas-view-btns">
+        <button class="view-btn active" onclick="setView(this,'front')">FRONT</button>
+        <button class="view-btn" onclick="setView(this,'back')">BACK</button>
+      </div>
+    </div>
+
+    <!-- RIGHT PANEL: PRICING -->
+    <aside class="studio-right glass-dark">
+      <div class="pricing-section">
+        <div class="pricing-row">
+          <span class="pricing-label">FRONT<br>PLACEMENT</span>
+          <span class="pricing-val">$12.00</span>
+        </div>
+        <div class="pricing-divider"></div>
+
+        <div class="placement-option">
+          <select class="studio-select">
+            <option>L.SLEEVE</option>
+            <option>R.SLEEVE</option>
+            <option>CHEST LEFT</option>
+            <option>CHEST CENTER</option>
+          </select>
+        </div>
+        <div class="placement-option">
+          <select class="studio-select">
+            <option>R.SLEEVE</option>
+            <option>L.SLEEVE</option>
+            <option>BACK LARGE</option>
+          </select>
+        </div>
+
+        <div class="pricing-row" style="margin-top:8px;">
+          <span class="pricing-label">BACK LARGE</span>
+          <span class="pricing-val" style="color:var(--blue);">+$19.90</span>
+        </div>
+        <div class="pricing-divider"></div>
+
+        <div class="pricing-base">
+          <div class="pricing-base-val">55.00</div>
+          <div class="pricing-base-sku">BLV-SS1-52</div>
+        </div>
+        <div class="pricing-divider"></div>
+
+        <div class="pricing-total-row">
+          <div>
+            <div class="pricing-total-label">TOTAL PRODUCTION COST</div>
+            <div class="pricing-total-val">$31.90</div>
+          </div>
+          <button class="btn-outline-white" onclick="location.href='cart.html'">ADD TO<br>CART →</button>
+        </div>
+
+        <button class="btn-blue" style="width:100%;padding:18px;font-size:14px;font-weight:900;letter-spacing:2px;margin-top:16px;" onclick="location.href='cart.html'">ADD TO CART →</button>
+        <button class="btn-save-draft" onclick="saveDraft()">SAVE DRAFT</button>
+      </div>
+    </aside>
+
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-top">
+      <div>
+        <p class="footer-tagline">ENTER THE<br>BLVCKOUT.</p>
+        <div class="footer-newsletter">
+          <input type="email" placeholder="Your Email Here" />
+          <button>Subscribe</button>
+        </div>
+        <p class="footer-newsletter-note">Subscribe to our newsletter for the latest features and updates.</p>
+      </div>
+      <div class="footer-col"><h4>Shop</h4><ul><li><a href="collections.html">Women</a></li><li><a href="collections.html">Men</a></li><li><a href="collections.html">Unisex</a></li><li><a href="custom.html">Custom</a></li></ul></div>
+      <div class="footer-col"><h4>Contact</h4><ul><li><a href="#">Join Us</a></li><li><a href="#">Customer Support</a></li><li><a href="#">Contact Us</a></li><li><a href="policies.html">Policies</a></li></ul></div>
+      <div class="footer-col"><h4>Follow Us</h4><div class="footer-social"><div class="footer-social-item"><span class="footer-social-icon">✕</span> Instagram</div><div class="footer-social-item"><span class="footer-social-icon">𝕏</span> X</div><div class="footer-social-item"><span class="footer-social-icon">▶</span> YouTube</div></div></div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 BLVKOUT. All rights reserved.</span>
+      <span><a href="policies.html" style="color:inherit;">Privacy Policy</a> · <a href="policies.html" style="color:inherit;">Terms of Service</a></span>
+    </div>
+    <div class="footer-watermark">BLV.K</div>
+  </footer>
+
+  <button class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+  <div class="toast" id="toast"></div>
+  <script src="scripts/main.js"></script>
+  <script src="scripts/custom.js"></script>
+  <script src="scripts/ui.js"></script>
+</body>
+</html>

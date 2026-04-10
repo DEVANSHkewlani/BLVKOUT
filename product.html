@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BLVKOUT — Monolith Hoodie V2</title>
+  <link rel="stylesheet" href="styles/main.css" />
+  <link rel="stylesheet" href="styles/product.css" />
+  <link rel="stylesheet" href="styles/responsive.css" />
+</head>
+<body>
+
+  <div class="scroll-progress" id="scrollProgress"></div>
+  <div class="cursor-dot" id="cursorDot"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+
+  <div class="ticker-bar">
+    <div class="ticker-track">
+      <span>FREE SHIPPING ON ORDERS OVER $150</span><span class="dot">·</span>
+      <span>NEW SS26 DROP — MONOLITH COLLECTION</span><span class="dot">·</span>
+      <span>CUSTOM STUDIO NOW LIVE</span><span class="dot">·</span>
+      <span>USE CODE BLVK10 FOR 10% OFF</span><span class="dot">·</span>
+      <span>FREE SHIPPING ON ORDERS OVER $150</span><span class="dot">·</span>
+      <span>NEW SS26 DROP — MONOLITH COLLECTION</span><span class="dot">·</span>
+      <span>CUSTOM STUDIO NOW LIVE</span><span class="dot">·</span>
+      <span>USE CODE BLVK10 FOR 10% OFF</span><span class="dot">·</span>
+    </div>
+  </div>
+
+  <nav>
+    <div class="nav-logo">BLVKOUT</div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="collections.html">Collections</a></li>
+      <li><a href="custom.html">Custom</a></li>
+      <li><a href="product.html" style="color:var(--blue);">Products</a></li>
+      <li><a href="wishlist.html">Wishlist</a></li>
+    </ul>
+    <div class="nav-search">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input type="text" placeholder="Search..." />
+    </div>
+    <div class="nav-actions">
+      <a href="profile.html" class="nav-icon-btn" title="Account">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+      </a>
+      <a href="cart.html" class="nav-icon-btn" title="Cart">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+        <span class="cart-count">3</span>
+      </a>
+    </div>
+    <button class="nav-hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <div class="nav-drawer" id="navDrawer">
+    <a href="index.html">Home</a>
+    <a href="collections.html">Collections</a>
+    <a href="custom.html">Custom</a>
+    <a href="product.html">Products</a>
+    <a href="wishlist.html">Wishlist</a>
+    <div class="nav-drawer-actions">
+      <a href="profile.html" class="btn-outline">Account</a>
+      <a href="cart.html" class="btn-blue">Cart (3)</a>
+    </div>
+  </div>
+
+  <!-- BREADCRUMB -->
+  <div class="breadcrumb">
+    <a href="index.html">Home</a> / <a href="collections.html">Collections</a> / <span>Monolith Hoodie V2</span>
+  </div>
+
+  <!-- PRODUCT DETAIL -->
+  <section class="product-detail">
+    <!-- LEFT: IMAGES -->
+    <div class="product-images">
+      <div class="product-main-img">
+        <div class="img-placeholder img-dark" style="height:100%;"></div>
+      </div>
+      <div class="product-thumbs">
+        <div class="thumb active">
+          <div class="img-placeholder img-dark"></div>
+        </div>
+        <div class="thumb">
+          <div class="img-placeholder img-medium"></div>
+        </div>
+        <div class="thumb">
+          <div class="img-placeholder" style="background:#c0c0c0;"></div>
+        </div>
+        <div class="thumb">
+          <div class="img-placeholder" style="background:#888;"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT: INFO -->
+    <div class="product-info">
+      <div class="product-info-top">
+        <p class="section-label">BLVKOUT SS26</p>
+        <h1 class="product-title">MONOLITH<br>HOODIE V2</h1>
+        <p class="product-price">$185.00</p>
+        <p class="product-sku">SKU: BLV-MH-002</p>
+      </div>
+
+      <p class="product-desc">Premium heavyweight fleece hoodie with architectural seam detailing. Relaxed oversized fit with ribbed cuffs and hem. Embroidered BLVKOUT logo at chest.</p>
+
+      <!-- SIZE -->
+      <div class="product-option">
+        <div class="option-label">SIZE <span class="size-guide">SIZE GUIDE</span></div>
+        <div class="size-grid">
+          <button class="size-btn">XS</button>
+          <button class="size-btn">S</button>
+          <button class="size-btn active">M</button>
+          <button class="size-btn">L</button>
+          <button class="size-btn">XL</button>
+          <button class="size-btn">XXL</button>
+        </div>
+      </div>
+
+      <!-- COLOR -->
+      <div class="product-option">
+        <div class="option-label">COLOR — <span style="font-weight:400;text-transform:none;letter-spacing:0;">Obsidian Black</span></div>
+        <div class="color-grid">
+          <button class="color-btn active" style="background:#111;"></button>
+          <button class="color-btn" style="background:#555;"></button>
+          <button class="color-btn" style="background:#fff;border:1.5px solid #ddd;"></button>
+          <button class="color-btn" style="background:var(--blue);"></button>
+        </div>
+      </div>
+
+      <!-- QUANTITY -->
+      <div class="product-option">
+        <div class="option-label">QUANTITY</div>
+        <div class="qty-control">
+          <button class="qty-btn" onclick="changeQty(-1)">−</button>
+          <span class="qty-val" id="qty">1</span>
+          <button class="qty-btn" onclick="changeQty(1)">+</button>
+        </div>
+      </div>
+
+      <!-- ACTIONS -->
+      <div class="product-actions">
+        <button class="btn-blue" style="flex:1;" onclick="location.href='cart.html'">ADD TO CART</button>
+        <button class="btn-outline" onclick="location.href='wishlist.html'">♡</button>
+      </div>
+
+      <!-- SPECS -->
+      <div class="product-specs">
+        <h3 class="specs-title">SPECIFICATIONS</h3>
+        <div class="specs-grid">
+          <div class="spec-item">
+            <div class="spec-label">Material</div>
+            <div class="spec-val">100% Premium Cotton Fleece</div>
+          </div>
+          <div class="spec-item">
+            <div class="spec-label">Weight</div>
+            <div class="spec-val">400 GSM Heavyweight</div>
+          </div>
+          <div class="spec-item">
+            <div class="spec-label">Fit</div>
+            <div class="spec-val">Oversized / Relaxed</div>
+          </div>
+          <div class="spec-item">
+            <div class="spec-label">Care</div>
+            <div class="spec-val">Cold wash, hang dry</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RELATED PRODUCTS -->
+  <section class="section" style="border-top:1px solid var(--border);">
+    <div class="section-header">
+      <div>
+        <p class="section-label">You May Also Like</p>
+        <h2 class="section-title">RELATED PRODUCTS</h2>
+      </div>
+    </div>
+    <div class="grid-6">
+      <div class="product-card" onclick="location.href='product.html'">
+        <div class="product-card-img"><div class="img-placeholder img-dark"></div></div>
+        <div class="product-card-name">MONOLITH OVERCOAT</div>
+        <div class="product-card-price">$420.00</div>
+      </div>
+      <div class="product-card" onclick="location.href='product.html'">
+        <div class="product-card-img"><div class="img-placeholder img-medium"></div></div>
+        <div class="product-card-name">VOID TURTLENECK</div>
+        <div class="product-card-price">$130.00</div>
+      </div>
+      <div class="product-card" onclick="location.href='product.html'">
+        <div class="product-card-img"><div class="img-placeholder" style="background:#c0c0c0;"></div></div>
+        <div class="product-card-name">ARCHITECT BLAZER</div>
+        <div class="product-card-price">$310.00</div>
+      </div>
+      <div class="product-card" onclick="location.href='product.html'">
+        <div class="product-card-img"><div class="img-placeholder img-dark"></div></div>
+        <div class="product-card-name">SHADOW HOODIE</div>
+        <div class="product-card-price">$165.00</div>
+      </div>
+      <div class="product-card" onclick="location.href='product.html'">
+        <div class="product-card-img"><div class="img-placeholder" style="background:#444;"></div></div>
+        <div class="product-card-name">CARBON JACKET</div>
+        <div class="product-card-price">$360.00</div>
+      </div>
+      <div class="product-card" onclick="location.href='product.html'">
+        <div class="product-card-img"><div class="img-placeholder" style="background:#999;"></div></div>
+        <div class="product-card-name">SLATE JOGGERS</div>
+        <div class="product-card-price">$145.00</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-top">
+      <div>
+        <p class="footer-tagline">ENTER THE<br>BLVCKOUT.</p>
+        <div class="footer-newsletter">
+          <input type="email" placeholder="Your Email Here" />
+          <button>Subscribe</button>
+        </div>
+        <p class="footer-newsletter-note">Subscribe to our newsletter for the latest features and updates.</p>
+      </div>
+      <div class="footer-col"><h4>Shop</h4><ul><li><a href="collections.html">Women</a></li><li><a href="collections.html">Men</a></li><li><a href="collections.html">Unisex</a></li><li><a href="custom.html">Custom</a></li></ul></div>
+      <div class="footer-col"><h4>Contact</h4><ul><li><a href="#">Join Us</a></li><li><a href="#">Customer Support</a></li><li><a href="#">Contact Us</a></li><li><a href="policies.html">Policies</a></li></ul></div>
+      <div class="footer-col"><h4>Follow Us</h4><div class="footer-social"><div class="footer-social-item"><span class="footer-social-icon">✕</span> Instagram</div><div class="footer-social-item"><span class="footer-social-icon">𝕏</span> X</div><div class="footer-social-item"><span class="footer-social-icon">▶</span> YouTube</div></div></div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 BLVKOUT. All rights reserved.</span>
+      <span><a href="policies.html" style="color:inherit;">Privacy Policy</a> · <a href="policies.html" style="color:inherit;">Terms of Service</a></span>
+    </div>
+    <div class="footer-watermark">BLV.K</div>
+  </footer>
+
+  <button class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+  <div class="toast" id="toast"></div>
+  <script src="scripts/main.js"></script>
+  <script src="scripts/product.js"></script>
+  <script src="scripts/ui.js"></script>
+</body>
+</html>

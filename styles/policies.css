@@ -1,0 +1,157 @@
+/* POLICIES HERO */
+.policies-hero {
+  background: #000;
+  padding: 80px 60px 60px;
+  color: #fff;
+}
+
+.policies-title {
+  font-size: 80px;
+  font-weight: 900;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  line-height: 1;
+  margin-bottom: 12px;
+}
+
+.policies-subtitle {
+  font-size: 16px;
+  color: rgba(255,255,255,0.5);
+  letter-spacing: 1px;
+}
+
+/* POLICIES PAGE */
+.policies-page {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  min-height: 70vh;
+}
+
+/* SIDEBAR */
+.policies-sidebar {
+  border-right: 1px solid var(--border);
+  padding: 40px 32px;
+  background: #fafafa;
+  position: sticky;
+  top: 56px;
+  height: fit-content;
+}
+
+.policy-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.policy-nav-item {
+  display: block;
+  padding: 12px 16px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  border-left: 3px solid transparent;
+  transition: all 0.2s;
+  color: var(--gray);
+}
+
+.policy-nav-item:hover,
+.policy-nav-item.active {
+  color: #000;
+  border-left-color: var(--blue);
+  background: rgba(26,86,255,0.04);
+}
+
+/* CONTENT */
+.policies-content {
+  padding: 60px 80px;
+  max-width: 860px;
+}
+
+.policy-section {
+  display: none;
+}
+
+.policy-section.active {
+  display: block;
+}
+
+.policy-title {
+  font-size: 36px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 8px;
+}
+
+.policy-updated {
+  font-size: 12px;
+  color: var(--gray);
+  margin-bottom: 40px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--border);
+}
+
+.policy-body h3 {
+  font-size: 14px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin: 32px 0 12px;
+}
+
+.policy-body h3:first-child {
+  margin-top: 0;
+}
+
+.policy-body p {
+  font-size: 14px;
+  line-height: 1.8;
+  color: #444;
+  margin-bottom: 14px;
+}
+
+.policy-body strong {
+  color: #000;
+  font-weight: 700;
+}
+
+/* POLICY TABLE */
+.policy-table {
+  border: 1px solid var(--border);
+  margin: 20px 0;
+  overflow: hidden;
+}
+
+.policy-table-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  padding: 14px 20px;
+  border-bottom: 1px solid var(--border);
+  font-size: 13px;
+}
+
+.policy-table-row:last-child {
+  border-bottom: none;
+}
+
+.policy-table-row.header {
+  background: #f7f7f7;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--gray);
+}
+
+/* POLICY LIST */
+.policy-list {
+  padding-left: 20px;
+  margin-bottom: 14px;
+}
+
+.policy-list li {
+  font-size: 14px;
+  line-height: 1.8;
+  color: #444;
+  margin-bottom: 4px;
+}

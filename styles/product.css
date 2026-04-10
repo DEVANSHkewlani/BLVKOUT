@@ -1,0 +1,264 @@
+/* BREADCRUMB */
+.breadcrumb {
+  padding: 16px 40px;
+  font-size: 11px;
+  letter-spacing: 1px;
+  color: var(--gray);
+  border-bottom: 1px solid var(--border);
+  text-transform: uppercase;
+}
+
+.breadcrumb a {
+  color: var(--gray);
+}
+
+.breadcrumb a:hover {
+  color: var(--blue);
+}
+
+.breadcrumb span {
+  color: #000;
+  font-weight: 600;
+}
+
+/* PRODUCT DETAIL */
+.product-detail {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 700px;
+  background: var(--bg);
+}
+
+/* IMAGES */
+.product-images {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  gap: 12px;
+  padding: 40px;
+  background: #e8e8e8;
+}
+
+.product-main-img {
+  background: #e0e0e0;
+  aspect-ratio: 4/5;
+  overflow: hidden;
+}
+
+.product-thumbs {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  order: -1;
+}
+
+.thumb {
+  width: 80px;
+  height: 80px;
+  background: #ddd;
+  overflow: hidden;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: border-color 0.2s;
+}
+
+.thumb.active {
+  border-color: var(--blue);
+}
+
+.thumb:hover {
+  border-color: #999;
+}
+
+/* PRODUCT INFO */
+.product-info {
+  padding: 60px 60px 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  background: var(--bg);
+}
+
+.product-info-top {
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 24px;
+}
+
+.product-title {
+  font-size: 44px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  line-height: 1.05;
+  margin-bottom: 12px;
+}
+
+.product-price {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--blue);
+  margin-bottom: 6px;
+}
+
+.product-sku {
+  font-size: 11px;
+  color: var(--gray);
+  letter-spacing: 1px;
+}
+
+.product-desc {
+  font-size: 14px;
+  line-height: 1.7;
+  color: #444;
+}
+
+/* OPTIONS */
+.product-option {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.option-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.size-guide {
+  font-weight: 400;
+  color: var(--blue);
+  text-decoration: underline;
+  cursor: pointer;
+  margin-left: 12px;
+  letter-spacing: 1px;
+}
+
+.size-grid {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.size-btn {
+  width: 48px;
+  height: 48px;
+  border: 1.5px solid #ddd;
+  background: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-transform: uppercase;
+}
+
+.size-btn:hover,
+.size-btn.active {
+  background: #000;
+  border-color: #000;
+  color: #fff;
+}
+
+.color-grid {
+  display: flex;
+  gap: 10px;
+}
+
+.color-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+
+.color-btn.active {
+  border-color: var(--blue);
+  outline: 2px solid var(--blue);
+  outline-offset: 2px;
+}
+
+/* QTY */
+.qty-control {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  border: 1.5px solid #ddd;
+  width: fit-content;
+}
+
+.qty-btn {
+  width: 44px;
+  height: 44px;
+  background: #f7f7f7;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  font-weight: 300;
+  transition: background 0.2s;
+}
+
+.qty-btn:hover {
+  background: #e0e0e0;
+}
+
+.qty-val {
+  width: 56px;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 700;
+  border-left: 1.5px solid #ddd;
+  border-right: 1.5px solid #ddd;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ACTIONS */
+.product-actions {
+  display: flex;
+  gap: 12px;
+}
+
+/* SPECS */
+.product-specs {
+  border-top: 1px solid var(--border);
+  padding-top: 24px;
+}
+
+.specs-title {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+.specs-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.spec-item {
+  padding: 14px;
+  background: #fff;
+  border: 1.5px solid #ddd;
+  border-left: 3px solid var(--blue);
+}
+
+.spec-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--gray);
+  margin-bottom: 4px;
+}
+
+.spec-val {
+  font-size: 13px;
+  font-weight: 500;
+}

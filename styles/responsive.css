@@ -1,0 +1,772 @@
+/* ============================================
+   BLVKOUT — RESPONSIVE + AESTHETIC SYSTEM
+   Brutalist / Nothing-inspired micro-details
+   ============================================ */
+
+/* ---- AESTHETIC ENHANCEMENTS (all screens) ---- */
+
+/* Ticker / marquee announcement bar */
+.ticker-bar {
+  background: #000;
+  color: #fff;
+  height: 36px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #222;
+  position: relative;
+  z-index: 101;
+}
+
+.ticker-track {
+  display: flex;
+  gap: 0;
+  animation: ticker 28s linear infinite;
+  white-space: nowrap;
+}
+
+.ticker-track span {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  padding: 0 40px;
+  opacity: 0.85;
+}
+
+.ticker-track span.dot {
+  color: var(--blue);
+  padding: 0;
+  opacity: 1;
+}
+
+@keyframes ticker {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* Cursor dot */
+.cursor-dot {
+  width: 8px;
+  height: 8px;
+  background: var(--blue);
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: transform 0.1s, width 0.2s, height 0.2s, background 0.2s;
+  mix-blend-mode: difference;
+}
+
+.cursor-ring {
+  width: 32px;
+  height: 32px;
+  border: 1.5px solid rgba(26,86,255,0.5);
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 9998;
+  transform: translate(-50%, -50%);
+  transition: transform 0.18s ease-out, width 0.25s, height 0.25s;
+}
+
+/* Page load fade-in */
+body {
+  animation: pageFade 0.4s ease-out;
+}
+
+@keyframes pageFade {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Section reveal on scroll */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Nothing-style grid lines overlay on hero — REMOVED */
+
+.hero-content { z-index: 2; position: relative; }
+
+/* Brutalist border accent on section titles */
+.section-title::after {
+  content: '';
+  display: block;
+  width: 32px;
+  height: 3px;
+  background: var(--blue);
+  margin-top: 8px;
+}
+
+/* Nothing-style dot matrix on dark sections */
+.editorial-banner::before,
+.promo-banner::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(255,255,255,0.06) 1px, transparent 1px);
+  background-size: 20px 20px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.editorial-banner { position: relative; }
+.editorial-content { position: relative; z-index: 1; }
+.editorial-img { position: relative; z-index: 1; }
+
+/* Product card — brutalist hover border only, no lift */
+.product-card {
+  transition: none;
+}
+
+.product-card:hover {
+  transform: none;
+}
+
+.product-card-img {
+  border: 1.5px solid transparent;
+  transition: border-color 0.2s;
+}
+
+.product-card:hover .product-card-img {
+  border-color: var(--blue);
+}
+
+/* Nothing-style mono price tag */
+.product-card-price {
+  font-family: 'Courier New', monospace;
+  letter-spacing: -0.5px;
+}
+
+/* Brutalist underline on nav logo */
+.nav-logo {
+  position: relative;
+}
+
+.nav-logo::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--blue);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s;
+}
+
+.nav-logo:hover::after {
+  transform: scaleX(1);
+}
+
+/* Scroll progress bar */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 2px;
+  background: var(--blue);
+  z-index: 9999;
+  width: 0%;
+  transition: width 0.1s linear;
+  box-shadow: 0 0 8px rgba(26,86,255,0.6);
+}
+
+/* Nothing-style status pill */
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border: 1px solid currentColor;
+  border-radius: 100px;
+}
+
+.status-pill::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+/* Brutalist section divider */
+.brutalist-divider {
+  height: 1px;
+  background: repeating-linear-gradient(
+    90deg,
+    #000 0px, #000 8px,
+    transparent 8px, transparent 16px
+  );
+  margin: 0;
+  opacity: 0.12;
+}
+
+/* Mobile hamburger */
+.nav-hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  padding: 4px;
+  background: none;
+  border: none;
+}
+
+.nav-hamburger span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: #000;
+  transition: all 0.3s;
+}
+
+.nav-hamburger.open span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.nav-hamburger.open span:nth-child(2) {
+  opacity: 0;
+}
+
+.nav-hamburger.open span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* Mobile nav drawer */
+.nav-drawer {
+  display: none;
+  position: fixed;
+  top: 92px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255,255,255,0.97);
+  backdrop-filter: blur(24px);
+  z-index: 200;
+  flex-direction: column;
+  padding: 40px 32px;
+  gap: 0;
+  transform: translateX(-100%);
+  transition: transform 0.35s cubic-bezier(0.4,0,0.2,1);
+}
+
+.nav-drawer.open {
+  transform: translateX(0);
+}
+
+.nav-drawer a {
+  display: block;
+  font-size: 28px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--border);
+  color: #000;
+  transition: color 0.2s, padding-left 0.2s;
+}
+
+.nav-drawer a:hover {
+  color: var(--blue);
+  padding-left: 8px;
+}
+
+.nav-drawer-actions {
+  margin-top: 32px;
+  display: flex;
+  gap: 16px;
+}
+
+/* ============================================
+   TABLET — 1024px
+   ============================================ */
+@media (max-width: 1024px) {
+
+  /* NAV */
+  .nav-links {
+    gap: 20px;
+    font-size: 11px;
+  }
+
+  /* HERO */
+  .hero-title { font-size: 48px; }
+  .hero-content { padding: 60px 40px; }
+
+  /* GRIDS */
+  .grid-6 { grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .grid-4 { grid-template-columns: repeat(2, 1fr); }
+  .collections-grid { grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .wishlist-grid { grid-template-columns: repeat(3, 1fr); gap: 16px; }
+
+  /* BESTSELLERS */
+  .bestsellers-layout { grid-template-columns: 1fr; }
+  .bestseller-main { display: none; }
+  .bestsellers-grid { grid-template-columns: repeat(4, 1fr); }
+
+  /* PRODUCT */
+  .product-images { padding: 24px; }
+  .product-info { padding: 40px 32px; }
+  .product-title { font-size: 32px; }
+
+  /* CART */
+  .cart-page { grid-template-columns: 1fr 320px; }
+
+  /* PROFILE */
+  .profile-sidebar { padding: 32px 20px; }
+  .profile-main { padding: 32px; }
+
+  /* STUDIO */
+  .studio-layout { grid-template-columns: 240px 1fr 260px; }
+
+  /* FOOTER */
+  .footer-top { grid-template-columns: 1fr 1fr; gap: 32px; }
+  .footer-watermark { font-size: 140px; }
+}
+
+/* ============================================
+   MOBILE — 768px
+   ============================================ */
+@media (max-width: 768px) {
+
+  /* NAV */
+  nav { padding: 0 20px; }
+  .nav-links { display: none; }
+  .nav-actions { display: none; }
+  .nav-search { display: none; }
+  .nav-hamburger { display: flex; }
+  .nav-drawer { display: flex; }
+
+  /* TICKER */
+  .ticker-bar { height: 30px; }
+  .ticker-track span { font-size: 9px; letter-spacing: 2px; padding: 0 24px; }
+
+  /* HERO */
+  .hero {
+    grid-template-columns: 1fr;
+    min-height: 520px;
+  }
+
+  .hero-image {
+    display: none;
+  }
+
+  .hero-content {
+    padding: 60px 24px;
+    background: linear-gradient(135deg, #111 60%, #1a1a2e);
+  }
+
+  .hero-title { font-size: 44px; }
+
+  /* SECTIONS */
+  .section { padding: 40px 20px; }
+  .section-title { font-size: 22px; }
+
+  /* GRIDS */
+  .grid-6 { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .grid-4 { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .grid-3 { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .grid-2 { grid-template-columns: 1fr; }
+  .collections-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .wishlist-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+
+  /* BESTSELLERS */
+  .bestsellers-layout { grid-template-columns: 1fr; }
+  .bestseller-main { display: none; }
+  .bestsellers-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+
+  /* COLLECTION PREVIEW */
+  .collection-preview-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+
+  /* PROMO BANNER */
+  .promo-banner { height: 320px; }
+  .promo-overlay { padding: 32px 24px; }
+  .promo-overlay h2 { font-size: 26px; }
+
+  /* COLLECTIONS PAGE */
+  .collections-header { padding: 32px 20px 24px; }
+  .collections-title { font-size: 48px; }
+  .featured-product { grid-template-columns: 1fr; }
+  .featured-img { height: 280px; }
+  .featured-info { padding: 32px 20px; }
+  .featured-name { font-size: 28px; }
+
+  /* EDITORIAL */
+  .editorial-banner { grid-template-columns: 1fr; min-height: auto; }
+  .editorial-img { height: 240px; }
+  .editorial-content { padding: 40px 24px; }
+  .editorial-title { font-size: 36px; }
+
+  /* PRODUCT PAGE */
+  .breadcrumb { padding: 12px 20px; }
+  .product-detail { grid-template-columns: 1fr; }
+  .product-images {
+    grid-template-columns: 1fr;
+    padding: 20px;
+  }
+  .product-thumbs {
+    flex-direction: row;
+    order: 1;
+    overflow-x: auto;
+  }
+  .thumb { width: 64px; height: 64px; flex-shrink: 0; }
+  .product-info { padding: 24px 20px; gap: 20px; }
+  .product-title { font-size: 28px; }
+  .product-price { font-size: 22px; }
+  .specs-grid { grid-template-columns: 1fr 1fr; }
+
+  /* CART */
+  .cart-page { grid-template-columns: 1fr; }
+  .cart-items-col { padding: 32px 20px; border-right: none; border-bottom: 1px solid var(--border); }
+  .cart-summary-col { padding: 24px 20px; position: static; }
+  .cart-title { font-size: 32px; }
+  .cart-item { grid-template-columns: 80px 1fr; }
+  .cart-item-total { display: none; }
+
+  /* PROFILE */
+  .profile-page { grid-template-columns: 1fr; }
+  .profile-sidebar { border-right: none; border-bottom: 1px solid var(--border); padding: 24px 20px; }
+  .profile-nav { flex-direction: row; flex-wrap: wrap; gap: 8px; }
+  .profile-nav-item { padding: 8px 12px; font-size: 10px; }
+  .profile-main { padding: 24px 20px; }
+  .support-grid { grid-template-columns: 1fr; }
+  .order-item { grid-template-columns: 60px 1fr; }
+  .order-right { display: none; }
+
+  /* WISHLIST */
+  .wishlist-header { flex-direction: column; align-items: flex-start; gap: 16px; padding: 32px 20px 24px; }
+  .wishlist-title { font-size: 48px; }
+  .wishlist-cta { grid-template-columns: 1fr; }
+  .wishlist-cta-content { padding: 48px 24px; }
+  .wishlist-cta-title { font-size: 36px; }
+  .wishlist-cta-img { height: 200px; }
+
+  /* CUSTOM STUDIO */
+  .studio-layout { grid-template-columns: 1fr; grid-template-rows: auto 1fr auto; }
+  .studio-left { border-right: none; border-bottom: 1px solid var(--border); max-height: 340px; overflow-y: auto; }
+  .studio-canvas { padding: 24px 16px; min-height: 400px; }
+  .canvas-product-preview { width: 260px; height: 320px; }
+  .studio-right { border-left: none; border-top: 1px solid rgba(255,255,255,0.08); }
+
+  /* POLICIES */
+  .policies-hero { padding: 48px 20px 36px; }
+  .policies-title { font-size: 48px; }
+  .policies-page { grid-template-columns: 1fr; }
+  .policies-sidebar { position: static; border-right: none; border-bottom: 1px solid var(--border); padding: 20px; }
+  .policy-nav { flex-direction: row; flex-wrap: wrap; gap: 4px; }
+  .policy-nav-item { padding: 8px 12px; font-size: 11px; border-left: none; border-bottom: 2px solid transparent; }
+  .policy-nav-item.active { border-bottom-color: var(--blue); border-left-color: transparent; background: none; }
+  .policies-content { padding: 32px 20px; max-width: 100%; }
+  .policy-title { font-size: 24px; }
+
+  /* FOOTER */
+  footer { padding: 40px 20px 0; padding-bottom: 120px; }
+  .footer-top { grid-template-columns: 1fr; gap: 28px; }
+  .footer-tagline { font-size: 28px; }
+  .footer-watermark { font-size: 80px; }
+  .footer-bottom { flex-direction: column; gap: 8px; font-size: 11px; }
+}
+
+/* ============================================
+   SMALL MOBILE — 480px
+   ============================================ */
+@media (max-width: 480px) {
+
+  .hero-title { font-size: 36px; }
+  .hero-content { padding: 48px 20px; }
+
+  .grid-6 { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  .collections-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  .wishlist-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+
+  .collections-title { font-size: 36px; }
+  .wishlist-title { font-size: 36px; }
+  .policies-title { font-size: 36px; }
+  .cart-title { font-size: 28px; }
+
+  .product-title { font-size: 24px; }
+  .product-price { font-size: 20px; }
+
+  .promo-overlay h2 { font-size: 22px; }
+  .editorial-title { font-size: 28px; }
+
+  .footer-watermark { font-size: 60px; }
+  .footer-tagline { font-size: 24px; }
+
+  .canvas-product-preview { width: 220px; height: 280px; }
+
+  /* Stack cart item controls */
+  .cart-item-controls { flex-direction: column; align-items: flex-start; gap: 10px; }
+
+  /* Smaller spec cards */
+  .specs-grid { grid-template-columns: 1fr; }
+}
+
+/* ============================================
+   NOTHING-INSPIRED BRUTALIST DETAILS
+   ============================================ */
+
+/* Mono font for prices everywhere */
+.product-card-price,
+.featured-price,
+.product-price,
+.cart-item-price,
+.cart-item-total,
+.summary-total,
+.order-price,
+.wishlist-price,
+.pricing-total-val {
+  font-family: 'Courier New', 'Courier', monospace;
+}
+
+/* Dashed border accent on spec items */
+.spec-item {
+  border-left: 3px solid var(--blue);
+  border-radius: 0;
+}
+
+/* Nothing-style corner brackets on product cards */
+.product-card-img::before {
+  content: '';
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 16px;
+  height: 16px;
+  border-top: 2px solid rgba(255,255,255,0.4);
+  border-right: 2px solid rgba(255,255,255,0.4);
+  z-index: 2;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.product-card:hover .product-card-img::before {
+  opacity: 1;
+}
+
+/* Brutalist active nav underline */
+nav .nav-links li a {
+  position: relative;
+  padding-bottom: 2px;
+}
+
+nav .nav-links li a::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1.5px;
+  background: var(--blue);
+  transition: width 0.25s;
+}
+
+nav .nav-links li a:hover::after {
+  width: 100%;
+}
+
+/* Nothing-style input focus */
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--blue) !important;
+  box-shadow: 0 0 0 2px rgba(26,86,255,0.12);
+}
+
+/* Brutalist button press */
+.btn-blue:active,
+.btn-black:active,
+.btn-outline:active {
+  transform: translateY(1px);
+}
+
+/* Nothing-style section number labels */
+.section-number {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  color: var(--blue);
+  font-family: 'Courier New', monospace;
+  margin-bottom: 4px;
+  display: block;
+}
+
+/* Glitch hover on hero title */
+.hero-title {
+  position: relative;
+}
+
+/* Smooth image placeholder — flat solid colors, no shimmer */
+.img-placeholder {
+  background: #d0d0d0;
+  animation: none;
+}
+
+.img-dark {
+  background: #1a1a1a;
+  animation: none;
+}
+
+.img-medium {
+  background: #666;
+  animation: none;
+}
+
+/* Nothing-style tag on new items */
+.product-card-tag {
+  font-family: 'Courier New', monospace;
+  letter-spacing: 2px;
+}
+
+/* Brutalist cart summary border */
+.cart-summary {
+  border-left: 3px solid var(--blue);
+}
+
+/* Support card hover — border only, no lift */
+.support-card {
+  transition: border-color 0.2s;
+}
+
+.support-card:hover {
+  border-color: var(--blue);
+  transform: none;
+}
+
+/* Order status dot */
+.order-status {
+  position: relative;
+  padding-left: 18px;
+}
+
+.order-status::before {
+  content: '';
+  position: absolute;
+  left: 6px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+/* Nothing-style footer col hover */
+.footer-col ul li a {
+  position: relative;
+  padding-left: 0;
+  transition: padding-left 0.2s, opacity 0.2s;
+}
+
+.footer-col ul li a:hover {
+  padding-left: 8px;
+  opacity: 1;
+}
+
+/* Brutalist horizontal rule */
+hr.brutal {
+  border: none;
+  border-top: 1px solid #000;
+  margin: 0;
+}
+
+/* Scroll-to-top button */
+.scroll-top {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 44px;
+  height: 44px;
+  background: #000;
+  color: #fff;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  z-index: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.3s, transform 0.3s;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+}
+
+.scroll-top.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.scroll-top:hover {
+  background: var(--blue);
+}
+
+/* Toast notification */
+.toast {
+  position: fixed;
+  bottom: 80px;
+  right: 24px;
+  background: #000;
+  color: #fff;
+  padding: 12px 20px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  z-index: 600;
+  transform: translateY(20px);
+  opacity: 0;
+  transition: all 0.3s;
+  border-left: 3px solid var(--blue);
+  max-width: 280px;
+}
+
+.toast.show {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* Nothing-style loading bar on buttons */
+.btn-blue.loading {
+  position: relative;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.btn-blue.loading::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  background: rgba(255,255,255,0.6);
+  animation: btnLoad 1.2s ease-in-out infinite;
+}
+
+@keyframes btnLoad {
+  0%   { width: 0; left: 0; }
+  50%  { width: 100%; left: 0; }
+  100% { width: 0; left: 100%; }
+}

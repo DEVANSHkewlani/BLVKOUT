@@ -1,0 +1,356 @@
+/* ============================================
+   PROFILE — Terminal / Brutalist Style
+   ============================================ */
+
+.profile-page {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  min-height: 80vh;
+  background: #f2f2f2;
+  position: relative;
+  z-index: 1;
+}
+
+/* ---- SIDEBAR ---- */
+.profile-sidebar {
+  background: #f2f2f2;
+  border-right: 1px solid #d8d8d8;
+  padding: 28px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  position: relative;
+  z-index: 1;
+  align-self: start;
+}
+
+.profile-terminal-id {
+  font-family: 'Courier New', monospace;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: #555;
+  text-transform: uppercase;
+  margin-bottom: 28px;
+  line-height: 1.6;
+}
+
+.profile-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  flex: 1;
+  border-top: 1px solid #d0d0d0;
+}
+
+.profile-nav-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 12px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #555;
+  border-left: 3px solid transparent;
+  border-bottom: 1px solid #d0d0d0;
+  transition: all 0.15s;
+  cursor: pointer;
+  font-family: 'Courier New', monospace;
+}
+
+.profile-nav-item:hover {
+  color: #000;
+  background: rgba(0,0,0,0.03);
+}
+
+.profile-nav-item.active {
+  color: var(--blue);
+  border-left-color: var(--blue);
+  background: rgba(18,64,204,0.05);
+}
+
+.profile-logout {
+  display: block;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #999;
+  font-family: 'Courier New', monospace;
+  padding: 10px 12px;
+  margin-top: 16px;
+  transition: color 0.15s;
+}
+
+.profile-logout:hover {
+  color: #000;
+}
+
+/* ---- MAIN ---- */
+.profile-main {
+  padding: 32px 40px;
+  background: #f2f2f2;
+}
+
+/* ---- PROFILE HERO HEADER ---- */
+.profile-hero-header {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  margin-bottom: 40px;
+  padding-bottom: 28px;
+  border-bottom: 1px solid #d0d0d0;
+}
+
+.profile-hero-avatar {
+  width: 100px;
+  height: 100px;
+  background: #111;
+  overflow: hidden;
+  flex-shrink: 0;
+  position: relative;
+  border: 2px solid #000;
+  box-shadow: 3px 3px 0 #000;
+}
+
+.profile-hero-badge {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: var(--blue);
+  color: #fff;
+  font-size: 8px;
+  font-weight: 900;
+  letter-spacing: 1.5px;
+  text-align: center;
+  padding: 3px 0;
+  font-family: 'Courier New', monospace;
+}
+
+.profile-hero-name {
+  font-size: 52px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  line-height: 1;
+  margin-bottom: 10px;
+}
+
+.profile-hero-meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #666;
+  font-family: 'Courier New', monospace;
+}
+
+.profile-meta-sep {
+  color: #bbb;
+}
+
+/* ---- TABS ---- */
+.profile-tab {
+  display: none;
+}
+
+.profile-tab.active {
+  display: block;
+}
+
+/* ---- SECTION HEADER ---- */
+.profile-section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.profile-section-title {
+  font-size: 18px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.orders-count-badge {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  background: var(--blue);
+  color: #fff;
+  padding: 3px 8px;
+  font-family: 'Courier New', monospace;
+}
+
+/* ---- ORDER CARDS ---- */
+.order-card {
+  display: grid;
+  grid-template-columns: 80px 1fr auto;
+  gap: 20px;
+  padding: 20px;
+  margin-bottom: 12px;
+  align-items: center;
+  background: #fff;
+}
+
+.order-card-img {
+  width: 80px;
+  height: 80px;
+  background: #f0f0f0;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.order-card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.order-card-top {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.order-status-tag {
+  font-size: 8px;
+  font-weight: 900;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  font-family: 'Courier New', monospace;
+}
+
+.order-status-tag.transit {
+  background: var(--blue);
+  color: #fff;
+}
+
+.order-status-tag.delivered {
+  background: #e8f5e9;
+  color: #2e7d32;
+  border: 1px solid #2e7d32;
+}
+
+.order-ref {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: #888;
+  font-family: 'Courier New', monospace;
+  text-transform: uppercase;
+}
+
+.order-card-name {
+  font-size: 16px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.order-card-meta {
+  font-size: 9px;
+  color: #888;
+  letter-spacing: 1px;
+  font-family: 'Courier New', monospace;
+  text-transform: uppercase;
+  border-top: 1px dashed #ddd;
+  padding-top: 6px;
+  margin-top: 2px;
+}
+
+.order-card-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: flex-end;
+}
+
+/* ---- SUPPORT CARDS ---- */
+.support-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.support-card {
+  background: #fff;
+  padding: 24px;
+  position: relative;
+}
+
+.support-ticket-label {
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--blue);
+  font-family: 'Courier New', monospace;
+  margin-bottom: 8px;
+}
+
+.support-ticket-icon {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 20px;
+  opacity: 0.3;
+}
+
+.support-card-title {
+  font-size: 18px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+  line-height: 1.2;
+}
+
+.support-card-desc {
+  font-size: 12px;
+  color: #555;
+  line-height: 1.6;
+  font-family: 'Courier New', monospace;
+}
+
+/* ---- RESPONSIVE ---- */
+@media (max-width: 768px) {
+  .profile-page { grid-template-columns: 1fr; }
+  .profile-sidebar {
+    border-right: none;
+    border-bottom: 1px solid #d8d8d8;
+    padding: 20px;
+  }
+  .profile-nav {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+  .profile-nav-item {
+    border-left: none;
+    border-bottom: 2px solid transparent;
+    padding: 8px 10px;
+    font-size: 9px;
+  }
+  .profile-nav-item.active {
+    border-left-color: transparent;
+    border-bottom-color: var(--blue);
+  }
+  .profile-main { padding: 20px; }
+  .profile-hero-name { font-size: 32px; }
+  .profile-hero-header { flex-direction: column; align-items: flex-start; gap: 16px; }
+  .order-card { grid-template-columns: 60px 1fr; }
+  .order-card-actions { display: none; }
+  .support-grid { grid-template-columns: 1fr; }
+}

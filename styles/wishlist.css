@@ -1,0 +1,140 @@
+/* WISHLIST HEADER */
+.wishlist-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding: 48px 40px 32px;
+  border-bottom: 1px solid #d0d0d0;
+  background: var(--bg);
+}
+
+.wishlist-title {
+  font-size: 80px;
+  font-weight: 900;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  line-height: 1;
+  margin-bottom: 8px;
+}
+
+.wishlist-count {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: var(--gray);
+  text-transform: uppercase;
+}
+
+.wishlist-header-right {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+/* WISHLIST GRID */
+.wishlist-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 20px;
+}
+
+/* WISHLIST CARD */
+.wishlist-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.wishlist-img {
+  position: relative;
+  aspect-ratio: 3/4;
+  background: #f0f0f0;
+  overflow: hidden;
+  margin-bottom: 14px;
+}
+
+.wishlist-img > div {
+  width: 100%;
+  height: 100%;
+}
+
+.wishlist-remove {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 28px;
+  height: 28px;
+  background: rgba(255,255,255,0.9);
+  border: none;
+  border-radius: 50%;
+  font-size: 11px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+  z-index: 2;
+}
+
+.wishlist-remove:hover {
+  background: #000;
+  color: #fff;
+}
+
+.wishlist-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.wishlist-name {
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.wishlist-price {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--blue);
+}
+
+.wishlist-meta {
+  font-size: 11px;
+  color: var(--gray);
+  margin-bottom: 8px;
+}
+
+.wishlist-actions {
+  display: flex;
+  gap: 8px;
+}
+
+/* CTA BANNER */
+.wishlist-cta {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 400px;
+  background: #111;
+}
+
+.wishlist-cta-content {
+  padding: 80px 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.wishlist-cta-title {
+  font-size: 52px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #fff;
+  line-height: 1.1;
+  margin-bottom: 16px;
+}
+
+.wishlist-cta-img {
+  overflow: hidden;
+}

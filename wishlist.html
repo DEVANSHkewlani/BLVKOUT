@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BLVKOUT — Wishlist</title>
+  <link rel="stylesheet" href="styles/main.css" />
+  <link rel="stylesheet" href="styles/wishlist.css" />
+  <link rel="stylesheet" href="styles/responsive.css" />
+</head>
+<body>
+
+  <div class="scroll-progress" id="scrollProgress"></div>
+  <div class="cursor-dot" id="cursorDot"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+
+  <div class="ticker-bar">
+    <div class="ticker-track">
+      <span>FREE SHIPPING ON ORDERS OVER $150</span><span class="dot">·</span>
+      <span>NEW SS26 DROP — MONOLITH COLLECTION</span><span class="dot">·</span>
+      <span>CUSTOM STUDIO NOW LIVE</span><span class="dot">·</span>
+      <span>USE CODE BLVK10 FOR 10% OFF</span><span class="dot">·</span>
+      <span>FREE SHIPPING ON ORDERS OVER $150</span><span class="dot">·</span>
+      <span>NEW SS26 DROP — MONOLITH COLLECTION</span><span class="dot">·</span>
+      <span>CUSTOM STUDIO NOW LIVE</span><span class="dot">·</span>
+      <span>USE CODE BLVK10 FOR 10% OFF</span><span class="dot">·</span>
+    </div>
+  </div>
+
+  <nav>
+    <div class="nav-logo">BLVKOUT</div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="collections.html">Collections</a></li>
+      <li><a href="custom.html">Custom</a></li>
+      <li><a href="product.html">Products</a></li>
+      <li><a href="wishlist.html" style="color:var(--blue);">Wishlist</a></li>
+    </ul>
+    <div class="nav-search">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input type="text" placeholder="Search..." />
+    </div>
+    <div class="nav-actions">
+      <a href="profile.html" class="nav-icon-btn" title="Account">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+      </a>
+      <a href="cart.html" class="nav-icon-btn" title="Cart">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+        <span class="cart-count">3</span>
+      </a>
+    </div>
+    <button class="nav-hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <div class="nav-drawer" id="navDrawer">
+    <a href="index.html">Home</a>
+    <a href="collections.html">Collections</a>
+    <a href="custom.html">Custom</a>
+    <a href="product.html">Products</a>
+    <a href="wishlist.html">Wishlist</a>
+    <div class="nav-drawer-actions">
+      <a href="profile.html" class="btn-outline">Account</a>
+      <a href="cart.html" class="btn-blue">Cart (3)</a>
+    </div>
+  </div>
+
+  <!-- WISHLIST HEADER -->
+  <div class="wishlist-header">
+    <div class="wishlist-header-left">
+      <h1 class="wishlist-title">WISHLIST</h1>
+      <p class="wishlist-count">6 ITEMS SAVED</p>
+    </div>
+    <div class="wishlist-header-right">
+      <button class="btn-blue">SHARE LIST</button>
+      <button class="btn-outline">CLEAR ALL</button>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="wishlist-grid">
+
+      <!-- ITEM 1 -->
+      <div class="wishlist-card">
+        <div class="wishlist-img">
+          <div class="img-placeholder img-dark"></div>
+          <button class="wishlist-remove" onclick="removeWishItem(this)" title="Remove">✕</button>
+        </div>
+        <div class="wishlist-info">
+          <div class="wishlist-name">OBSIDIAN JACKET</div>
+          <div class="wishlist-price">$340.00</div>
+          <div class="wishlist-meta">Size: M &nbsp;·&nbsp; Black</div>
+          <div class="wishlist-actions">
+            <button class="btn-blue" style="flex:1;padding:10px;" onclick="location.href='cart.html'">ADD TO CART</button>
+            <button class="btn-outline" style="padding:10px 14px;" onclick="location.href='product.html'">VIEW</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ITEM 2 -->
+      <div class="wishlist-card">
+        <div class="wishlist-img">
+          <div class="img-placeholder img-medium"></div>
+          <button class="wishlist-remove" onclick="removeWishItem(this)" title="Remove">✕</button>
+          <span class="product-card-tag">BESTSELLER</span>
+        </div>
+        <div class="wishlist-info">
+          <div class="wishlist-name">MONOLITH HOODIE V2</div>
+          <div class="wishlist-price">$185.00</div>
+          <div class="wishlist-meta">Size: L &nbsp;·&nbsp; Charcoal</div>
+          <div class="wishlist-actions">
+            <button class="btn-blue" style="flex:1;padding:10px;" onclick="location.href='cart.html'">ADD TO CART</button>
+            <button class="btn-outline" style="padding:10px 14px;" onclick="location.href='product.html'">VIEW</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ITEM 3 -->
+      <div class="wishlist-card">
+        <div class="wishlist-img">
+          <div class="img-placeholder" style="background:#c0c0c0;"></div>
+          <button class="wishlist-remove" onclick="removeWishItem(this)" title="Remove">✕</button>
+        </div>
+        <div class="wishlist-info">
+          <div class="wishlist-name">DIAMOND BOOTS</div>
+          <div class="wishlist-price">$310.00</div>
+          <div class="wishlist-meta">Size: 42 &nbsp;·&nbsp; White</div>
+          <div class="wishlist-actions">
+            <button class="btn-blue" style="flex:1;padding:10px;" onclick="location.href='cart.html'">ADD TO CART</button>
+            <button class="btn-outline" style="padding:10px 14px;" onclick="location.href='product.html'">VIEW</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ITEM 4 -->
+      <div class="wishlist-card">
+        <div class="wishlist-img">
+          <div class="img-placeholder img-dark"></div>
+          <button class="wishlist-remove" onclick="removeWishItem(this)" title="Remove">✕</button>
+          <span class="product-card-tag">NEW</span>
+        </div>
+        <div class="wishlist-info">
+          <div class="wishlist-name">ARCHITECT BLAZER</div>
+          <div class="wishlist-price">$310.00</div>
+          <div class="wishlist-meta">Size: M &nbsp;·&nbsp; Black</div>
+          <div class="wishlist-actions">
+            <button class="btn-blue" style="flex:1;padding:10px;" onclick="location.href='cart.html'">ADD TO CART</button>
+            <button class="btn-outline" style="padding:10px 14px;" onclick="location.href='product.html'">VIEW</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ITEM 5 -->
+      <div class="wishlist-card">
+        <div class="wishlist-img">
+          <div class="img-placeholder" style="background:#444;"></div>
+          <button class="wishlist-remove" onclick="removeWishItem(this)" title="Remove">✕</button>
+        </div>
+        <div class="wishlist-info">
+          <div class="wishlist-name">CARBON JACKET</div>
+          <div class="wishlist-price">$360.00</div>
+          <div class="wishlist-meta">Size: L &nbsp;·&nbsp; Black</div>
+          <div class="wishlist-actions">
+            <button class="btn-blue" style="flex:1;padding:10px;" onclick="location.href='cart.html'">ADD TO CART</button>
+            <button class="btn-outline" style="padding:10px 14px;" onclick="location.href='product.html'">VIEW</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ITEM 6 -->
+      <div class="wishlist-card">
+        <div class="wishlist-img">
+          <div class="img-placeholder" style="background:#999;"></div>
+          <button class="wishlist-remove" onclick="removeWishItem(this)" title="Remove">✕</button>
+        </div>
+        <div class="wishlist-info">
+          <div class="wishlist-name">SLATE JOGGERS</div>
+          <div class="wishlist-price">$145.00</div>
+          <div class="wishlist-meta">Size: M &nbsp;·&nbsp; Grey</div>
+          <div class="wishlist-actions">
+            <button class="btn-blue" style="flex:1;padding:10px;" onclick="location.href='cart.html'">ADD TO CART</button>
+            <button class="btn-outline" style="padding:10px 14px;" onclick="location.href='product.html'">VIEW</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CTA BANNER -->
+  <section class="wishlist-cta">
+    <div class="wishlist-cta-content">
+      <h2 class="wishlist-cta-title">ENTER THE<br>BLVOKOUT.</h2>
+      <p style="color:rgba(255,255,255,0.7);font-size:13px;margin-bottom:28px;max-width:320px;">Discover more pieces to complete your wardrobe. New drops every week.</p>
+      <button class="btn-blue" onclick="location.href='collections.html'">EXPLORE COLLECTIONS</button>
+    </div>
+    <div class="wishlist-cta-img">
+      <div class="img-placeholder img-dark" style="height:100%;"></div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-top">
+      <div>
+        <p class="footer-tagline">ENTER THE<br>BLVCKOUT.</p>
+        <div class="footer-newsletter"><input type="email" placeholder="Your Email Here" /><button>Subscribe</button></div>
+        <p class="footer-newsletter-note">Subscribe to our newsletter for the latest features and updates.</p>
+      </div>
+      <div class="footer-col"><h4>Shop</h4><ul><li><a href="collections.html">Women</a></li><li><a href="collections.html">Men</a></li><li><a href="collections.html">Unisex</a></li><li><a href="custom.html">Custom</a></li></ul></div>
+      <div class="footer-col"><h4>Contact</h4><ul><li><a href="#">Join Us</a></li><li><a href="#">Customer Support</a></li><li><a href="#">Contact Us</a></li><li><a href="policies.html">Policies</a></li></ul></div>
+      <div class="footer-col"><h4>Follow Us</h4><div class="footer-social"><div class="footer-social-item"><span class="footer-social-icon">✕</span> Instagram</div><div class="footer-social-item"><span class="footer-social-icon">𝕏</span> X</div><div class="footer-social-item"><span class="footer-social-icon">▶</span> YouTube</div></div></div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 BLVKOUT. All rights reserved.</span>
+      <span><a href="policies.html" style="color:inherit;">Privacy Policy</a> · <a href="policies.html" style="color:inherit;">Terms of Service</a></span>
+    </div>
+    <div class="footer-watermark">BLV.K</div>
+  </footer>
+
+  <button class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+  <div class="toast" id="toast"></div>
+  <script src="scripts/main.js"></script>
+  <script src="scripts/wishlist.js"></script>
+  <script src="scripts/ui.js"></script>
+</body>
+</html>
