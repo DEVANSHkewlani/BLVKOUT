@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login — BLVCKOUT Admin</title>
+  <link rel="stylesheet" href="styles/main.css">
+  <link rel="stylesheet" href="styles/login.css">
+</head>
+<body class="login-body">
+  <div class="login-split">
+
+    <!-- LEFT: Login Form -->
+    <div class="login-left">
+      <div class="login-box">
+        <a href="index.html" class="login-logo">BLVCKOUT</a>
+        <div class="login-eyebrow">ADMIN ACCESS</div>
+        <h1 class="login-title">SIGN IN</h1>
+        <p class="login-sub">Enter your credentials to access the control panel.</p>
+
+        <form class="login-form" id="login-form">
+          <div class="login-field">
+            <label class="login-label">EMAIL ADDRESS</label>
+            <input type="email" class="login-input" id="login-email" placeholder="admin@blvckout.com" required autocomplete="email">
+          </div>
+          <div class="login-field">
+            <label class="login-label">PASSWORD</label>
+            <div class="login-input-wrap">
+              <input type="password" class="login-input" id="login-password" placeholder="••••••••" required autocomplete="current-password">
+              <button type="button" class="login-eye" id="toggle-pw" aria-label="Toggle password">
+                <svg id="eye-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+              </button>
+            </div>
+          </div>
+
+          <div class="login-row">
+            <label class="login-check">
+              <input type="checkbox" id="remember-me"> Remember me
+            </label>
+            <a href="#" class="login-forgot">Forgot password?</a>
+          </div>
+
+          <button type="submit" class="btn-blue login-btn" id="login-submit">SIGN IN</button>
+          <div class="login-error" id="login-error"></div>
+        </form>
+
+        <div class="login-demo">
+          <span class="login-demo-label">DEMO CREDENTIALS</span>
+          <span>admin@blvckout.com / admin123</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT: Brand Image -->
+    <div class="login-right">
+      <div class="login-right-overlay">
+        <div class="login-brand-text">
+          <div class="login-brand-eyebrow">BLVCKOUT CONTROL</div>
+          <div class="login-brand-headline">MANAGE<br>YOUR<br>BRAND.</div>
+          <div class="login-brand-sub">Full control over products, orders, customers, and content.</div>
+        </div>
+      </div>
+      <img src="images/hero-model.png" alt="BLVCKOUT" class="login-right-img">
+      <div class="login-watermark">BLVCKOUT</div>
+    </div>
+
+  </div>
+
+  <script>
+    // Toggle password visibility
+    document.getElementById('toggle-pw').addEventListener('click', () => {
+      const inp = document.getElementById('login-password');
+      const icon = document.getElementById('eye-icon');
+      if (inp.type === 'password') {
+        inp.type = 'text';
+        icon.innerHTML = '<path d="M17.94 17.94A10.07 10.07 0 0112 20c-7 0-11-8-11-8a18.45 18.45 0 015.06-5.94"/><path d="M9.9 4.24A9.12 9.12 0 0112 4c7 0 11 8 11 8a18.5 18.5 0 01-2.16 3.19"/><line x1="1" y1="1" x2="23" y2="23"/>';
+      } else {
+        inp.type = 'password';
+        icon.innerHTML = '<path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>';
+      }
+    });
+
+    // Login form
+    document.getElementById('login-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const email = document.getElementById('login-email').value.trim();
+      const pw = document.getElementById('login-password').value;
+      const err = document.getElementById('login-error');
+      const btn = document.getElementById('login-submit');
+
+      btn.textContent = 'SIGNING IN...';
+      btn.disabled = true;
+
+      setTimeout(() => {
+        if (email === 'admin@blvckout.com' && pw === 'admin123') {
+          sessionStorage.setItem('blvckout_admin', '1');
+          window.location.href = 'admin.html';
+        } else {
+          err.textContent = 'Invalid email or password. Try admin@blvckout.com / admin123';
+          btn.textContent = 'SIGN IN';
+          btn.disabled = false;
+        }
+      }, 800);
+    });
+  </script>
+</body>
+</html>

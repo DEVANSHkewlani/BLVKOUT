@@ -1,0 +1,1503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin — BLVCKOUT</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles/admin.css">
+</head>
+<body class="admin-body">
+
+<!-- AUTH GUARD -->
+<script>
+  if (sessionStorage.getItem('blvckout_admin') !== '1') {
+    window.location.href = 'login.html';
+  }
+</script>
+
+<div class="admin-layout">
+
+  <!-- ═══════════════════════════════════════
+       SIDEBAR
+  ═══════════════════════════════════════ -->
+  <aside class="admin-sidebar">
+    <a href="admin.html" class="admin-sidebar-logo">
+      BLVCKOUT
+      <span>ADMIN PANEL</span>
+    </a>
+
+    <nav class="admin-nav">
+      <div class="admin-nav-section-label">MAIN</div>
+
+      <button class="admin-nav-item active" data-panel="dashboard">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+        Dashboard
+      </button>
+
+      <button class="admin-nav-item" data-panel="products">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+        Products
+      </button>
+
+      <button class="admin-nav-item" data-panel="orders">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+        Orders
+      </button>
+
+      <button class="admin-nav-item" data-panel="customers">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        Customers
+      </button>
+
+      <div class="admin-nav-divider"></div>
+      <div class="admin-nav-section-label">CONTENT</div>
+
+      <button class="admin-nav-item" data-panel="hero">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="0"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+        Hero &amp; Banners
+      </button>
+
+      <button class="admin-nav-item" data-panel="collections">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+        Collections
+      </button>
+
+      <button class="admin-nav-item" data-panel="promotions">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
+        Promotions
+      </button>
+
+      <div class="admin-nav-divider"></div>
+      <div class="admin-nav-section-label">SYSTEM</div>
+
+      <button class="admin-nav-item" data-panel="settings">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+        Settings
+      </button>
+
+      <div class="admin-nav-divider"></div>
+
+      <a href="index.html" class="admin-nav-item" target="_blank">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        View Store
+      </a>
+
+      <button class="admin-nav-item" id="sidebar-logout">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+        Logout
+      </button>
+    </nav>
+  </aside>
+
+  <!-- ═══════════════════════════════════════
+       MAIN
+  ═══════════════════════════════════════ -->
+  <main class="admin-main">
+
+    <!-- TOP BAR -->
+    <div class="admin-topbar">
+      <div class="admin-breadcrumb">
+        BLVCKOUT
+        <span class="admin-breadcrumb-sep">/</span>
+        <span class="admin-breadcrumb-current" id="breadcrumb-current">DASHBOARD</span>
+      </div>
+      <div class="admin-topbar-actions">
+        <span class="admin-topbar-user">admin@blvckout.com</span>
+        <button class="btn-black" style="padding:8px 18px;font-size:10px;letter-spacing:1.5px;" id="topbar-logout">LOGOUT</button>
+      </div>
+    </div>
+
+
+    <!-- ═══════════════════════════════════════
+         PANEL: DASHBOARD
+    ═══════════════════════════════════════ -->
+    <section class="admin-panel active" id="panel-dashboard">
+
+      <!-- ROW 1: WELCOME BAR -->
+      <div class="dash-welcome">
+        <div>
+          <div class="dash-welcome-title">Good Morning, Admin</div>
+          <div class="dash-welcome-date">Monday, July 14, 2025</div>
+        </div>
+        <div class="dash-welcome-pills">
+          <div class="dash-welcome-pill"><span>312</span>Orders</div>
+          <div class="dash-welcome-pill"><span>$48,290</span>Revenue</div>
+          <div class="dash-welcome-pill"><span>1,204</span>Customers</div>
+        </div>
+      </div>
+
+      <!-- ROW 2: KPI GRID -->
+      <div class="kpi-grid">
+        <!-- 1 Total Revenue -->
+        <div class="kpi-card accent-blue">
+          <div class="kpi-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+          <div class="kpi-label">Total Revenue</div>
+          <div class="kpi-value">$48,290</div>
+          <div class="kpi-trend up">↑ +12.4% this month</div>
+        </div>
+        <!-- 2 Orders Today -->
+        <div class="kpi-card accent-green">
+          <div class="kpi-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg></div>
+          <div class="kpi-label">Orders Today</div>
+          <div class="kpi-value">28</div>
+          <div class="kpi-trend up">↑ +8 from yesterday</div>
+        </div>
+        <!-- 3 Avg Order Value -->
+        <div class="kpi-card accent-blue">
+          <div class="kpi-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></div>
+          <div class="kpi-label">Avg Order Value</div>
+          <div class="kpi-value">$154</div>
+          <div class="kpi-trend up">↑ +$12 vs last week</div>
+        </div>
+        <!-- 4 Active Products -->
+        <div class="kpi-card accent-black">
+          <div class="kpi-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
+          <div class="kpi-label">Active Products</div>
+          <div class="kpi-value">48</div>
+          <div class="kpi-trend neutral">3 new this week</div>
+        </div>
+        <!-- 5 New Customers -->
+        <div class="kpi-card accent-green">
+          <div class="kpi-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+          <div class="kpi-label">New Customers</div>
+          <div class="kpi-value">34</div>
+          <div class="kpi-trend up">↑ this week</div>
+        </div>
+        <!-- 6 Pending Orders -->
+        <div class="kpi-card accent-red">
+          <div class="kpi-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
+          <div class="kpi-label">Pending Orders</div>
+          <div class="kpi-value">12</div>
+          <div class="kpi-trend down">Need attention</div>
+        </div>
+      </div>
+
+      <!-- ROW 3: CHART ROW -->
+      <div class="dash-chart-row">
+        <!-- Revenue Bar Chart -->
+        <div class="dash-card">
+          <div class="dash-card-header">
+            <div class="dash-card-title">Revenue — Last 7 Days</div>
+            <div class="dash-card-meta">
+              $48,290
+              <span class="dash-card-meta-label">This Week</span>
+            </div>
+          </div>
+          <div class="bar-chart-wrap">
+            <div class="bar-chart-yaxis">
+              <span class="bar-chart-ylabel">10k</span>
+              <span class="bar-chart-ylabel">8k</span>
+              <span class="bar-chart-ylabel">6k</span>
+              <span class="bar-chart-ylabel">4k</span>
+              <span class="bar-chart-ylabel">2k</span>
+              <span class="bar-chart-ylabel">0</span>
+            </div>
+            <div class="bar-vals-row">
+              <span class="bar-val">$4.2k</span>
+              <span class="bar-val">$6.8k</span>
+              <span class="bar-val">$5.1k</span>
+              <span class="bar-val">$7.4k</span>
+              <span class="bar-val">$9.2k</span>
+              <span class="bar-val">$8.6k</span>
+              <span class="bar-val">$7.0k</span>
+            </div>
+            <div class="bar-chart">
+              <div class="bar-col"><div class="bar-fill" style="height:46%"></div></div>
+              <div class="bar-col"><div class="bar-fill" style="height:74%"></div></div>
+              <div class="bar-col"><div class="bar-fill" style="height:55%"></div></div>
+              <div class="bar-col"><div class="bar-fill" style="height:80%"></div></div>
+              <div class="bar-col"><div class="bar-fill today" style="height:100%"></div></div>
+              <div class="bar-col"><div class="bar-fill" style="height:93%"></div></div>
+              <div class="bar-col"><div class="bar-fill" style="height:76%"></div></div>
+            </div>
+            <div class="bar-labels-row">
+              <span class="bar-label">Mon</span>
+              <span class="bar-label">Tue</span>
+              <span class="bar-label">Wed</span>
+              <span class="bar-label">Thu</span>
+              <span class="bar-label">Fri ★</span>
+              <span class="bar-label">Sat</span>
+              <span class="bar-label">Sun</span>
+            </div>
+          </div>
+        </div>
+        <!-- Order Status Donut -->
+        <div class="dash-card">
+          <div class="dash-card-header">
+            <div class="dash-card-title">Order Status</div>
+          </div>
+          <div class="donut-wrap">
+            <div class="donut"></div>
+            <div class="donut-legend">
+              <div class="donut-legend-item">
+                <div class="donut-dot" style="background:#16a34a;"></div>
+                Delivered
+                <span class="donut-pct">79%</span>
+              </div>
+              <div class="donut-legend-item">
+                <div class="donut-dot" style="background:#1240cc;"></div>
+                Shipped
+                <span class="donut-pct">14%</span>
+              </div>
+              <div class="donut-legend-item">
+                <div class="donut-dot" style="background:#ea580c;"></div>
+                Processing
+                <span class="donut-pct">4%</span>
+              </div>
+              <div class="donut-legend-item">
+                <div class="donut-dot" style="background:#888;"></div>
+                Pending
+                <span class="donut-pct">3%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ROW 4: THREE COLUMNS -->
+      <div class="dash-three-col">
+        <!-- Top Products -->
+        <div class="dash-card">
+          <div class="dash-card-header">
+            <div class="dash-card-title">Top Selling Products</div>
+          </div>
+          <div class="top-product-row">
+            <div class="top-product-rank">1</div>
+            <div class="top-product-info">
+              <div class="top-product-name">Tactical Field Jacket</div>
+              <div class="top-product-units">89 units</div>
+            </div>
+            <div class="top-product-bar-wrap"><div class="top-product-bar" style="width:100%"></div></div>
+            <div class="top-product-rev">$31,061</div>
+          </div>
+          <div class="top-product-row">
+            <div class="top-product-rank">2</div>
+            <div class="top-product-info">
+              <div class="top-product-name">Combat Boot</div>
+              <div class="top-product-units">72 units</div>
+            </div>
+            <div class="top-product-bar-wrap"><div class="top-product-bar" style="width:81%"></div></div>
+            <div class="top-product-rev">$19,080</div>
+          </div>
+          <div class="top-product-row">
+            <div class="top-product-rank">3</div>
+            <div class="top-product-info">
+              <div class="top-product-name">Matte Black Watch</div>
+              <div class="top-product-units">61 units</div>
+            </div>
+            <div class="top-product-bar-wrap"><div class="top-product-bar" style="width:69%"></div></div>
+            <div class="top-product-rev">$25,620</div>
+          </div>
+          <div class="top-product-row">
+            <div class="top-product-rank">4</div>
+            <div class="top-product-info">
+              <div class="top-product-name">Oversized Hoodie Grey</div>
+              <div class="top-product-units">58 units</div>
+            </div>
+            <div class="top-product-bar-wrap"><div class="top-product-bar" style="width:65%"></div></div>
+            <div class="top-product-rev">$8,410</div>
+          </div>
+          <div class="top-product-row">
+            <div class="top-product-rank">5</div>
+            <div class="top-product-info">
+              <div class="top-product-name">Structured Blazer</div>
+              <div class="top-product-units">44 units</div>
+            </div>
+            <div class="top-product-bar-wrap"><div class="top-product-bar" style="width:49%"></div></div>
+            <div class="top-product-rev">$12,716</div>
+          </div>
+        </div>
+        <!-- Activity Feed -->
+        <div class="dash-card">
+          <div class="dash-card-header">
+            <div class="dash-card-title">Activity Feed</div>
+          </div>
+          <div class="activity-item">
+            <div class="activity-dot green"></div>
+            <div class="activity-text">New order <strong>#BLV-0312</strong> from Marcus Webb</div>
+            <div class="activity-time">2m ago</div>
+          </div>
+          <div class="activity-item">
+            <div class="activity-dot blue"></div>
+            <div class="activity-text">Product "Combat Boot" stock low (3 left)</div>
+            <div class="activity-time">15m ago</div>
+          </div>
+          <div class="activity-item">
+            <div class="activity-dot green"></div>
+            <div class="activity-text">New customer Zara Okonkwo registered</div>
+            <div class="activity-time">32m ago</div>
+          </div>
+          <div class="activity-item">
+            <div class="activity-dot orange"></div>
+            <div class="activity-text">Order <strong>#BLV-0308</strong> updated to Shipped</div>
+            <div class="activity-time">1h ago</div>
+          </div>
+          <div class="activity-item">
+            <div class="activity-dot blue"></div>
+            <div class="activity-text">Promo code BLVCK20 used 5 times today</div>
+            <div class="activity-time">2h ago</div>
+          </div>
+          <div class="activity-item">
+            <div class="activity-dot green"></div>
+            <div class="activity-text">New order <strong>#BLV-0311</strong> from Devon Clarke</div>
+            <div class="activity-time">3h ago</div>
+          </div>
+          <div class="activity-item">
+            <div class="activity-dot red"></div>
+            <div class="activity-text">Product "Custom Graphic Tee" out of stock</div>
+            <div class="activity-time">4h ago</div>
+          </div>
+          <div class="activity-item">
+            <div class="activity-dot green"></div>
+            <div class="activity-text">New order <strong>#BLV-0310</strong> — $612.00</div>
+            <div class="activity-time">5h ago</div>
+          </div>
+        </div>
+        <!-- Store Health -->
+        <div class="dash-card">
+          <div class="dash-card-header">
+            <div class="dash-card-title">Store Health</div>
+          </div>
+          <div class="health-row">
+            <div class="health-label">Site Status</div>
+            <div class="health-val"><div class="health-dot online"></div> Online</div>
+          </div>
+          <div class="health-row">
+            <div class="health-label">Active Promotions</div>
+            <div class="health-val">3 running</div>
+          </div>
+          <div class="health-row">
+            <div class="health-label">Low Stock Items</div>
+            <div class="health-val" style="color:#ea580c;">4 products</div>
+          </div>
+          <div class="health-row">
+            <div class="health-label">Draft Products</div>
+            <div class="health-val">2 unpublished</div>
+          </div>
+          <div class="health-row">
+            <div class="health-label">Pending Reviews</div>
+            <div class="health-val">7 awaiting</div>
+          </div>
+          <div class="health-row">
+            <div class="health-label">Newsletter Subs</div>
+            <div class="health-val">892 subscribers</div>
+          </div>
+          <div class="health-actions">
+            <button class="health-action-btn" onclick="showPanel('products')">View Low Stock <span>→</span></button>
+            <button class="health-action-btn" onclick="showPanel('products')">Publish Drafts <span>→</span></button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ROW 5: RECENT ORDERS TABLE -->
+      <div class="admin-table-wrap" style="margin-bottom:24px;">
+        <div class="admin-table-header">
+          <div class="admin-table-title">Recent Orders</div>
+          <button class="tbl-btn blue" onclick="showPanel('orders')">VIEW ALL</button>
+        </div>
+        <table class="admin-table">
+          <thead>
+            <tr>
+              <th>Order ID</th>
+              <th>Customer</th>
+              <th>Items</th>
+              <th>Total</th>
+              <th>Status</th>
+              <th>Channel</th>
+              <th>Date</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="text-mono">#BLV-0312</td>
+              <td><div class="order-customer-cell"><div class="order-avatar">MW</div>Marcus Webb</div></td>
+              <td>2 items</td>
+              <td class="text-mono">$348.00</td>
+              <td><span class="status-badge delivered">Delivered</span></td>
+              <td class="text-muted">Web</td>
+              <td class="text-muted">Jul 14, 2025</td>
+            </tr>
+            <tr>
+              <td class="text-mono">#BLV-0311</td>
+              <td><div class="order-customer-cell"><div class="order-avatar">ZO</div>Zara Okonkwo</div></td>
+              <td>1 item</td>
+              <td class="text-mono">$189.00</td>
+              <td><span class="status-badge shipped">Shipped</span></td>
+              <td class="text-muted">Mobile</td>
+              <td class="text-muted">Jul 13, 2025</td>
+            </tr>
+            <tr>
+              <td class="text-mono">#BLV-0310</td>
+              <td><div class="order-customer-cell"><div class="order-avatar">DC</div>Devon Clarke</div></td>
+              <td>3 items</td>
+              <td class="text-mono">$612.00</td>
+              <td><span class="status-badge processing">Processing</span></td>
+              <td class="text-muted">Web</td>
+              <td class="text-muted">Jul 13, 2025</td>
+            </tr>
+            <tr>
+              <td class="text-mono">#BLV-0309</td>
+              <td><div class="order-customer-cell"><div class="order-avatar">NF</div>Nia Fontaine</div></td>
+              <td>1 item</td>
+              <td class="text-mono">$245.00</td>
+              <td><span class="status-badge delivered">Delivered</span></td>
+              <td class="text-muted">Custom</td>
+              <td class="text-muted">Jul 12, 2025</td>
+            </tr>
+            <tr>
+              <td class="text-mono">#BLV-0308</td>
+              <td><div class="order-customer-cell"><div class="order-avatar">KN</div>Kai Nakamura</div></td>
+              <td>2 items</td>
+              <td class="text-mono">$490.00</td>
+              <td><span class="status-badge shipped">Shipped</span></td>
+              <td class="text-muted">Mobile</td>
+              <td class="text-muted">Jul 12, 2025</td>
+            </tr>
+            <tr>
+              <td class="text-mono">#BLV-0307</td>
+              <td><div class="order-customer-cell"><div class="order-avatar">AD</div>Amara Diallo</div></td>
+              <td>4 items</td>
+              <td class="text-mono">$876.00</td>
+              <td><span class="status-badge delivered">Delivered</span></td>
+              <td class="text-muted">Web</td>
+              <td class="text-muted">Jul 11, 2025</td>
+            </tr>
+            <tr>
+              <td class="text-mono">#BLV-0306</td>
+              <td><div class="order-customer-cell"><div class="order-avatar">TR</div>Tyler Reeves</div></td>
+              <td>1 item</td>
+              <td class="text-mono">$145.00</td>
+              <td><span class="status-badge pending">Pending</span></td>
+              <td class="text-muted">Web</td>
+              <td class="text-muted">Jul 11, 2025</td>
+            </tr>
+            <tr>
+              <td class="text-mono">#BLV-0305</td>
+              <td><div class="order-customer-cell"><div class="order-avatar">SV</div>Simone Voss</div></td>
+              <td>2 items</td>
+              <td class="text-mono">$534.00</td>
+              <td><span class="status-badge delivered">Delivered</span></td>
+              <td class="text-muted">Custom</td>
+              <td class="text-muted">Jul 10, 2025</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- ROW 6: TOP CUSTOMERS + QUICK ACTIONS -->
+      <div class="dash-two-col">
+        <!-- Top Customers -->
+        <div class="dash-card">
+          <div class="dash-card-header">
+            <div class="dash-card-title">Top Customers</div>
+          </div>
+          <div class="top-customer-row">
+            <div class="customer-avatar">DC</div>
+            <div class="top-customer-info">
+              <div class="top-customer-name">Devon Clarke</div>
+              <div class="top-customer-orders">22 orders</div>
+            </div>
+            <div class="top-customer-bar-wrap"><div class="top-customer-bar" style="width:100%"></div></div>
+            <div class="top-customer-spent">$6,120</div>
+          </div>
+          <div class="top-customer-row">
+            <div class="customer-avatar">AD</div>
+            <div class="top-customer-info">
+              <div class="top-customer-name">Amara Diallo</div>
+              <div class="top-customer-orders">18 orders</div>
+            </div>
+            <div class="top-customer-bar-wrap"><div class="top-customer-bar" style="width:74%"></div></div>
+            <div class="top-customer-spent">$4,560</div>
+          </div>
+          <div class="top-customer-row">
+            <div class="customer-avatar">MW</div>
+            <div class="top-customer-info">
+              <div class="top-customer-name">Marcus Webb</div>
+              <div class="top-customer-orders">14 orders</div>
+            </div>
+            <div class="top-customer-bar-wrap"><div class="top-customer-bar" style="width:53%"></div></div>
+            <div class="top-customer-spent">$3,240</div>
+          </div>
+          <div class="top-customer-row">
+            <div class="customer-avatar">KN</div>
+            <div class="top-customer-info">
+              <div class="top-customer-name">Kai Nakamura</div>
+              <div class="top-customer-orders">9 orders</div>
+            </div>
+            <div class="top-customer-bar-wrap"><div class="top-customer-bar" style="width:38%"></div></div>
+            <div class="top-customer-spent">$2,340</div>
+          </div>
+          <div class="top-customer-row">
+            <div class="customer-avatar">ZO</div>
+            <div class="top-customer-info">
+              <div class="top-customer-name">Zara Okonkwo</div>
+              <div class="top-customer-orders">7 orders</div>
+            </div>
+            <div class="top-customer-bar-wrap"><div class="top-customer-bar" style="width:31%"></div></div>
+            <div class="top-customer-spent">$1,890</div>
+          </div>
+        </div>
+        <!-- Quick Actions -->
+        <div class="dash-card">
+          <div class="dash-card-header">
+            <div class="dash-card-title">Quick Actions</div>
+          </div>
+          <div class="qa-grid">
+            <button class="qa-btn" onclick="showPanel('products')">
+              <div class="qa-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+              <div class="qa-label">Add Product</div>
+            </button>
+            <button class="qa-btn" onclick="showPanel('promotions')">
+              <div class="qa-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg></div>
+              <div class="qa-label">Create Promo</div>
+            </button>
+            <button class="qa-btn" onclick="showPanel('hero')">
+              <div class="qa-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div>
+              <div class="qa-label">Edit Hero</div>
+            </button>
+            <button class="qa-btn" onclick="showPanel('orders')">
+              <div class="qa-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg></div>
+              <div class="qa-label">Manage Orders</div>
+            </button>
+            <button class="qa-btn" onclick="showPanel('customers')">
+              <div class="qa-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+              <div class="qa-label">View Customers</div>
+            </button>
+            <button class="qa-btn" onclick="showPanel('settings')">
+              <div class="qa-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></div>
+              <div class="qa-label">Site Settings</div>
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+
+    <!-- ═══════════════════════════════════════
+         PANEL: PRODUCTS
+    ═══════════════════════════════════════ -->
+    <section class="admin-panel" id="panel-products">
+      <div class="panel-row">
+        <div class="admin-panel-title">Products</div>
+        <button class="btn-black" style="padding:10px 20px;font-size:10px;letter-spacing:2px;" id="open-add-product">+ ADD PRODUCT</button>
+      </div>
+
+      <div class="admin-bar">
+        <div class="admin-search">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input type="text" placeholder="Search products..." id="product-search">
+        </div>
+      </div>
+
+      <div class="filter-chips" id="product-filter-chips">
+        <button class="filter-chip active" data-filter="all">All</button>
+        <button class="filter-chip" data-filter="outerwear">Outerwear</button>
+        <button class="filter-chip" data-filter="knitwear">Knitwear</button>
+        <button class="filter-chip" data-filter="footwear">Footwear</button>
+        <button class="filter-chip" data-filter="accessories">Accessories</button>
+      </div>
+
+      <div class="admin-table-wrap">
+        <table class="admin-table" id="products-table">
+          <thead>
+            <tr>
+              <th style="width:56px;">Image</th>
+              <th>Name</th>
+              <th>Category</th>
+              <th>Price</th>
+              <th>Stock</th>
+              <th>Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="products-tbody">
+            <tr>
+              <td><img src="images/product-jacket.png" class="product-thumb" alt="Jacket" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="product-thumb-placeholder" style="display:none">IMG</div></td>
+              <td class="fw-900" style="text-transform:uppercase;letter-spacing:1px;font-size:12px;">Tactical Field Jacket</td>
+              <td class="text-muted">Outerwear</td>
+              <td class="text-mono">$349.00</td>
+              <td>24</td>
+              <td><span class="status-badge active">Active</span></td>
+              <td><button class="tbl-btn">EDIT</button><button class="tbl-btn danger">DEL</button></td>
+            </tr>
+            <tr>
+              <td><img src="images/product-blazer.png" class="product-thumb" alt="Blazer" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="product-thumb-placeholder" style="display:none">IMG</div></td>
+              <td class="fw-900" style="text-transform:uppercase;letter-spacing:1px;font-size:12px;">Structured Blazer</td>
+              <td class="text-muted">Outerwear</td>
+              <td class="text-mono">$289.00</td>
+              <td>12</td>
+              <td><span class="status-badge active">Active</span></td>
+              <td><button class="tbl-btn">EDIT</button><button class="tbl-btn danger">DEL</button></td>
+            </tr>
+            <tr>
+              <td><img src="images/product-shoes.png" class="product-thumb" alt="Shoes" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="product-thumb-placeholder" style="display:none">IMG</div></td>
+              <td class="fw-900" style="text-transform:uppercase;letter-spacing:1px;font-size:12px;">Low-Top Leather Sneaker</td>
+              <td class="text-muted">Footwear</td>
+              <td class="text-mono">$195.00</td>
+              <td>38</td>
+              <td><span class="status-badge active">Active</span></td>
+              <td><button class="tbl-btn">EDIT</button><button class="tbl-btn danger">DEL</button></td>
+            </tr>
+            <tr>
+              <td><img src="images/product-boots.png" class="product-thumb" alt="Boots" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="product-thumb-placeholder" style="display:none">IMG</div></td>
+              <td class="fw-900" style="text-transform:uppercase;letter-spacing:1px;font-size:12px;">Combat Boot</td>
+              <td class="text-muted">Footwear</td>
+              <td class="text-mono">$265.00</td>
+              <td>17</td>
+              <td><span class="status-badge active">Active</span></td>
+              <td><button class="tbl-btn">EDIT</button><button class="tbl-btn danger">DEL</button></td>
+            </tr>
+            <tr>
+              <td><img src="images/product-watch.png" class="product-thumb" alt="Watch" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="product-thumb-placeholder" style="display:none">IMG</div></td>
+              <td class="fw-900" style="text-transform:uppercase;letter-spacing:1px;font-size:12px;">Matte Black Watch</td>
+              <td class="text-muted">Accessories</td>
+              <td class="text-mono">$420.00</td>
+              <td>9</td>
+              <td><span class="status-badge active">Active</span></td>
+              <td><button class="tbl-btn">EDIT</button><button class="tbl-btn danger">DEL</button></td>
+            </tr>
+            <tr>
+              <td><img src="images/collection-hoodie-grey.png" class="product-thumb" alt="Hoodie Grey" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="product-thumb-placeholder" style="display:none">IMG</div></td>
+              <td class="fw-900" style="text-transform:uppercase;letter-spacing:1px;font-size:12px;">Oversized Hoodie — Grey</td>
+              <td class="text-muted">Knitwear</td>
+              <td class="text-mono">$145.00</td>
+              <td>52</td>
+              <td><span class="status-badge active">Active</span></td>
+              <td><button class="tbl-btn">EDIT</button><button class="tbl-btn danger">DEL</button></td>
+            </tr>
+            <tr>
+              <td><img src="images/collection-hoodie-white.png" class="product-thumb" alt="Hoodie White" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="product-thumb-placeholder" style="display:none">IMG</div></td>
+              <td class="fw-900" style="text-transform:uppercase;letter-spacing:1px;font-size:12px;">Oversized Hoodie — White</td>
+              <td class="text-muted">Knitwear</td>
+              <td class="text-mono">$145.00</td>
+              <td>44</td>
+              <td><span class="status-badge draft">Draft</span></td>
+              <td><button class="tbl-btn">EDIT</button><button class="tbl-btn danger">DEL</button></td>
+            </tr>
+            <tr>
+              <td><img src="images/custom-tshirt.png" class="product-thumb" alt="T-Shirt" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="product-thumb-placeholder" style="display:none">IMG</div></td>
+              <td class="fw-900" style="text-transform:uppercase;letter-spacing:1px;font-size:12px;">Custom Graphic Tee</td>
+              <td class="text-muted">Knitwear</td>
+              <td class="text-mono">$89.00</td>
+              <td>0</td>
+              <td><span class="status-badge draft">Draft</span></td>
+              <td><button class="tbl-btn">EDIT</button><button class="tbl-btn danger">DEL</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ADD PRODUCT MODAL -->
+    <div class="admin-modal" id="modal-add-product">
+      <div class="modal-box">
+        <button class="modal-close" id="close-add-product">&times;</button>
+        <div class="modal-title">Add New Product</div>
+        <form id="add-product-form">
+          <div class="form-field">
+            <label class="form-label">Product Name</label>
+            <input type="text" class="form-input" id="new-product-name" placeholder="e.g. Tactical Field Jacket" required>
+          </div>
+          <div class="form-row">
+            <div class="form-field">
+              <label class="form-label">Category</label>
+              <select class="form-select" id="new-product-cat">
+                <option value="Outerwear">Outerwear</option>
+                <option value="Knitwear">Knitwear</option>
+                <option value="Footwear">Footwear</option>
+                <option value="Accessories">Accessories</option>
+              </select>
+            </div>
+            <div class="form-field">
+              <label class="form-label">Status</label>
+              <select class="form-select" id="new-product-status">
+                <option value="Active">Active</option>
+                <option value="Draft">Draft</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-field">
+              <label class="form-label">Price ($)</label>
+              <input type="number" class="form-input" id="new-product-price" placeholder="0.00" step="0.01" required>
+            </div>
+            <div class="form-field">
+              <label class="form-label">Sale Price ($)</label>
+              <input type="number" class="form-input" id="new-product-sale" placeholder="0.00" step="0.01">
+            </div>
+          </div>
+          <div class="form-field">
+            <label class="form-label">Stock Qty</label>
+            <input type="number" class="form-input" id="new-product-stock" placeholder="0" required>
+          </div>
+          <div class="form-field">
+            <label class="form-label">Description</label>
+            <textarea class="form-textarea" id="new-product-desc" placeholder="Product description..."></textarea>
+          </div>
+          <div class="form-field">
+            <label class="form-label">Image URL</label>
+            <input type="text" class="form-input" id="new-product-img" placeholder="images/product-name.png">
+          </div>
+          <div class="modal-actions">
+            <button type="submit" class="btn-black" style="padding:12px 28px;font-size:11px;letter-spacing:2px;">SAVE PRODUCT</button>
+            <button type="button" class="btn-outline" id="cancel-add-product" style="padding:10px 24px;font-size:11px;">CANCEL</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+
+    <!-- ═══════════════════════════════════════
+         PANEL: ORDERS
+    ═══════════════════════════════════════ -->
+    <section class="admin-panel" id="panel-orders">
+      <div class="admin-panel-title">Orders</div>
+
+      <div class="orders-stat-row">
+        <div class="orders-stat-card">
+          <div class="orders-stat-num">12</div>
+          <div class="orders-stat-label">Pending</div>
+        </div>
+        <div class="orders-stat-card">
+          <div class="orders-stat-num">8</div>
+          <div class="orders-stat-label">Processing</div>
+        </div>
+        <div class="orders-stat-card">
+          <div class="orders-stat-num">45</div>
+          <div class="orders-stat-label">Shipped</div>
+        </div>
+        <div class="orders-stat-card">
+          <div class="orders-stat-num">247</div>
+          <div class="orders-stat-label">Delivered</div>
+        </div>
+      </div>
+
+      <div class="filter-chips" id="orders-filter-chips">
+        <button class="filter-chip active" data-filter="all">All</button>
+        <button class="filter-chip" data-filter="pending">Pending</button>
+        <button class="filter-chip" data-filter="processing">Processing</button>
+        <button class="filter-chip" data-filter="shipped">Shipped</button>
+        <button class="filter-chip" data-filter="delivered">Delivered</button>
+      </div>
+
+      <div class="admin-table-wrap">
+        <table class="admin-table">
+          <thead>
+            <tr>
+              <th>Order ID</th>
+              <th>Customer</th>
+              <th>Date</th>
+              <th>Items</th>
+              <th>Total</th>
+              <th>Status</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="text-mono">#BLV-0312</td>
+              <td>Marcus Webb</td>
+              <td class="text-muted">Jul 14, 2025</td>
+              <td>2 items</td>
+              <td class="text-mono">$348.00</td>
+              <td><span class="status-badge delivered">Delivered</span></td>
+              <td><button class="tbl-btn blue">VIEW</button></td>
+            </tr>
+            <tr>
+              <td class="text-mono">#BLV-0311</td>
+              <td>Zara Okonkwo</td>
+              <td class="text-muted">Jul 13, 2025</td>
+              <td>1 item</td>
+              <td class="text-mono">$189.00</td>
+              <td><span class="status-badge shipped">Shipped</span></td>
+              <td><button class="tbl-btn blue">VIEW</button></td>
+            </tr>
+            <tr>
+              <td class="text-mono">#BLV-0310</td>
+              <td>Devon Clarke</td>
+              <td class="text-muted">Jul 13, 2025</td>
+              <td>3 items</td>
+              <td class="text-mono">$612.00</td>
+              <td><span class="status-badge processing">Processing</span></td>
+              <td><button class="tbl-btn blue">VIEW</button></td>
+            </tr>
+            <tr>
+              <td class="text-mono">#BLV-0309</td>
+              <td>Nia Fontaine</td>
+              <td class="text-muted">Jul 12, 2025</td>
+              <td>1 item</td>
+              <td class="text-mono">$245.00</td>
+              <td><span class="status-badge delivered">Delivered</span></td>
+              <td><button class="tbl-btn blue">VIEW</button></td>
+            </tr>
+            <tr>
+              <td class="text-mono">#BLV-0308</td>
+              <td>Kai Nakamura</td>
+              <td class="text-muted">Jul 12, 2025</td>
+              <td>2 items</td>
+              <td class="text-mono">$490.00</td>
+              <td><span class="status-badge shipped">Shipped</span></td>
+              <td><button class="tbl-btn blue">VIEW</button></td>
+            </tr>
+            <tr>
+              <td class="text-mono">#BLV-0307</td>
+              <td>Amara Diallo</td>
+              <td class="text-muted">Jul 11, 2025</td>
+              <td>4 items</td>
+              <td class="text-mono">$876.00</td>
+              <td><span class="status-badge delivered">Delivered</span></td>
+              <td><button class="tbl-btn blue">VIEW</button></td>
+            </tr>
+            <tr>
+              <td class="text-mono">#BLV-0306</td>
+              <td>Tyler Reeves</td>
+              <td class="text-muted">Jul 11, 2025</td>
+              <td>1 item</td>
+              <td class="text-mono">$145.00</td>
+              <td><span class="status-badge pending">Pending</span></td>
+              <td><button class="tbl-btn blue">VIEW</button></td>
+            </tr>
+            <tr>
+              <td class="text-mono">#BLV-0305</td>
+              <td>Simone Voss</td>
+              <td class="text-muted">Jul 10, 2025</td>
+              <td>2 items</td>
+              <td class="text-mono">$534.00</td>
+              <td><span class="status-badge delivered">Delivered</span></td>
+              <td><button class="tbl-btn blue">VIEW</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+
+    <!-- ═══════════════════════════════════════
+         PANEL: CUSTOMERS
+    ═══════════════════════════════════════ -->
+    <section class="admin-panel" id="panel-customers">
+      <div class="admin-panel-title">Customers</div>
+
+      <div class="admin-bar" style="margin-bottom:20px;">
+        <div class="admin-search">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input type="text" placeholder="Search customers...">
+        </div>
+      </div>
+
+      <div class="admin-table-wrap">
+        <table class="admin-table">
+          <thead>
+            <tr>
+              <th>Customer</th>
+              <th>Email</th>
+              <th>Orders</th>
+              <th>Total Spent</th>
+              <th>Joined</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <div class="customer-cell">
+                  <div class="customer-avatar">MW</div>
+                  <div>
+                    <div class="customer-name">Marcus Webb</div>
+                  </div>
+                </div>
+              </td>
+              <td class="text-muted">marcus.webb@email.com</td>
+              <td class="text-mono">14</td>
+              <td class="text-mono">$3,240.00</td>
+              <td class="text-muted">Jan 2024</td>
+              <td><span class="status-badge active">Active</span></td>
+            </tr>
+            <tr>
+              <td>
+                <div class="customer-cell">
+                  <div class="customer-avatar">ZO</div>
+                  <div>
+                    <div class="customer-name">Zara Okonkwo</div>
+                  </div>
+                </div>
+              </td>
+              <td class="text-muted">z.okonkwo@email.com</td>
+              <td class="text-mono">7</td>
+              <td class="text-mono">$1,890.00</td>
+              <td class="text-muted">Mar 2024</td>
+              <td><span class="status-badge active">Active</span></td>
+            </tr>
+            <tr>
+              <td>
+                <div class="customer-cell">
+                  <div class="customer-avatar">DC</div>
+                  <div>
+                    <div class="customer-name">Devon Clarke</div>
+                  </div>
+                </div>
+              </td>
+              <td class="text-muted">devon.c@email.com</td>
+              <td class="text-mono">22</td>
+              <td class="text-mono">$6,120.00</td>
+              <td class="text-muted">Oct 2023</td>
+              <td><span class="status-badge active">Active</span></td>
+            </tr>
+            <tr>
+              <td>
+                <div class="customer-cell">
+                  <div class="customer-avatar">NF</div>
+                  <div>
+                    <div class="customer-name">Nia Fontaine</div>
+                  </div>
+                </div>
+              </td>
+              <td class="text-muted">nia.fontaine@email.com</td>
+              <td class="text-mono">5</td>
+              <td class="text-mono">$980.00</td>
+              <td class="text-muted">May 2024</td>
+              <td><span class="status-badge active">Active</span></td>
+            </tr>
+            <tr>
+              <td>
+                <div class="customer-cell">
+                  <div class="customer-avatar" style="background:#dc2626;">TR</div>
+                  <div>
+                    <div class="customer-name">Tyler Reeves</div>
+                  </div>
+                </div>
+              </td>
+              <td class="text-muted">t.reeves@email.com</td>
+              <td class="text-mono">2</td>
+              <td class="text-mono">$290.00</td>
+              <td class="text-muted">Jun 2025</td>
+              <td><span class="status-badge blocked">Blocked</span></td>
+            </tr>
+            <tr>
+              <td>
+                <div class="customer-cell">
+                  <div class="customer-avatar">AD</div>
+                  <div>
+                    <div class="customer-name">Amara Diallo</div>
+                  </div>
+                </div>
+              </td>
+              <td class="text-muted">amara.d@email.com</td>
+              <td class="text-mono">18</td>
+              <td class="text-mono">$4,560.00</td>
+              <td class="text-muted">Feb 2024</td>
+              <td><span class="status-badge active">Active</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+
+    <!-- ═══════════════════════════════════════
+         PANEL: HERO & BANNERS
+    ═══════════════════════════════════════ -->
+    <section class="admin-panel" id="panel-hero">
+      <div class="admin-panel-title">Hero &amp; Banners</div>
+
+      <!-- Live Preview -->
+      <div class="hero-preview" id="hero-preview-box">
+        <div class="hero-preview-eyebrow" id="preview-eyebrow">NEW SEASON — SS25</div>
+        <div class="hero-preview-title" id="preview-title">DEFINE<br>YOUR<br>EDGE.</div>
+        <div class="hero-preview-desc" id="preview-desc">Precision-cut silhouettes for those who move with intention. Limited drops, no restocks.</div>
+        <button class="hero-preview-cta" id="preview-cta">SHOP THE DROP</button>
+      </div>
+
+      <!-- Edit Form -->
+      <div class="hero-edit-form">
+        <div class="hero-edit-title">Edit Hero Content</div>
+        <div class="form-row">
+          <div class="form-field">
+            <label class="form-label">Eyebrow Text</label>
+            <input type="text" class="form-input" id="hero-eyebrow" value="NEW SEASON — SS25">
+          </div>
+          <div class="form-field">
+            <label class="form-label">CTA Button Text</label>
+            <input type="text" class="form-input" id="hero-cta-text" value="SHOP THE DROP">
+          </div>
+        </div>
+        <div class="form-field">
+          <label class="form-label">Hero Title</label>
+          <textarea class="form-textarea" id="hero-title" style="min-height:60px;">DEFINE YOUR EDGE.</textarea>
+        </div>
+        <div class="form-field">
+          <label class="form-label">Hero Description</label>
+          <textarea class="form-textarea" id="hero-desc">Precision-cut silhouettes for those who move with intention. Limited drops, no restocks.</textarea>
+        </div>
+        <div class="form-field">
+          <label class="form-label">CTA Button Link</label>
+          <input type="text" class="form-input" id="hero-cta-link" value="collections.html">
+        </div>
+        <button class="btn-black" style="padding:12px 28px;font-size:11px;letter-spacing:2px;" id="save-hero">SAVE CHANGES</button>
+      </div>
+
+      <!-- Announcement Ticker -->
+      <div class="settings-section">
+        <div class="settings-section-title">Announcement Ticker</div>
+        <div class="form-field">
+          <label class="form-label">Ticker Text</label>
+          <input type="text" class="form-input" id="ticker-text" value="FREE SHIPPING ON ORDERS OVER $200 — USE CODE: BLVCK20 FOR 20% OFF — NEW SS25 DROP NOW LIVE">
+        </div>
+        <div class="toggle-wrap" style="margin-top:8px;">
+          <label class="toggle-switch">
+            <input type="checkbox" id="ticker-enabled" checked>
+            <span class="toggle-track"></span>
+          </label>
+          <span class="toggle-label">Ticker Enabled</span>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ═══════════════════════════════════════
+         PANEL: COLLECTIONS
+    ═══════════════════════════════════════ -->
+    <section class="admin-panel" id="panel-collections">
+      <div class="panel-row">
+        <div class="admin-panel-title">Collections</div>
+        <button class="btn-black" style="padding:10px 20px;font-size:10px;letter-spacing:2px;">+ ADD COLLECTION</button>
+      </div>
+
+      <div class="collections-grid">
+        <div class="collection-card">
+          <div class="collection-card-name">Outerwear</div>
+          <div class="collection-card-count">14 products</div>
+          <div class="collection-card-footer">
+            <div class="toggle-wrap">
+              <label class="toggle-switch">
+                <input type="checkbox" checked>
+                <span class="toggle-track"></span>
+              </label>
+              <span class="toggle-label" style="font-size:10px;">Active</span>
+            </div>
+            <button class="tbl-btn">EDIT</button>
+          </div>
+        </div>
+        <div class="collection-card">
+          <div class="collection-card-name">Knitwear</div>
+          <div class="collection-card-count">9 products</div>
+          <div class="collection-card-footer">
+            <div class="toggle-wrap">
+              <label class="toggle-switch">
+                <input type="checkbox" checked>
+                <span class="toggle-track"></span>
+              </label>
+              <span class="toggle-label" style="font-size:10px;">Active</span>
+            </div>
+            <button class="tbl-btn">EDIT</button>
+          </div>
+        </div>
+        <div class="collection-card">
+          <div class="collection-card-name">Footwear</div>
+          <div class="collection-card-count">11 products</div>
+          <div class="collection-card-footer">
+            <div class="toggle-wrap">
+              <label class="toggle-switch">
+                <input type="checkbox" checked>
+                <span class="toggle-track"></span>
+              </label>
+              <span class="toggle-label" style="font-size:10px;">Active</span>
+            </div>
+            <button class="tbl-btn">EDIT</button>
+          </div>
+        </div>
+        <div class="collection-card">
+          <div class="collection-card-name">Accessories</div>
+          <div class="collection-card-count">8 products</div>
+          <div class="collection-card-footer">
+            <div class="toggle-wrap">
+              <label class="toggle-switch">
+                <input type="checkbox" checked>
+                <span class="toggle-track"></span>
+              </label>
+              <span class="toggle-label" style="font-size:10px;">Active</span>
+            </div>
+            <button class="tbl-btn">EDIT</button>
+          </div>
+        </div>
+        <div class="collection-card">
+          <div class="collection-card-name">SS25 Drop</div>
+          <div class="collection-card-count">6 products</div>
+          <div class="collection-card-footer">
+            <div class="toggle-wrap">
+              <label class="toggle-switch">
+                <input type="checkbox" checked>
+                <span class="toggle-track"></span>
+              </label>
+              <span class="toggle-label" style="font-size:10px;">Active</span>
+            </div>
+            <button class="tbl-btn">EDIT</button>
+          </div>
+        </div>
+        <div class="collection-card">
+          <div class="collection-card-name">Archive</div>
+          <div class="collection-card-count">22 products</div>
+          <div class="collection-card-footer">
+            <div class="toggle-wrap">
+              <label class="toggle-switch">
+                <input type="checkbox">
+                <span class="toggle-track"></span>
+              </label>
+              <span class="toggle-label" style="font-size:10px;">Hidden</span>
+            </div>
+            <button class="tbl-btn">EDIT</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ═══════════════════════════════════════
+         PANEL: PROMOTIONS
+    ═══════════════════════════════════════ -->
+    <section class="admin-panel" id="panel-promotions">
+      <div class="panel-row">
+        <div class="admin-panel-title">Promotions</div>
+        <button class="btn-black" style="padding:10px 20px;font-size:10px;letter-spacing:2px;" id="open-create-promo">+ CREATE PROMOTION</button>
+      </div>
+
+      <div class="admin-table-wrap" style="margin-bottom:24px;">
+        <div class="admin-table-header">
+          <div class="admin-table-title">Active Promotions</div>
+        </div>
+        <table class="admin-table">
+          <thead>
+            <tr>
+              <th>Code</th>
+              <th>Discount</th>
+              <th>Type</th>
+              <th>Uses</th>
+              <th>Expires</th>
+              <th>Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="text-mono fw-900">BLVCK20</td>
+              <td class="text-mono">20%</td>
+              <td class="text-muted">Percentage</td>
+              <td class="text-mono">142 / 500</td>
+              <td class="text-muted">Aug 31, 2025</td>
+              <td><span class="status-badge active">Active</span></td>
+              <td><button class="tbl-btn">EDIT</button><button class="tbl-btn danger">DEL</button></td>
+            </tr>
+            <tr>
+              <td class="text-mono fw-900">SUMMER15</td>
+              <td class="text-mono">15%</td>
+              <td class="text-muted">Percentage</td>
+              <td class="text-mono">88 / 200</td>
+              <td class="text-muted">Jul 31, 2025</td>
+              <td><span class="status-badge active">Active</span></td>
+              <td><button class="tbl-btn">EDIT</button><button class="tbl-btn danger">DEL</button></td>
+            </tr>
+            <tr>
+              <td class="text-mono fw-900">NEWDROP50</td>
+              <td class="text-mono">$50</td>
+              <td class="text-muted">Fixed</td>
+              <td class="text-mono">12 / 50</td>
+              <td class="text-muted">Jul 20, 2025</td>
+              <td><span class="status-badge active">Active</span></td>
+              <td><button class="tbl-btn">EDIT</button><button class="tbl-btn danger">DEL</button></td>
+            </tr>
+            <tr>
+              <td class="text-mono fw-900">VIPACCESS</td>
+              <td class="text-mono">30%</td>
+              <td class="text-muted">Percentage</td>
+              <td class="text-mono">200 / 200</td>
+              <td class="text-muted">Jun 30, 2025</td>
+              <td><span class="status-badge draft">Expired</span></td>
+              <td><button class="tbl-btn">EDIT</button><button class="tbl-btn danger">DEL</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Create Promo Form -->
+      <div class="promo-form" id="promo-form-section" style="display:none;">
+        <div class="promo-form-title">Create New Promotion</div>
+        <div class="form-row">
+          <div class="form-field">
+            <label class="form-label">Promo Code</label>
+            <input type="text" class="form-input" placeholder="e.g. BLVCK20" style="text-transform:uppercase;">
+          </div>
+          <div class="form-field">
+            <label class="form-label">Discount %</label>
+            <input type="number" class="form-input" placeholder="0" min="1" max="100">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-field">
+            <label class="form-label">Min Order ($)</label>
+            <input type="number" class="form-input" placeholder="0.00" step="0.01">
+          </div>
+          <div class="form-field">
+            <label class="form-label">Max Uses</label>
+            <input type="number" class="form-input" placeholder="100">
+          </div>
+        </div>
+        <div class="form-field">
+          <label class="form-label">Expiry Date</label>
+          <input type="date" class="form-input">
+        </div>
+        <div style="display:flex;gap:12px;margin-top:8px;">
+          <button class="btn-black" style="padding:12px 28px;font-size:11px;letter-spacing:2px;">SAVE PROMOTION</button>
+          <button class="btn-outline" style="padding:10px 24px;font-size:11px;" id="cancel-promo">CANCEL</button>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ═══════════════════════════════════════
+         PANEL: SETTINGS
+    ═══════════════════════════════════════ -->
+    <section class="admin-panel" id="panel-settings">
+      <div class="admin-panel-title">Settings</div>
+
+      <div class="settings-section">
+        <div class="settings-section-title">Store Information</div>
+        <div class="form-row">
+          <div class="form-field">
+            <label class="form-label">Store Name</label>
+            <input type="text" class="form-input" value="BLVCKOUT">
+          </div>
+          <div class="form-field">
+            <label class="form-label">Store Email</label>
+            <input type="email" class="form-input" value="hello@blvckout.com">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-field">
+            <label class="form-label">Currency</label>
+            <select class="form-select">
+              <option selected>USD — US Dollar</option>
+              <option>EUR — Euro</option>
+              <option>GBP — British Pound</option>
+              <option>CAD — Canadian Dollar</option>
+            </select>
+          </div>
+          <div class="form-field">
+            <label class="form-label">Tax Rate (%)</label>
+            <input type="number" class="form-input" value="8.5" step="0.1">
+          </div>
+        </div>
+      </div>
+
+      <div class="settings-section">
+        <div class="settings-section-title">Social Links</div>
+        <div class="form-field">
+          <label class="form-label">Instagram</label>
+          <input type="url" class="form-input" value="https://instagram.com/blvckout" placeholder="https://instagram.com/...">
+        </div>
+        <div class="form-field">
+          <label class="form-label">Twitter / X</label>
+          <input type="url" class="form-input" value="https://twitter.com/blvckout" placeholder="https://twitter.com/...">
+        </div>
+        <div class="form-field">
+          <label class="form-label">YouTube</label>
+          <input type="url" class="form-input" value="https://youtube.com/@blvckout" placeholder="https://youtube.com/...">
+        </div>
+      </div>
+
+      <button class="btn-black" style="padding:14px 32px;font-size:11px;letter-spacing:2px;" id="save-settings">SAVE SETTINGS</button>
+      <div id="settings-saved-msg" style="display:none;margin-top:12px;font-size:11px;font-weight:700;letter-spacing:1px;color:#16a34a;">✓ SETTINGS SAVED</div>
+    </section>
+
+  </main>
+</div>
+
+
+<script>
+// ─────────────────────────────────────────
+// NAVIGATION
+// ─────────────────────────────────────────
+const panelLabels = {
+  dashboard:   'DASHBOARD',
+  products:    'PRODUCTS',
+  orders:      'ORDERS',
+  customers:   'CUSTOMERS',
+  hero:        'HERO & BANNERS',
+  collections: 'COLLECTIONS',
+  promotions:  'PROMOTIONS',
+  settings:    'SETTINGS'
+};
+
+function showPanel(id) {
+  // Hide all panels
+  document.querySelectorAll('.admin-panel').forEach(p => p.classList.remove('active'));
+  // Deactivate all nav items
+  document.querySelectorAll('.admin-nav-item[data-panel]').forEach(n => n.classList.remove('active'));
+
+  // Show target panel
+  const panel = document.getElementById('panel-' + id);
+  if (panel) panel.classList.add('active');
+
+  // Activate nav item
+  const navItem = document.querySelector(`.admin-nav-item[data-panel="${id}"]`);
+  if (navItem) navItem.classList.add('active');
+
+  // Update breadcrumb
+  const bc = document.getElementById('breadcrumb-current');
+  if (bc) bc.textContent = panelLabels[id] || id.toUpperCase();
+}
+
+// Wire up nav items
+document.querySelectorAll('.admin-nav-item[data-panel]').forEach(btn => {
+  btn.addEventListener('click', () => showPanel(btn.dataset.panel));
+});
+
+// ─────────────────────────────────────────
+// LOGOUT
+// ─────────────────────────────────────────
+function doLogout() {
+  sessionStorage.removeItem('blvckout_admin');
+  window.location.href = 'login.html';
+}
+document.getElementById('topbar-logout').addEventListener('click', doLogout);
+document.getElementById('sidebar-logout').addEventListener('click', doLogout);
+
+// ─────────────────────────────────────────
+// FILTER CHIPS (generic)
+// ─────────────────────────────────────────
+document.querySelectorAll('.filter-chips').forEach(group => {
+  group.querySelectorAll('.filter-chip').forEach(chip => {
+    chip.addEventListener('click', () => {
+      group.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active'));
+      chip.classList.add('active');
+    });
+  });
+});
+
+// ─────────────────────────────────────────
+// ADD PRODUCT MODAL
+// ─────────────────────────────────────────
+const modalAddProduct = document.getElementById('modal-add-product');
+
+document.getElementById('open-add-product').addEventListener('click', () => {
+  modalAddProduct.classList.add('open');
+});
+
+function closeAddProductModal() {
+  modalAddProduct.classList.remove('open');
+  document.getElementById('add-product-form').reset();
+}
+
+document.getElementById('close-add-product').addEventListener('click', closeAddProductModal);
+document.getElementById('cancel-add-product').addEventListener('click', closeAddProductModal);
+
+// Close on backdrop click
+modalAddProduct.addEventListener('click', (e) => {
+  if (e.target === modalAddProduct) closeAddProductModal();
+});
+
+// Form submit — add row to table
+document.getElementById('add-product-form').addEventListener('submit', (e) => {
+  e.preventDefault();
+
+  const name   = document.getElementById('new-product-name').value.trim();
+  const cat    = document.getElementById('new-product-cat').value;
+  const price  = parseFloat(document.getElementById('new-product-price').value).toFixed(2);
+  const stock  = document.getElementById('new-product-stock').value;
+  const status = document.getElementById('new-product-status').value;
+  const img    = document.getElementById('new-product-img').value.trim();
+
+  const badgeClass = status.toLowerCase();
+  const imgHtml = img
+    ? `<img src="${img}" class="product-thumb" alt="${name}" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="product-thumb-placeholder" style="display:none">IMG</div>`
+    : `<div class="product-thumb-placeholder">IMG</div>`;
+
+  const row = document.createElement('tr');
+  row.innerHTML = `
+    <td>${imgHtml}</td>
+    <td class="fw-900" style="text-transform:uppercase;letter-spacing:1px;font-size:12px;">${name}</td>
+    <td class="text-muted">${cat}</td>
+    <td class="text-mono">$${price}</td>
+    <td>${stock}</td>
+    <td><span class="status-badge ${badgeClass}">${status}</span></td>
+    <td><button class="tbl-btn">EDIT</button><button class="tbl-btn danger">DEL</button></td>
+  `;
+
+  document.getElementById('products-tbody').prepend(row);
+  closeAddProductModal();
+});
+
+// ─────────────────────────────────────────
+// HERO LIVE PREVIEW
+// ─────────────────────────────────────────
+function syncHeroPreview() {
+  const eyebrow = document.getElementById('hero-eyebrow').value;
+  const title   = document.getElementById('hero-title').value;
+  const desc    = document.getElementById('hero-desc').value;
+  const cta     = document.getElementById('hero-cta-text').value;
+
+  document.getElementById('preview-eyebrow').textContent = eyebrow;
+  document.getElementById('preview-title').innerHTML = title.replace(/\n/g, '<br>');
+  document.getElementById('preview-desc').textContent = desc;
+  document.getElementById('preview-cta').textContent = cta;
+}
+
+['hero-eyebrow','hero-title','hero-desc','hero-cta-text'].forEach(id => {
+  const el = document.getElementById(id);
+  if (el) el.addEventListener('input', syncHeroPreview);
+});
+
+document.getElementById('save-hero').addEventListener('click', () => {
+  syncHeroPreview();
+  const btn = document.getElementById('save-hero');
+  const orig = btn.textContent;
+  btn.textContent = '✓ SAVED';
+  btn.style.background = '#16a34a';
+  setTimeout(() => { btn.textContent = orig; btn.style.background = ''; }, 1800);
+});
+
+// ─────────────────────────────────────────
+// PROMOTIONS FORM TOGGLE
+// ─────────────────────────────────────────
+document.getElementById('open-create-promo').addEventListener('click', () => {
+  const form = document.getElementById('promo-form-section');
+  form.style.display = form.style.display === 'none' ? 'block' : 'none';
+});
+
+document.getElementById('cancel-promo').addEventListener('click', () => {
+  document.getElementById('promo-form-section').style.display = 'none';
+});
+
+// ─────────────────────────────────────────
+// SETTINGS SAVE
+// ─────────────────────────────────────────
+document.getElementById('save-settings').addEventListener('click', () => {
+  const msg = document.getElementById('settings-saved-msg');
+  msg.style.display = 'block';
+  setTimeout(() => { msg.style.display = 'none'; }, 2500);
+});
+
+// ─────────────────────────────────────────
+// DELETE ROW (event delegation)
+// ─────────────────────────────────────────
+document.addEventListener('click', (e) => {
+  if (e.target.classList.contains('tbl-btn') && e.target.classList.contains('danger')) {
+    const row = e.target.closest('tr');
+    if (row && confirm('Delete this item?')) {
+      row.style.opacity = '0';
+      row.style.transition = 'opacity 0.2s';
+      setTimeout(() => row.remove(), 200);
+    }
+  }
+});
+
+// ─────────────────────────────────────────
+// INIT — show dashboard
+// ─────────────────────────────────────────
+showPanel('dashboard');
+</script>
+</body>
+</html>
