@@ -22,10 +22,9 @@ const footerHTML = `
     <div class="footer-col">
       <h4>Contact</h4>
       <ul>
-        <li><a href="#">Join Us</a></li>
-        <li><a href="#">Customer Support</a></li>
-        <li><a href="#">Contact Us</a></li>
-        <li><a href="policies.html">Policies</a></li>
+        <li><a href="#footer-newsletter">Join Us</a></li>
+        <li><a href="contact.html#ticketForm">Contact Us</a></li>
+        <li><a href="policies.html">Terms &amp; Conditions</a></li>
       </ul>
     </div>
     <div class="footer-col">
