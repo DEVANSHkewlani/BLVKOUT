@@ -70,8 +70,33 @@
         Promotions
       </button>
 
+      <button class="admin-nav-item" data-panel="content">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+        Content Editor
+      </button>
+
+      <button class="admin-nav-item" data-panel="media">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+        Media Library
+      </button>
+
+      <button class="admin-nav-item" data-panel="marketing">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+        Marketing
+      </button>
+
+      <button class="admin-nav-item" data-panel="policies">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+        Policies
+      </button>
+
       <div class="admin-nav-divider"></div>
       <div class="admin-nav-section-label">SYSTEM</div>
+
+      <button class="admin-nav-item" data-panel="support">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        Support
+      </button>
 
       <button class="admin-nav-item" data-panel="settings">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
@@ -99,10 +124,15 @@
 
     <!-- TOP BAR -->
     <div class="admin-topbar">
-      <div class="admin-breadcrumb">
-        BLVCKOUT
-        <span class="admin-breadcrumb-sep">/</span>
-        <span class="admin-breadcrumb-current" id="breadcrumb-current">DASHBOARD</span>
+      <div style="display:flex;align-items:center;gap:12px;">
+        <button class="admin-sidebar-toggle" id="sidebarToggle" aria-label="Toggle sidebar">
+          <span></span><span></span><span></span>
+        </button>
+        <div class="admin-breadcrumb">
+          BLVCKOUT
+          <span class="admin-breadcrumb-sep">/</span>
+          <span class="admin-breadcrumb-current" id="breadcrumb-current">DASHBOARD</span>
+        </div>
       </div>
       <div class="admin-topbar-actions">
         <span class="admin-topbar-user">admin@blvckout.com</span>
@@ -130,7 +160,7 @@
       </div>
 
       <!-- ROW 2: KPI GRID -->
-      <div class="kpi-grid">
+      <div class="kpi-grid" style="grid-template-columns:repeat(7,1fr)">
         <!-- 1 Total Revenue -->
         <div class="kpi-card accent-blue">
           <div class="kpi-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
@@ -172,6 +202,13 @@
           <div class="kpi-label">Pending Orders</div>
           <div class="kpi-value">12</div>
           <div class="kpi-trend down">Need attention</div>
+        </div>
+        <!-- 7 Support Tickets -->
+        <div class="kpi-card accent-red" style="cursor:pointer;" onclick="showPanel('support')">
+          <div class="kpi-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+          <div class="kpi-label">Support Tickets</div>
+          <div class="kpi-value">4</div>
+          <div class="kpi-trend down">Open Tickets</div>
         </div>
       </div>
 
@@ -1312,7 +1349,663 @@
       <div id="settings-saved-msg" style="display:none;margin-top:12px;font-size:11px;font-weight:700;letter-spacing:1px;color:#16a34a;">✓ SETTINGS SAVED</div>
     </section>
 
+
+    <!-- ═══════════════════════════════════════
+         PANEL: CONTENT EDITOR
+    ═══════════════════════════════════════ -->
+    <section class="admin-panel" id="panel-content">
+      <div class="admin-panel-title">Content Editor</div>
+
+      <div class="settings-section">
+        <div class="settings-section-title">Section Headers</div>
+
+        <div class="form-field">
+          <label class="form-label">Hero Eyebrow Text</label>
+          <input type="text" class="form-input content-field" data-key="heroEyebrow" value="SS26 COLLECTION">
+        </div>
+        <div class="form-field">
+          <label class="form-label">Hero Title</label>
+          <input type="text" class="form-input content-field" data-key="heroTitle" value="YOUR OWN FASHION BRAND">
+        </div>
+        <div class="form-field">
+          <label class="form-label">Bestsellers Label</label>
+          <input type="text" class="form-input content-field" data-key="bestsellersLabel" value="BESTSELLERS">
+        </div>
+        <div class="form-field">
+          <label class="form-label">Latest Releases Label</label>
+          <input type="text" class="form-input content-field" data-key="latestLabel" value="LATEST RELEASES">
+        </div>
+        <div class="form-field">
+          <label class="form-label">Collections Label</label>
+          <input type="text" class="form-input content-field" data-key="collectionsLabel" value="COLLECTION">
+        </div>
+        <div class="form-field">
+          <label class="form-label">Footer Tagline</label>
+          <input type="text" class="form-input content-field" data-key="footerTagline" value="ENTER THE BLVCKOUT.">
+        </div>
+        <div class="form-field">
+          <label class="form-label">Announcement Ticker</label>
+          <input type="text" class="form-input content-field" data-key="ticker" value="FREE SHIPPING ON ORDERS OVER $150">
+        </div>
+
+        <div style="display:flex;align-items:center;gap:16px;margin-top:8px;">
+          <button class="btn-black" style="padding:12px 28px;font-size:11px;letter-spacing:2px;" id="save-content">SAVE ALL CHANGES</button>
+          <span id="content-saved-msg" style="display:none;font-size:11px;font-weight:700;letter-spacing:1px;color:#16a34a;">✓ SAVED</span>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ═══════════════════════════════════════
+         PANEL: SUPPORT TICKETS
+    ═══════════════════════════════════════ -->
+    <section class="admin-panel" id="panel-support">
+      <div class="panel-row">
+        <div class="admin-panel-title">Support Tickets</div>
+        <button class="btn-black" style="padding:10px 20px;font-size:10px;letter-spacing:2px;" id="open-new-ticket">+ NEW TICKET</button>
+      </div>
+
+      <!-- Stats row -->
+      <div class="orders-stat-row" style="margin-bottom:20px;">
+        <div class="orders-stat-card">
+          <div class="orders-stat-num" style="color:#dc2626;">4</div>
+          <div class="orders-stat-label">Open</div>
+        </div>
+        <div class="orders-stat-card">
+          <div class="orders-stat-num" style="color:#ea580c;">2</div>
+          <div class="orders-stat-label">In Progress</div>
+        </div>
+        <div class="orders-stat-card">
+          <div class="orders-stat-num" style="color:#16a34a;">18</div>
+          <div class="orders-stat-label">Resolved</div>
+        </div>
+        <div class="orders-stat-card">
+          <div class="orders-stat-num">24</div>
+          <div class="orders-stat-label">Total</div>
+        </div>
+      </div>
+
+      <!-- Filter chips -->
+      <div class="filter-chips" id="support-filter-chips">
+        <button class="filter-chip active" data-filter="all">All</button>
+        <button class="filter-chip" data-filter="open">Open</button>
+        <button class="filter-chip" data-filter="in-progress">In Progress</button>
+        <button class="filter-chip" data-filter="resolved">Resolved</button>
+      </div>
+
+      <!-- Tickets table -->
+      <div class="admin-table-wrap">
+        <table class="admin-table" id="support-table">
+          <thead>
+            <tr>
+              <th>Ticket ID</th>
+              <th>Customer</th>
+              <th>Subject</th>
+              <th>Priority</th>
+              <th>Status</th>
+              <th>Date</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody id="support-tbody">
+            <tr data-status="open">
+              <td class="text-mono">#TKT-001</td>
+              <td>Marcus Webb</td>
+              <td>Order not received</td>
+              <td><span class="priority-badge priority-high">High</span></td>
+              <td><span class="status-badge processing">Open</span></td>
+              <td class="text-muted">Jul 14</td>
+              <td><button class="tbl-btn blue">VIEW</button><button class="tbl-btn resolve-btn">RESOLVE</button></td>
+            </tr>
+            <tr data-status="open">
+              <td class="text-mono">#TKT-002</td>
+              <td>Zara Okonkwo</td>
+              <td>Wrong size delivered</td>
+              <td><span class="priority-badge priority-high">High</span></td>
+              <td><span class="status-badge processing">Open</span></td>
+              <td class="text-muted">Jul 13</td>
+              <td><button class="tbl-btn blue">VIEW</button><button class="tbl-btn resolve-btn">RESOLVE</button></td>
+            </tr>
+            <tr data-status="in-progress">
+              <td class="text-mono">#TKT-003</td>
+              <td>Devon Clarke</td>
+              <td>Refund request</td>
+              <td><span class="priority-badge priority-medium">Medium</span></td>
+              <td><span class="status-badge shipped">In Progress</span></td>
+              <td class="text-muted">Jul 12</td>
+              <td><button class="tbl-btn blue">VIEW</button><button class="tbl-btn resolve-btn">RESOLVE</button></td>
+            </tr>
+            <tr data-status="resolved">
+              <td class="text-mono">#TKT-004</td>
+              <td>Nia Fontaine</td>
+              <td>Discount code not working</td>
+              <td><span class="priority-badge priority-low">Low</span></td>
+              <td><span class="status-badge delivered">Resolved</span></td>
+              <td class="text-muted">Jul 11</td>
+              <td><button class="tbl-btn blue">VIEW</button><button class="tbl-btn" disabled style="opacity:0.4;cursor:default;">RESOLVED</button></td>
+            </tr>
+            <tr data-status="open">
+              <td class="text-mono">#TKT-005</td>
+              <td>Kai Nakamura</td>
+              <td>Custom order inquiry</td>
+              <td><span class="priority-badge priority-medium">Medium</span></td>
+              <td><span class="status-badge processing">Open</span></td>
+              <td class="text-muted">Jul 10</td>
+              <td><button class="tbl-btn blue">VIEW</button><button class="tbl-btn resolve-btn">RESOLVE</button></td>
+            </tr>
+            <tr data-status="in-progress">
+              <td class="text-mono">#TKT-006</td>
+              <td>Amara Diallo</td>
+              <td>Shipping delay</td>
+              <td><span class="priority-badge priority-high">High</span></td>
+              <td><span class="status-badge shipped">In Progress</span></td>
+              <td class="text-muted">Jul 9</td>
+              <td><button class="tbl-btn blue">VIEW</button><button class="tbl-btn resolve-btn">RESOLVE</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+
+    <!-- ═══════════════════════════════════════
+         PANEL: MEDIA LIBRARY
+    ═══════════════════════════════════════ -->
+    <section class="admin-panel" id="panel-media">
+      <div class="admin-panel-title">Media Library</div>
+      <p style="font-size:12px;color:#888;margin-bottom:24px;">Upload images for products, hero, banners, and marketing sections. Drag & drop or click to upload.</p>
+
+      <!-- Global Upload Zone -->
+      <div class="media-upload-zone" id="globalDropzone">
+        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+        <div class="media-upload-text">DROP IMAGES HERE OR CLICK TO UPLOAD</div>
+        <div class="media-upload-sub">PNG, JPG, WEBP — Max 10MB each</div>
+        <input type="file" id="globalFileInput" accept="image/*" multiple hidden>
+      </div>
+
+      <!-- Section-specific upload areas -->
+      <div class="media-sections-grid">
+        <div class="media-section-card">
+          <div class="media-section-title">Hero Image</div>
+          <div class="media-dropzone" data-section="hero">
+            <div class="media-dropzone-preview" id="preview-hero">
+              <div class="img-placeholder img-dark" style="height:100%;font-size:11px;color:#666;">HERO IMAGE</div>
+            </div>
+            <div class="media-dropzone-overlay">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+              <span>DROP OR CLICK</span>
+            </div>
+            <input type="file" accept="image/*" hidden class="section-file-input">
+          </div>
+        </div>
+
+        <div class="media-section-card">
+          <div class="media-section-title">Promo Banner Left</div>
+          <div class="media-dropzone" data-section="promo-left">
+            <div class="media-dropzone-preview" id="preview-promo-left">
+              <div class="img-placeholder img-dark" style="height:100%;font-size:11px;color:#666;">PROMO LEFT</div>
+            </div>
+            <div class="media-dropzone-overlay">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+              <span>DROP OR CLICK</span>
+            </div>
+            <input type="file" accept="image/*" hidden class="section-file-input">
+          </div>
+        </div>
+
+        <div class="media-section-card">
+          <div class="media-section-title">Promo Banner Right</div>
+          <div class="media-dropzone" data-section="promo-right">
+            <div class="media-dropzone-preview" id="preview-promo-right">
+              <div class="img-placeholder img-medium" style="height:100%;font-size:11px;color:#666;">PROMO RIGHT</div>
+            </div>
+            <div class="media-dropzone-overlay">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+              <span>DROP OR CLICK</span>
+            </div>
+            <input type="file" accept="image/*" hidden class="section-file-input">
+          </div>
+        </div>
+
+        <div class="media-section-card">
+          <div class="media-section-title">Featured Collection</div>
+          <div class="media-dropzone" data-section="featured">
+            <div class="media-dropzone-preview" id="preview-featured">
+              <div class="img-placeholder img-dark" style="height:100%;font-size:11px;color:#666;">FEATURED</div>
+            </div>
+            <div class="media-dropzone-overlay">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+              <span>DROP OR CLICK</span>
+            </div>
+            <input type="file" accept="image/*" hidden class="section-file-input">
+          </div>
+        </div>
+
+        <div class="media-section-card">
+          <div class="media-section-title">Landing Page Background</div>
+          <div class="media-dropzone" data-section="landing">
+            <div class="media-dropzone-preview" id="preview-landing">
+              <div class="img-placeholder" style="height:100%;background:#f5f5f3;font-size:11px;color:#666;">LANDING BG</div>
+            </div>
+            <div class="media-dropzone-overlay">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+              <span>DROP OR CLICK</span>
+            </div>
+            <input type="file" accept="image/*" hidden class="section-file-input">
+          </div>
+        </div>
+
+        <div class="media-section-card">
+          <div class="media-section-title">Collections Editorial</div>
+          <div class="media-dropzone" data-section="editorial">
+            <div class="media-dropzone-preview" id="preview-editorial">
+              <div class="img-placeholder img-dark" style="height:100%;font-size:11px;color:#666;">EDITORIAL</div>
+            </div>
+            <div class="media-dropzone-overlay">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+              <span>DROP OR CLICK</span>
+            </div>
+            <input type="file" accept="image/*" hidden class="section-file-input">
+          </div>
+        </div>
+      </div>
+
+      <!-- Uploaded images gallery -->
+      <div class="media-gallery-header">
+        <div class="admin-table-title">UPLOADED IMAGES</div>
+        <span id="media-count" style="font-size:11px;color:#888;">0 images</span>
+      </div>
+      <div class="media-gallery" id="mediaGallery">
+        <div style="grid-column:1/-1;text-align:center;padding:32px;color:#bbb;font-size:12px;">No images uploaded yet.</div>
+      </div>
+    </section>
+
+
+    <!-- ═══════════════════════════════════════
+         PANEL: MARKETING SECTIONS
+    ═══════════════════════════════════════ -->
+    <section class="admin-panel" id="panel-marketing">
+      <div class="admin-panel-title">Marketing Sections</div>
+      <p style="font-size:12px;color:#888;margin-bottom:24px;">Edit all marketing and promotional content across the website.</p>
+
+      <!-- Promo Banner -->
+      <div class="settings-section">
+        <div class="settings-section-title">
+          Promo Banner
+          <span class="section-badge">index.html</span>
+        </div>
+        <div class="form-row">
+          <div class="form-field">
+            <label class="form-label">Product Name</label>
+            <input type="text" class="form-input" value="THE MANTLE WINDBREAKER">
+          </div>
+          <div class="form-field">
+            <label class="form-label">Price / Discount Label</label>
+            <input type="text" class="form-input" value="10%">
+          </div>
+        </div>
+        <div class="form-field">
+          <label class="form-label">Description</label>
+          <textarea class="form-textarea" style="min-height:60px;">Only 50 units available worldwide.</textarea>
+        </div>
+        <div class="form-field">
+          <label class="form-label">CTA Button Text</label>
+          <input type="text" class="form-input" value="SHOP NOW">
+        </div>
+        <div class="form-field">
+          <label class="form-label">Banner Images</label>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+            <div class="media-dropzone" style="height:120px;" data-section="promo-left">
+              <div class="media-dropzone-preview"><div class="img-placeholder img-dark" style="height:100%;font-size:10px;color:#666;">LEFT IMAGE</div></div>
+              <div class="media-dropzone-overlay"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg><span>UPLOAD</span></div>
+              <input type="file" accept="image/*" hidden class="section-file-input">
+            </div>
+            <div class="media-dropzone" style="height:120px;" data-section="promo-right">
+              <div class="media-dropzone-preview"><div class="img-placeholder img-medium" style="height:100%;font-size:10px;color:#666;">RIGHT IMAGE</div></div>
+              <div class="media-dropzone-overlay"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg><span>UPLOAD</span></div>
+              <input type="file" accept="image/*" hidden class="section-file-input">
+            </div>
+          </div>
+        </div>
+        <button class="btn-black" style="padding:10px 24px;font-size:10px;letter-spacing:2px;" onclick="showSaved(this)">SAVE CHANGES</button>
+      </div>
+
+      <!-- Featured Collection Banner -->
+      <div class="settings-section">
+        <div class="settings-section-title">
+          Featured Collection Banner
+          <span class="section-badge">collections.html</span>
+        </div>
+        <div class="form-row">
+          <div class="form-field">
+            <label class="form-label">Label</label>
+            <input type="text" class="form-input" value="FEATURED COLLECTION">
+          </div>
+          <div class="form-field">
+            <label class="form-label">CTA Button Text</label>
+            <input type="text" class="form-input" value="EXPLORE COLLECTION">
+          </div>
+        </div>
+        <div class="form-field">
+          <label class="form-label">Title Line 1</label>
+          <input type="text" class="form-input" value="THE STEEL">
+        </div>
+        <div class="form-field">
+          <label class="form-label">Title Line 2 (accent color)</label>
+          <input type="text" class="form-input" value="FOUNDATION">
+        </div>
+        <div class="form-field">
+          <label class="form-label">Description</label>
+          <textarea class="form-textarea" style="min-height:60px;">A collection forged in precision and purpose. The Steel Foundation represents BLVCKOUT's commitment to timeless design.</textarea>
+        </div>
+        <div class="form-field">
+          <label class="form-label">Banner Image</label>
+          <div class="media-dropzone" style="height:140px;" data-section="featured">
+            <div class="media-dropzone-preview"><div class="img-placeholder img-dark" style="height:100%;font-size:10px;color:#666;">FEATURED IMAGE</div></div>
+            <div class="media-dropzone-overlay"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg><span>UPLOAD</span></div>
+            <input type="file" accept="image/*" hidden class="section-file-input">
+          </div>
+        </div>
+        <button class="btn-black" style="padding:10px 24px;font-size:10px;letter-spacing:2px;" onclick="showSaved(this)">SAVE CHANGES</button>
+      </div>
+
+      <!-- Announcement Ticker -->
+      <div class="settings-section">
+        <div class="settings-section-title">
+          Announcement Ticker
+          <span class="section-badge">All Pages</span>
+        </div>
+        <div class="form-field">
+          <label class="form-label">Ticker Messages (separate with ·)</label>
+          <textarea class="form-textarea" style="min-height:60px;">FREE SHIPPING ON ORDERS OVER $150 · NEW SS26 DROP — MONOLITH COLLECTION · CUSTOM STUDIO NOW LIVE · USE CODE BLVK10 FOR 10% OFF</textarea>
+        </div>
+        <div class="toggle-wrap" style="margin-bottom:16px;">
+          <label class="toggle-switch"><input type="checkbox" checked><span class="toggle-track"></span></label>
+          <span class="toggle-label">Ticker Enabled</span>
+        </div>
+        <button class="btn-black" style="padding:10px 24px;font-size:10px;letter-spacing:2px;" onclick="showSaved(this)">SAVE CHANGES</button>
+      </div>
+
+      <!-- Footer CTA -->
+      <div class="settings-section">
+        <div class="settings-section-title">
+          Footer CTA
+          <span class="section-badge">All Pages</span>
+        </div>
+        <div class="form-row">
+          <div class="form-field">
+            <label class="form-label">Headline Line 1</label>
+            <input type="text" class="form-input" value="ENTER THE">
+          </div>
+          <div class="form-field">
+            <label class="form-label">Headline Line 2</label>
+            <input type="text" class="form-input" value="BLVCKOUT.">
+          </div>
+        </div>
+        <div class="form-field">
+          <label class="form-label">Newsletter Placeholder Text</label>
+          <input type="text" class="form-input" value="Your Email Here">
+        </div>
+        <div class="form-field">
+          <label class="form-label">Newsletter Note</label>
+          <input type="text" class="form-input" value="Subscribe to our newsletter for the latest features and updates.">
+        </div>
+        <button class="btn-black" style="padding:10px 24px;font-size:10px;letter-spacing:2px;" onclick="showSaved(this)">SAVE CHANGES</button>
+      </div>
+    </section>
+
+
+    <!-- ═══════════════════════════════════════
+         PANEL: POLICIES
+    ═══════════════════════════════════════ -->
+    <section class="admin-panel" id="panel-policies">
+      <div class="admin-panel-title">Policies</div>
+      <p style="font-size:12px;color:#888;margin-bottom:24px;">Edit all policy pages. Changes will reflect on the live site.</p>
+
+      <!-- Policy tabs -->
+      <div class="policy-tabs" id="policyTabs">
+        <button class="policy-tab active" data-policy="privacy">Privacy Policy</button>
+        <button class="policy-tab" data-policy="shipping">Shipping Policy</button>
+        <button class="policy-tab" data-policy="returns">Returns Policy</button>
+        <button class="policy-tab" data-policy="terms">Terms of Service</button>
+      </div>
+
+      <!-- Privacy Policy -->
+      <div class="policy-editor active" id="policy-privacy">
+        <div class="settings-section" style="margin-top:0;">
+          <div class="form-field">
+            <label class="form-label">Page Title</label>
+            <input type="text" class="form-input" value="Privacy Policy">
+          </div>
+          <div class="form-field">
+            <label class="form-label">Last Updated</label>
+            <input type="text" class="form-input" value="April 2026">
+          </div>
+          <div class="form-field">
+            <label class="form-label">Introduction</label>
+            <textarea class="form-textarea" style="min-height:80px;">This policy describes how BLVCKOUT collects, uses, and protects your personal information when you use our website and services.</textarea>
+          </div>
+          <div class="form-field">
+            <label class="form-label">Information We Collect</label>
+            <textarea class="form-textarea" style="min-height:100px;">We collect name, email, billing/shipping addresses, payment information, design uploads, and support communications.</textarea>
+          </div>
+          <div class="form-field">
+            <label class="form-label">How We Use Your Information</label>
+            <textarea class="form-textarea" style="min-height:100px;">To process orders, send shipping updates, provide customer support, improve our services, and send promotional communications with your consent.</textarea>
+          </div>
+          <div class="form-field">
+            <label class="form-label">Data Protection</label>
+            <textarea class="form-textarea" style="min-height:80px;">We implement industry-standard security measures. All payment transactions are encrypted using SSL. We never sell your personal data to third parties.</textarea>
+          </div>
+          <div class="form-field">
+            <label class="form-label">Contact Email for Privacy</label>
+            <input type="email" class="form-input" value="privacy@blvkout.com">
+          </div>
+          <button class="btn-black" style="padding:10px 24px;font-size:10px;letter-spacing:2px;" onclick="showSaved(this)">SAVE PRIVACY POLICY</button>
+        </div>
+      </div>
+
+      <!-- Shipping Policy -->
+      <div class="policy-editor" id="policy-shipping">
+        <div class="settings-section" style="margin-top:0;">
+          <div class="form-field">
+            <label class="form-label">Page Title</label>
+            <input type="text" class="form-input" value="Shipping Policy">
+          </div>
+          <div class="form-field">
+            <label class="form-label">Standard Shipping (US)</label>
+            <input type="text" class="form-input" value="5–7 business days — FREE on orders over $150">
+          </div>
+          <div class="form-field">
+            <label class="form-label">Express Shipping (US)</label>
+            <input type="text" class="form-input" value="2–3 business days — $12.00">
+          </div>
+          <div class="form-field">
+            <label class="form-label">Overnight Shipping (US)</label>
+            <input type="text" class="form-input" value="1 business day — $25.00">
+          </div>
+          <div class="form-field">
+            <label class="form-label">International Shipping Note</label>
+            <textarea class="form-textarea" style="min-height:80px;">International orders may be subject to customs duties and taxes, which are the responsibility of the recipient.</textarea>
+          </div>
+          <div class="form-field">
+            <label class="form-label">Custom Orders Note</label>
+            <textarea class="form-textarea" style="min-height:80px;">Custom Studio orders require an additional 3–5 business days for production before shipping. All custom orders include free express shipping.</textarea>
+          </div>
+          <button class="btn-black" style="padding:10px 24px;font-size:10px;letter-spacing:2px;" onclick="showSaved(this)">SAVE SHIPPING POLICY</button>
+        </div>
+      </div>
+
+      <!-- Returns Policy -->
+      <div class="policy-editor" id="policy-returns">
+        <div class="settings-section" style="margin-top:0;">
+          <div class="form-field">
+            <label class="form-label">Return Window (days)</label>
+            <input type="number" class="form-input" value="30">
+          </div>
+          <div class="form-field">
+            <label class="form-label">Return Conditions</label>
+            <textarea class="form-textarea" style="min-height:80px;">Items must be unworn, in original packaging with tags attached. Custom Studio items are final sale and cannot be returned.</textarea>
+          </div>
+          <div class="form-field">
+            <label class="form-label">Returns Email</label>
+            <input type="email" class="form-input" value="returns@blvkout.com">
+          </div>
+          <div class="form-field">
+            <label class="form-label">Refund Processing Time</label>
+            <input type="text" class="form-input" value="5–10 business days after item received">
+          </div>
+          <button class="btn-black" style="padding:10px 24px;font-size:10px;letter-spacing:2px;" onclick="showSaved(this)">SAVE RETURNS POLICY</button>
+        </div>
+      </div>
+
+      <!-- Terms of Service -->
+      <div class="policy-editor" id="policy-terms">
+        <div class="settings-section" style="margin-top:0;">
+          <div class="form-field">
+            <label class="form-label">Page Title</label>
+            <input type="text" class="form-input" value="Terms of Service">
+          </div>
+          <div class="form-field">
+            <label class="form-label">Effective Date</label>
+            <input type="text" class="form-input" value="January 1, 2026">
+          </div>
+          <div class="form-field">
+            <label class="form-label">Use of Service</label>
+            <textarea class="form-textarea" style="min-height:80px;">By accessing BLVCKOUT, you agree to these terms. You must be 18+ to make purchases. You are responsible for maintaining account security.</textarea>
+          </div>
+          <div class="form-field">
+            <label class="form-label">Intellectual Property</label>
+            <textarea class="form-textarea" style="min-height:80px;">All content, designs, and branding on this site are the exclusive property of BLVCKOUT. Unauthorized reproduction is prohibited.</textarea>
+          </div>
+          <div class="form-field">
+            <label class="form-label">Limitation of Liability</label>
+            <textarea class="form-textarea" style="min-height:80px;">BLVCKOUT is not liable for indirect, incidental, or consequential damages arising from use of our products or services.</textarea>
+          </div>
+          <div class="form-field">
+            <label class="form-label">Contact Email</label>
+            <input type="email" class="form-input" value="legal@blvkout.com">
+          </div>
+          <button class="btn-black" style="padding:10px 24px;font-size:10px;letter-spacing:2px;" onclick="showSaved(this)">SAVE TERMS</button>
+        </div>
+      </div>
+    </section>
+
   </main>
+</div>
+
+<!-- FULL PRODUCT EDIT MODAL -->
+<div class="admin-modal" id="modal-edit-product">
+  <div class="modal-box" style="width:640px;">
+    <button class="modal-close" id="close-edit-product">&times;</button>
+    <div class="modal-title">EDIT PRODUCT</div>
+    <form id="edit-product-form">
+      <div class="form-field">
+        <label class="form-label">Product Name</label>
+        <input type="text" class="form-input" id="edit-product-name">
+      </div>
+      <div class="form-row">
+        <div class="form-field">
+          <label class="form-label">Category</label>
+          <select class="form-select" id="edit-product-cat">
+            <option value="Outerwear">Outerwear</option>
+            <option value="Knitwear">Knitwear</option>
+            <option value="Footwear">Footwear</option>
+            <option value="Accessories">Accessories</option>
+          </select>
+        </div>
+        <div class="form-field">
+          <label class="form-label">Status</label>
+          <select class="form-select" id="edit-product-status">
+            <option value="Active">Active</option>
+            <option value="Draft">Draft</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-field">
+          <label class="form-label">Price ($)</label>
+          <input type="number" class="form-input" id="edit-product-price" step="0.01">
+        </div>
+        <div class="form-field">
+          <label class="form-label">Sale Price ($)</label>
+          <input type="number" class="form-input" id="edit-product-sale" step="0.01">
+        </div>
+      </div>
+      <div class="form-field">
+        <label class="form-label">Stock Qty</label>
+        <input type="number" class="form-input" id="edit-product-stock">
+      </div>
+      <div class="form-field">
+        <label class="form-label">Description</label>
+        <textarea class="form-textarea" id="edit-product-desc" style="min-height:80px;"></textarea>
+      </div>
+      <div class="form-field">
+        <label class="form-label">Image URL</label>
+        <input type="text" class="form-input" id="edit-product-img" placeholder="images/product-name.png">
+        <img id="edit-product-img-preview" src="" alt="Preview" style="margin-top:8px;max-height:80px;border:1px solid #e0e0e0;display:none;">
+      </div>
+      <div class="form-field">
+        <label class="form-label">Tags (comma separated)</label>
+        <input type="text" class="form-input" id="edit-product-tags" placeholder="e.g. new, sale, featured">
+      </div>
+      <div class="form-field">
+        <label class="form-label">Sizes Available</label>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:4px;">
+          <label style="display:flex;align-items:center;gap:6px;font-size:11px;font-weight:700;letter-spacing:1px;cursor:pointer;"><input type="checkbox" class="edit-size-cb" value="XS"> XS</label>
+          <label style="display:flex;align-items:center;gap:6px;font-size:11px;font-weight:700;letter-spacing:1px;cursor:pointer;"><input type="checkbox" class="edit-size-cb" value="S"> S</label>
+          <label style="display:flex;align-items:center;gap:6px;font-size:11px;font-weight:700;letter-spacing:1px;cursor:pointer;"><input type="checkbox" class="edit-size-cb" value="M" checked> M</label>
+          <label style="display:flex;align-items:center;gap:6px;font-size:11px;font-weight:700;letter-spacing:1px;cursor:pointer;"><input type="checkbox" class="edit-size-cb" value="L" checked> L</label>
+          <label style="display:flex;align-items:center;gap:6px;font-size:11px;font-weight:700;letter-spacing:1px;cursor:pointer;"><input type="checkbox" class="edit-size-cb" value="XL" checked> XL</label>
+          <label style="display:flex;align-items:center;gap:6px;font-size:11px;font-weight:700;letter-spacing:1px;cursor:pointer;"><input type="checkbox" class="edit-size-cb" value="XXL"> XXL</label>
+        </div>
+      </div>
+      <div class="modal-actions">
+        <button type="submit" class="btn-black" style="padding:12px 28px;font-size:11px;letter-spacing:2px;">SAVE CHANGES</button>
+        <button type="button" class="btn-outline" id="cancel-edit-product" style="padding:10px 24px;font-size:11px;">CANCEL</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- NEW TICKET MODAL -->
+<div class="admin-modal" id="modal-new-ticket">
+  <div class="modal-box" style="width:520px;">
+    <button class="modal-close" id="close-new-ticket">&times;</button>
+    <div class="modal-title">NEW TICKET</div>
+    <form id="new-ticket-form">
+      <div class="form-row">
+        <div class="form-field">
+          <label class="form-label">Customer Name</label>
+          <input type="text" class="form-input" id="nt-name" placeholder="Full name" required>
+        </div>
+        <div class="form-field">
+          <label class="form-label">Email</label>
+          <input type="email" class="form-input" id="nt-email" placeholder="customer@email.com" required>
+        </div>
+      </div>
+      <div class="form-field">
+        <label class="form-label">Subject</label>
+        <input type="text" class="form-input" id="nt-subject" placeholder="Brief description" required>
+      </div>
+      <div class="form-field">
+        <label class="form-label">Priority</label>
+        <select class="form-select" id="nt-priority">
+          <option value="High">High</option>
+          <option value="Medium" selected>Medium</option>
+          <option value="Low">Low</option>
+        </select>
+      </div>
+      <div class="form-field">
+        <label class="form-label">Message</label>
+        <textarea class="form-textarea" id="nt-message" placeholder="Describe the issue..." style="min-height:100px;" required></textarea>
+      </div>
+      <div class="modal-actions">
+        <button type="submit" class="btn-black" style="padding:12px 28px;font-size:11px;letter-spacing:2px;">CREATE TICKET</button>
+        <button type="button" class="btn-outline" id="cancel-new-ticket" style="padding:10px 24px;font-size:11px;">CANCEL</button>
+      </div>
+    </form>
+  </div>
 </div>
 
 
@@ -1328,6 +2021,11 @@ const panelLabels = {
   hero:        'HERO & BANNERS',
   collections: 'COLLECTIONS',
   promotions:  'PROMOTIONS',
+  content:     'CONTENT EDITOR',
+  media:       'MEDIA LIBRARY',
+  marketing:   'MARKETING',
+  policies:    'POLICIES',
+  support:     'SUPPORT TICKETS',
   settings:    'SETTINGS'
 };
 
@@ -1498,6 +2196,278 @@ document.addEventListener('click', (e) => {
 // INIT — show dashboard
 // ─────────────────────────────────────────
 showPanel('dashboard');
+
+// ─────────────────────────────────────────
+// FULL PRODUCT EDIT MODAL
+// ─────────────────────────────────────────
+const modalEditProduct = document.getElementById('modal-edit-product');
+
+function openEditModal(row) {
+  const cells = row.querySelectorAll('td');
+  document.getElementById('edit-product-name').value = cells[1] ? cells[1].textContent.trim() : '';
+  const catEl = cells[2];
+  if (catEl) {
+    const sel = document.getElementById('edit-product-cat');
+    for (let o of sel.options) { if (o.value === catEl.textContent.trim()) { sel.value = o.value; break; } }
+  }
+  const priceText = cells[3] ? cells[3].textContent.replace('$','').trim() : '';
+  document.getElementById('edit-product-price').value = priceText;
+  document.getElementById('edit-product-sale').value = '';
+  document.getElementById('edit-product-stock').value = cells[4] ? cells[4].textContent.trim() : '';
+  const statusText = cells[5] ? cells[5].querySelector('.status-badge')?.textContent.trim() : 'Active';
+  document.getElementById('edit-product-status').value = statusText || 'Active';
+  document.getElementById('edit-product-desc').value = '';
+  document.getElementById('edit-product-tags').value = '';
+  const imgEl = cells[0] ? cells[0].querySelector('img') : null;
+  const imgUrl = imgEl ? imgEl.src : '';
+  document.getElementById('edit-product-img').value = imgUrl;
+  const preview = document.getElementById('edit-product-img-preview');
+  if (imgUrl) { preview.src = imgUrl; preview.style.display = 'block'; } else { preview.style.display = 'none'; }
+  modalEditProduct._editRow = row;
+  modalEditProduct.classList.add('open');
+}
+
+document.getElementById('edit-product-img').addEventListener('input', function() {
+  const preview = document.getElementById('edit-product-img-preview');
+  if (this.value) { preview.src = this.value; preview.style.display = 'block'; } else { preview.style.display = 'none'; }
+});
+
+function closeEditModal() { modalEditProduct.classList.remove('open'); }
+document.getElementById('close-edit-product').addEventListener('click', closeEditModal);
+document.getElementById('cancel-edit-product').addEventListener('click', closeEditModal);
+modalEditProduct.addEventListener('click', (e) => { if (e.target === modalEditProduct) closeEditModal(); });
+
+document.getElementById('edit-product-form').addEventListener('submit', (e) => {
+  e.preventDefault();
+  const row = modalEditProduct._editRow;
+  if (!row) return;
+  const cells = row.querySelectorAll('td');
+  if (cells[1]) cells[1].textContent = document.getElementById('edit-product-name').value.trim().toUpperCase();
+  if (cells[2]) cells[2].textContent = document.getElementById('edit-product-cat').value;
+  const price = parseFloat(document.getElementById('edit-product-price').value || 0).toFixed(2);
+  if (cells[3]) cells[3].textContent = '$' + price;
+  if (cells[4]) cells[4].textContent = document.getElementById('edit-product-stock').value;
+  const status = document.getElementById('edit-product-status').value;
+  if (cells[5]) { const badge = cells[5].querySelector('.status-badge'); if (badge) { badge.textContent = status; badge.className = 'status-badge ' + status.toLowerCase(); } }
+  closeEditModal();
+});
+
+// Wire EDIT buttons via delegation
+document.addEventListener('click', (e) => {
+  if (e.target.classList.contains('tbl-btn') && e.target.textContent.trim() === 'EDIT') {
+    const row = e.target.closest('tr');
+    if (row && row.closest('#products-tbody')) openEditModal(row);
+  }
+});
+
+// ─────────────────────────────────────────
+// CONTENT EDITOR
+// ─────────────────────────────────────────
+document.getElementById('save-content').addEventListener('click', () => {
+  const msg = document.getElementById('content-saved-msg');
+  msg.style.display = 'inline';
+  setTimeout(() => { msg.style.display = 'none'; }, 2000);
+});
+
+// ─────────────────────────────────────────
+// SUPPORT TICKETS
+// ─────────────────────────────────────────
+const modalNewTicket = document.getElementById('modal-new-ticket');
+
+document.getElementById('open-new-ticket').addEventListener('click', () => { modalNewTicket.classList.add('open'); });
+function closeNewTicket() { modalNewTicket.classList.remove('open'); document.getElementById('new-ticket-form').reset(); }
+document.getElementById('close-new-ticket').addEventListener('click', closeNewTicket);
+document.getElementById('cancel-new-ticket').addEventListener('click', closeNewTicket);
+modalNewTicket.addEventListener('click', (e) => { if (e.target === modalNewTicket) closeNewTicket(); });
+
+let ticketCounter = 7;
+document.getElementById('new-ticket-form').addEventListener('submit', (e) => {
+  e.preventDefault();
+  const name = document.getElementById('nt-name').value.trim();
+  const subject = document.getElementById('nt-subject').value.trim();
+  const priority = document.getElementById('nt-priority').value;
+  const pClass = priority === 'High' ? 'priority-high' : priority === 'Medium' ? 'priority-medium' : 'priority-low';
+  const id = '#TKT-00' + ticketCounter++;
+  const today = new Date();
+  const dateStr = today.toLocaleDateString('en-US', {month:'short', day:'numeric'});
+  const row = document.createElement('tr');
+  row.dataset.status = 'open';
+  row.innerHTML = `
+    <td class="text-mono">${id}</td>
+    <td>${name}</td>
+    <td>${subject}</td>
+    <td><span class="priority-badge ${pClass}">${priority}</span></td>
+    <td><span class="status-badge processing">Open</span></td>
+    <td class="text-muted">${dateStr}</td>
+    <td><button class="tbl-btn blue">VIEW</button><button class="tbl-btn resolve-btn">RESOLVE</button></td>
+  `;
+  document.getElementById('support-tbody').prepend(row);
+  closeNewTicket();
+});
+
+// Resolve ticket
+document.addEventListener('click', (e) => {
+  if (e.target.classList.contains('resolve-btn')) {
+    const row = e.target.closest('tr');
+    if (!row) return;
+    row.dataset.status = 'resolved';
+    const statusBadge = row.querySelector('.status-badge');
+    if (statusBadge) { statusBadge.textContent = 'Resolved'; statusBadge.className = 'status-badge delivered'; }
+    e.target.textContent = 'RESOLVED';
+    e.target.disabled = true;
+    e.target.style.opacity = '0.4';
+    e.target.style.cursor = 'default';
+    e.target.classList.remove('resolve-btn');
+  }
+});
+
+// Support filter chips
+document.getElementById('support-filter-chips').querySelectorAll('.filter-chip').forEach(chip => {
+  chip.addEventListener('click', () => {
+    document.getElementById('support-filter-chips').querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active'));
+    chip.classList.add('active');
+    const filter = chip.dataset.filter;
+    document.querySelectorAll('#support-tbody tr').forEach(row => {
+      row.style.display = (filter === 'all' || row.dataset.status === filter) ? '' : 'none';
+    });
+  });
+});
+
+// ─────────────────────────────────────────
+// SIDEBAR TOGGLE (mobile)
+// ─────────────────────────────────────────
+const sidebarToggle = document.getElementById('sidebarToggle');
+const adminSidebar  = document.querySelector('.admin-sidebar');
+const adminMain     = document.querySelector('.admin-main');
+if (sidebarToggle) {
+  sidebarToggle.addEventListener('click', () => {
+    adminSidebar.classList.toggle('sidebar-open');
+  });
+  // Close on outside click
+  document.addEventListener('click', (e) => {
+    if (!adminSidebar.contains(e.target) && !sidebarToggle.contains(e.target)) {
+      adminSidebar.classList.remove('sidebar-open');
+    }
+  });
+}
+
+// ─────────────────────────────────────────
+// SAVE FEEDBACK HELPER
+// ─────────────────────────────────────────
+function showSaved(btn) {
+  const orig = btn.textContent;
+  btn.textContent = '✓ SAVED';
+  btn.style.background = '#16a34a';
+  setTimeout(() => { btn.textContent = orig; btn.style.background = ''; }, 2000);
+}
+
+// ─────────────────────────────────────────
+// MEDIA LIBRARY — drag & drop upload
+// ─────────────────────────────────────────
+(function() {
+  const gallery = document.getElementById('mediaGallery');
+  const countEl = document.getElementById('media-count');
+  let uploadedImages = JSON.parse(localStorage.getItem('blvk_media') || '[]');
+
+  function renderGallery() {
+    if (!gallery) return;
+    if (uploadedImages.length === 0) {
+      gallery.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:32px;color:#bbb;font-size:12px;">No images uploaded yet.</div>';
+    } else {
+      gallery.innerHTML = uploadedImages.map((img, i) =>
+        `<div class="media-thumb-wrap">
+          <img src="${img.url}" alt="${img.name}" class="media-thumb-img">
+          <div class="media-thumb-name">${img.name}</div>
+          <button class="media-thumb-del" onclick="deleteMedia(${i})" title="Delete">×</button>
+        </div>`
+      ).join('');
+    }
+    if (countEl) countEl.textContent = uploadedImages.length + ' image' + (uploadedImages.length !== 1 ? 's' : '');
+    localStorage.setItem('blvk_media', JSON.stringify(uploadedImages));
+  }
+
+  window.deleteMedia = function(i) {
+    if (confirm('Remove this image?')) {
+      uploadedImages.splice(i, 1);
+      renderGallery();
+    }
+  };
+
+  function handleFiles(files) {
+    Array.from(files).forEach(file => {
+      if (!file.type.startsWith('image/')) return;
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        uploadedImages.push({ url: e.target.result, name: file.name, size: file.size, date: new Date().toISOString() });
+        renderGallery();
+      };
+      reader.readAsDataURL(file);
+    });
+  }
+
+  // Global dropzone
+  const globalDz = document.getElementById('globalDropzone');
+  const globalInput = document.getElementById('globalFileInput');
+  if (globalDz && globalInput) {
+    globalDz.addEventListener('click', () => globalInput.click());
+    globalInput.addEventListener('change', () => handleFiles(globalInput.files));
+    globalDz.addEventListener('dragover', (e) => { e.preventDefault(); globalDz.classList.add('dragover'); });
+    globalDz.addEventListener('dragleave', () => globalDz.classList.remove('dragover'));
+    globalDz.addEventListener('drop', (e) => {
+      e.preventDefault();
+      globalDz.classList.remove('dragover');
+      handleFiles(e.dataTransfer.files);
+    });
+  }
+
+  // Section-specific dropzones
+  document.querySelectorAll('.media-dropzone').forEach(dz => {
+    const input = dz.querySelector('.section-file-input');
+    if (!input) return;
+
+    dz.addEventListener('click', () => input.click());
+    dz.addEventListener('dragover', (e) => { e.preventDefault(); dz.classList.add('dragover'); });
+    dz.addEventListener('dragleave', () => dz.classList.remove('dragover'));
+    dz.addEventListener('drop', (e) => {
+      e.preventDefault();
+      dz.classList.remove('dragover');
+      const file = e.dataTransfer.files[0];
+      if (file && file.type.startsWith('image/')) applyToDropzone(dz, file);
+    });
+    input.addEventListener('change', () => {
+      if (input.files[0]) applyToDropzone(dz, input.files[0]);
+    });
+  });
+
+  function applyToDropzone(dz, file) {
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      const preview = dz.querySelector('.media-dropzone-preview');
+      if (preview) {
+        preview.innerHTML = `<img src="${e.target.result}" style="width:100%;height:100%;object-fit:cover;" alt="Preview">`;
+      }
+      // Also add to gallery
+      uploadedImages.push({ url: e.target.result, name: file.name, size: file.size, date: new Date().toISOString() });
+      renderGallery();
+    };
+    reader.readAsDataURL(file);
+  }
+
+  renderGallery();
+})();
+
+// ─────────────────────────────────────────
+// POLICY TABS
+// ─────────────────────────────────────────
+document.querySelectorAll('.policy-tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('.policy-tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.policy-editor').forEach(e => e.classList.remove('active'));
+    tab.classList.add('active');
+    const editor = document.getElementById('policy-' + tab.dataset.policy);
+    if (editor) editor.classList.add('active');
+  });
+});
 </script>
 </body>
 </html>

@@ -10,12 +10,55 @@
 </head>
 <body>
 
+
+
   <!-- SCROLL PROGRESS -->
   <div class="scroll-progress" id="scrollProgress"></div>
 
   <!-- CURSOR -->
   <div class="cursor-dot" id="cursorDot"></div>
   <div class="cursor-ring" id="cursorRing"></div>
+
+  <!-- ══════════════════════════════════════
+       BRAND LANDING — full screen before nav
+  ══════════════════════════════════════ -->
+  <section class="brand-landing" id="brandLanding">
+    <!-- The BLVCK stamp image as background element -->
+    <div class="brand-landing__bg-stamp">BLVCK</div>
+
+    <!-- Noise texture overlay -->
+    <div class="brand-landing__noise"></div>
+
+    <!-- Top bar -->
+    <div class="brand-landing__topbar">
+      <span class="brand-landing__logo">BLVKOUT</span>
+      <div class="brand-landing__topbar-right">
+        <a href="collections.html" class="brand-landing__cta-link">Shop Now</a>
+        <button class="brand-landing__menu-btn" onclick="document.getElementById('brandLanding').style.opacity='0';setTimeout(()=>{document.getElementById('brandLanding').style.display='none'},400)">
+          <span></span><span></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Center content -->
+    <div class="brand-landing__center">
+      <p class="brand-landing__eyebrow">SS26 COLLECTION</p>
+      <button id="enterSiteBtn" class="brand-landing__enter-btn">ENTER SITE →</button>
+    </div>
+
+    <!-- Bottom bar -->
+    <div class="brand-landing__bottombar">
+      <span>EST. 2024 — NEW YORK</span>
+      <span>PREMIUM STREETWEAR & TAILORING</span>
+      <span>15+ SIGNATURE PIECES</span>
+    </div>
+
+    <!-- Scroll indicator -->
+    <div class="brand-landing__scroll" id="brandScroll">
+      <span>SCROLL</span>
+      <div class="brand-landing__scroll-line"></div>
+    </div>
+  </section>
 
   <!-- TICKER -->
   <div class="ticker-bar">
@@ -38,7 +81,6 @@
       <li><a href="index.html" style="color:var(--blue);">Home</a></li>
       <li><a href="collections.html">Collections</a></li>
       <li><a href="custom.html">Custom</a></li>
-      <li><a href="product.html">Products</a></li>
       <li><a href="wishlist.html">Wishlist</a></li>
     </ul>
     <!-- SEARCH -->
@@ -67,7 +109,6 @@
     <a href="index.html">Home</a>
     <a href="collections.html">Collections</a>
     <a href="custom.html">Custom</a>
-    <a href="product.html">Products</a>
     <a href="wishlist.html">Wishlist</a>
     <div class="nav-drawer-actions">
       <a href="profile.html" class="btn-outline">Account</a>
@@ -92,52 +133,50 @@
 
   <!-- BESTSELLERS -->
   <section class="section reveal">
-    <div class="carousel-wrap">
-      <div class="carousel-header">
-        <div>
-          <span class="comic-label">Featured</span>
-          <h2 class="section-title">BESTSELLERS</h2>
-        </div>
-        <div style="display:flex;align-items:center;gap:20px;">
-          <a href="collections.html" class="view-all">VIEW ALL</a>
-          <div class="carousel-arrows">
-            <button class="carousel-arrow" onclick="scrollCarousel('bestsellers',-1)">←</button>
-            <button class="carousel-arrow" onclick="scrollCarousel('bestsellers',1)">→</button>
-          </div>
+    <div class="carousel-header">
+      <div>
+        <span class="comic-label">Featured</span>
+        <h2 class="section-title">BESTSELLERS</h2>
+      </div>
+      <div style="display:flex;align-items:center;gap:20px;">
+        <a href="collections.html" class="view-all">VIEW ALL</a>
+        <div class="carousel-arrows">
+          <button class="carousel-arrow" onclick="scrollCarousel('bestsellers',-1)">←</button>
+          <button class="carousel-arrow" onclick="scrollCarousel('bestsellers',1)">→</button>
         </div>
       </div>
-      <div class="carousel-track-outer">
-        <div class="carousel-track" id="bestsellers">
-          <div class="product-card" onclick="location.href='product.html'">
-            <div class="product-card-img" style="aspect-ratio:3/4;"><div class="img-placeholder img-dark"></div><span class="product-card-tag">BESTSELLER</span></div>
-            <div class="product-card-name">MONOLITH OVERCOAT</div>
-            <div class="product-card-price"><span class="price-original">$588.00</span><span class="price-sale">$420.00</span></div>
-          </div>
-          <div class="product-card" onclick="location.href='product.html'">
-            <div class="product-card-img" style="aspect-ratio:3/4;"><div class="img-placeholder img-medium"></div></div>
-            <div class="product-card-name">PHANTOM BOOTS</div>
-            <div class="product-card-price"><span class="price-original">$392.00</span><span class="price-sale">$280.00</span></div>
-          </div>
-          <div class="product-card" onclick="location.href='product.html'">
-            <div class="product-card-img" style="aspect-ratio:3/4;"><div class="img-placeholder" style="background:#b0b0b0;"></div></div>
-            <div class="product-card-name">FRAGMENT PANTS</div>
-            <div class="product-card-price"><span class="price-original">$273.00</span><span class="price-sale">$195.00</span></div>
-          </div>
-          <div class="product-card" onclick="location.href='product.html'">
-            <div class="product-card-img" style="aspect-ratio:3/4;"><div class="img-placeholder img-dark"></div></div>
-            <div class="product-card-name">VOID JACKET</div>
-            <div class="product-card-price"><span class="price-original">$476.00</span><span class="price-sale">$340.00</span></div>
-          </div>
-          <div class="product-card" onclick="location.href='product.html'">
-            <div class="product-card-img" style="aspect-ratio:3/4;"><div class="img-placeholder img-medium"></div></div>
-            <div class="product-card-name">STEEL HOODIE</div>
-            <div class="product-card-price"><span class="price-original">$231.00</span><span class="price-sale">$165.00</span></div>
-          </div>
-          <div class="product-card" onclick="location.href='product.html'">
-            <div class="product-card-img" style="aspect-ratio:3/4;"><div class="img-placeholder" style="background:#444;"></div></div>
-            <div class="product-card-name">CARBON JACKET</div>
-            <div class="product-card-price"><span class="price-original">$504.00</span><span class="price-sale">$360.00</span></div>
-          </div>
+    </div>
+    <div class="carousel-track-outer">
+      <div class="carousel-track" id="bestsellers">
+        <div class="product-card" onclick="location.href='product.html'">
+          <div class="product-card-img" style="aspect-ratio:3/4;"><div class="img-placeholder img-dark"></div><span class="product-card-tag">BESTSELLER</span></div>
+          <div class="product-card-name">MONOLITH OVERCOAT</div>
+          <div class="product-card-price"><span class="price-original">$588</span><span class="price-sale">$420</span></div>
+        </div>
+        <div class="product-card" onclick="location.href='product.html'">
+          <div class="product-card-img" style="aspect-ratio:3/4;"><div class="img-placeholder img-medium"></div></div>
+          <div class="product-card-name">PHANTOM BOOTS</div>
+          <div class="product-card-price"><span class="price-original">$392</span><span class="price-sale">$280</span></div>
+        </div>
+        <div class="product-card" onclick="location.href='product.html'">
+          <div class="product-card-img" style="aspect-ratio:3/4;"><div class="img-placeholder" style="background:#b0b0b0;"></div></div>
+          <div class="product-card-name">FRAGMENT PANTS</div>
+          <div class="product-card-price"><span class="price-original">$273</span><span class="price-sale">$195</span></div>
+        </div>
+        <div class="product-card" onclick="location.href='product.html'">
+          <div class="product-card-img" style="aspect-ratio:3/4;"><div class="img-placeholder img-dark"></div></div>
+          <div class="product-card-name">VOID JACKET</div>
+          <div class="product-card-price"><span class="price-original">$476</span><span class="price-sale">$340</span></div>
+        </div>
+        <div class="product-card" onclick="location.href='product.html'">
+          <div class="product-card-img" style="aspect-ratio:3/4;"><div class="img-placeholder img-medium"></div></div>
+          <div class="product-card-name">STEEL HOODIE</div>
+          <div class="product-card-price"><span class="price-original">$231</span><span class="price-sale">$165</span></div>
+        </div>
+        <div class="product-card" onclick="location.href='product.html'">
+          <div class="product-card-img" style="aspect-ratio:3/4;"><div class="img-placeholder" style="background:#444;"></div></div>
+          <div class="product-card-name">CARBON JACKET</div>
+          <div class="product-card-price"><span class="price-original">$504</span><span class="price-sale">$360</span></div>
         </div>
       </div>
     </div>
@@ -145,52 +184,50 @@
 
   <!-- LATEST RELEASES -->
   <section class="section reveal" style="background:var(--bg);">
-    <div class="carousel-wrap">
-      <div class="carousel-header">
-        <div>
-          <span class="comic-label">New In</span>
-          <h2 class="section-title">LATEST RELEASES</h2>
-        </div>
-        <div style="display:flex;align-items:center;gap:20px;">
-          <a href="collections.html" class="view-all">VIEW ALL</a>
-          <div class="carousel-arrows">
-            <button class="carousel-arrow" onclick="scrollCarousel('latest',-1)">←</button>
-            <button class="carousel-arrow" onclick="scrollCarousel('latest',1)">→</button>
-          </div>
+    <div class="carousel-header">
+      <div>
+        <span class="comic-label">New In</span>
+        <h2 class="section-title">LATEST RELEASES</h2>
+      </div>
+      <div style="display:flex;align-items:center;gap:20px;">
+        <a href="collections.html" class="view-all">VIEW ALL</a>
+        <div class="carousel-arrows">
+          <button class="carousel-arrow" onclick="scrollCarousel('latest',-1)">←</button>
+          <button class="carousel-arrow" onclick="scrollCarousel('latest',1)">→</button>
         </div>
       </div>
-      <div class="carousel-track-outer">
-        <div class="carousel-track" id="latest">
-          <div class="product-card" onclick="location.href='product.html'">
-            <div class="product-card-img"><div class="img-placeholder img-dark"></div><span class="product-card-tag">NEW</span></div>
-            <div class="product-card-name">MONOLITH HOODIE V2</div>
-            <div class="product-card-price"><span class="price-original">$259.00</span><span class="price-sale">$185.00</span></div>
-          </div>
-          <div class="product-card" onclick="location.href='product.html'">
-            <div class="product-card-img"><div class="img-placeholder" style="background:#c8c8c8;"></div><span class="product-card-tag">NEW</span></div>
-            <div class="product-card-name">ARCHITECT BLAZER</div>
-            <div class="product-card-price"><span class="price-original">$434.00</span><span class="price-sale">$310.00</span></div>
-          </div>
-          <div class="product-card" onclick="location.href='product.html'">
-            <div class="product-card-img"><div class="img-placeholder img-medium"></div></div>
-            <div class="product-card-name">SHADOW TURTLENECK</div>
-            <div class="product-card-price"><span class="price-original">$168.00</span><span class="price-sale">$120.00</span></div>
-          </div>
-          <div class="product-card" onclick="location.href='product.html'">
-            <div class="product-card-img"><div class="img-placeholder img-dark"></div></div>
-            <div class="product-card-name">OBSIDIAN TROUSERS</div>
-            <div class="product-card-price"><span class="price-original">$294.00</span><span class="price-sale">$210.00</span></div>
-          </div>
-          <div class="product-card" onclick="location.href='product.html'">
-            <div class="product-card-img"><div class="img-placeholder" style="background:#444;"></div><span class="product-card-tag">NEW</span></div>
-            <div class="product-card-name">CARBON JACKET</div>
-            <div class="product-card-price"><span class="price-original">$504.00</span><span class="price-sale">$360.00</span></div>
-          </div>
-          <div class="product-card" onclick="location.href='product.html'">
-            <div class="product-card-img"><div class="img-placeholder" style="background:#999;"></div></div>
-            <div class="product-card-name">SLATE JOGGERS</div>
-            <div class="product-card-price"><span class="price-original">$203.00</span><span class="price-sale">$145.00</span></div>
-          </div>
+    </div>
+    <div class="carousel-track-outer">
+      <div class="carousel-track" id="latest">
+        <div class="product-card" onclick="location.href='product.html'">
+          <div class="product-card-img"><div class="img-placeholder img-dark"></div><span class="product-card-tag">NEW</span></div>
+          <div class="product-card-name">MONOLITH HOODIE V2</div>
+          <div class="product-card-price"><span class="price-original">$259</span><span class="price-sale">$185</span></div>
+        </div>
+        <div class="product-card" onclick="location.href='product.html'">
+          <div class="product-card-img"><div class="img-placeholder" style="background:#c8c8c8;"></div><span class="product-card-tag">NEW</span></div>
+          <div class="product-card-name">ARCHITECT BLAZER</div>
+          <div class="product-card-price"><span class="price-original">$434</span><span class="price-sale">$310</span></div>
+        </div>
+        <div class="product-card" onclick="location.href='product.html'">
+          <div class="product-card-img"><div class="img-placeholder img-medium"></div></div>
+          <div class="product-card-name">SHADOW TURTLENECK</div>
+          <div class="product-card-price"><span class="price-original">$168</span><span class="price-sale">$120</span></div>
+        </div>
+        <div class="product-card" onclick="location.href='product.html'">
+          <div class="product-card-img"><div class="img-placeholder img-dark"></div></div>
+          <div class="product-card-name">OBSIDIAN TROUSERS</div>
+          <div class="product-card-price"><span class="price-original">$294</span><span class="price-sale">$210</span></div>
+        </div>
+        <div class="product-card" onclick="location.href='product.html'">
+          <div class="product-card-img"><div class="img-placeholder" style="background:#444;"></div><span class="product-card-tag">NEW</span></div>
+          <div class="product-card-name">CARBON JACKET</div>
+          <div class="product-card-price"><span class="price-original">$504</span><span class="price-sale">$360</span></div>
+        </div>
+        <div class="product-card" onclick="location.href='product.html'">
+          <div class="product-card-img"><div class="img-placeholder" style="background:#999;"></div></div>
+          <div class="product-card-name">SLATE JOGGERS</div>
+          <div class="product-card-price"><span class="price-original">$203</span><span class="price-sale">$145</span></div>
         </div>
       </div>
     </div>
@@ -288,7 +325,7 @@
         <ul>
           <li><a href="#">Join Us</a></li>
           <li><a href="#">Customer Support</a></li>
-          <li><a href="#">Contact Us</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
           <li><a href="policies.html">Policies</a></li>
         </ul>
       </div>
@@ -321,5 +358,66 @@
 
   <script src="scripts/main.js"></script>
   <script src="scripts/ui.js"></script>
+  <script>
+  // ── Brand Landing: only on refresh/direct, not on nav from other pages ──
+  (function() {
+    var landing = document.getElementById('brandLanding');
+    if (!landing) return;
+
+    // Use sessionStorage flag: set it when navigating away from home
+    // If flag exists → came from another page → hide landing immediately
+    var cameFromNav = sessionStorage.getItem('blvk_nav');
+    sessionStorage.removeItem('blvk_nav'); // clear for next time
+
+    if (cameFromNav) {
+      landing.style.display = 'none';
+      return;
+    }
+
+    // Show landing
+    landing.style.display = '';
+
+    function dismiss() {
+      if (landing._gone) return;
+      landing._gone = true;
+      landing.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+      landing.style.opacity = '0';
+      landing.style.transform = 'translateY(-40px)';
+      setTimeout(function() { landing.style.display = 'none'; }, 650);
+    }
+
+    // Dismiss on scroll
+    window.addEventListener('scroll', function() {
+      if (window.scrollY > 0) dismiss();
+    }, { passive: true });
+
+    // Dismiss on ENTER SITE button
+    var btn = document.getElementById('enterSiteBtn');
+    if (btn) btn.addEventListener('click', dismiss);
+
+    // Dismiss on menu/close button
+    var menuBtn = landing.querySelector('.brand-landing__menu-btn');
+    if (menuBtn) menuBtn.addEventListener('click', dismiss);
+  })();
+
+  // ── Set nav flag when leaving home via any internal link ──
+  document.querySelectorAll('a[href]').forEach(function(a) {
+    var href = a.getAttribute('href');
+    if (href && !href.startsWith('#') && !href.startsWith('http') && href !== 'index.html') {
+      a.addEventListener('click', function() {
+        sessionStorage.setItem('blvk_nav', '1');
+      });
+    }
+  });
+
+  // ── Basic carousel (scrollCarousel) ──
+  function scrollCarousel(id, dir) {
+    var track = document.getElementById(id);
+    if (!track) return;
+    var card = track.querySelector('.product-card');
+    var cardW = card ? card.offsetWidth + 20 : 280;
+    track.parentElement.scrollBy({ left: dir * cardW * 2, behavior: 'smooth' });
+  }
+  </script>
 </body>
 </html>

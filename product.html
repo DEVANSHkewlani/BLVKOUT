@@ -33,7 +33,6 @@
       <li><a href="index.html">Home</a></li>
       <li><a href="collections.html">Collections</a></li>
       <li><a href="custom.html">Custom</a></li>
-      <li><a href="product.html" style="color:var(--blue);">Products</a></li>
       <li><a href="wishlist.html">Wishlist</a></li>
     </ul>
     <div class="nav-search">
@@ -58,7 +57,6 @@
     <a href="index.html">Home</a>
     <a href="collections.html">Collections</a>
     <a href="custom.html">Custom</a>
-    <a href="product.html">Products</a>
     <a href="wishlist.html">Wishlist</a>
     <div class="nav-drawer-actions">
       <a href="profile.html" class="btn-outline">Account</a>
@@ -73,11 +71,9 @@
 
   <!-- PRODUCT DETAIL -->
   <section class="product-detail">
-    <!-- LEFT: IMAGES -->
+
+    <!-- LEFT: IMAGE GALLERY -->
     <div class="product-images">
-      <div class="product-main-img">
-        <div class="img-placeholder img-dark" style="height:100%;"></div>
-      </div>
       <div class="product-thumbs">
         <div class="thumb active">
           <div class="img-placeholder img-dark"></div>
@@ -92,9 +88,12 @@
           <div class="img-placeholder" style="background:#888;"></div>
         </div>
       </div>
+      <div class="product-main-img">
+        <div class="img-placeholder img-dark" style="height:100%;"></div>
+      </div>
     </div>
 
-    <!-- RIGHT: INFO -->
+    <!-- RIGHT: PRODUCT INFO -->
     <div class="product-info">
       <div class="product-info-top">
         <p class="section-label">BLVKOUT SS26</p>
@@ -103,7 +102,7 @@
         <p class="product-sku">SKU: BLV-MH-002</p>
       </div>
 
-      <p class="product-desc">Premium heavyweight fleece hoodie with architectural seam detailing. Relaxed oversized fit with ribbed cuffs and hem. Embroidered BLVKOUT logo at chest.</p>
+      <p class="product-desc">Premium heavyweight fleece hoodie with architectural seam detailing. Relaxed oversized fit with ribbed cuffs and hem. Embroidered BLVKOUT logo at chest. Crafted from 400GSM cotton fleece for lasting structure and warmth.</p>
 
       <!-- SIZE -->
       <div class="product-option">
@@ -142,10 +141,10 @@
       <!-- ACTIONS -->
       <div class="product-actions">
         <button class="btn-blue" style="flex:1;" onclick="location.href='cart.html'">ADD TO CART</button>
-        <button class="btn-outline" onclick="location.href='wishlist.html'">♡</button>
+        <button class="btn-outline" onclick="location.href='wishlist.html'" title="Add to Wishlist">♡</button>
       </div>
 
-      <!-- SPECS -->
+      <!-- SPECIFICATIONS -->
       <div class="product-specs">
         <h3 class="specs-title">SPECIFICATIONS</h3>
         <div class="specs-grid">
@@ -165,6 +164,14 @@
             <div class="spec-label">Care</div>
             <div class="spec-val">Cold wash, hang dry</div>
           </div>
+          <div class="spec-item">
+            <div class="spec-label">Origin</div>
+            <div class="spec-val">Made in Portugal</div>
+          </div>
+          <div class="spec-item">
+            <div class="spec-label">Shipping</div>
+            <div class="spec-val">Free on orders over $150</div>
+          </div>
         </div>
       </div>
     </div>
@@ -177,37 +184,38 @@
         <p class="section-label">You May Also Like</p>
         <h2 class="section-title">RELATED PRODUCTS</h2>
       </div>
+      <div class="carousel-arrows">
+        <button class="carousel-arrow" onclick="scrollCarousel('relatedTrack',-1)">←</button>
+        <button class="carousel-arrow" onclick="scrollCarousel('relatedTrack',1)">→</button>
+      </div>
     </div>
-    <div class="grid-6">
-      <div class="product-card" onclick="location.href='product.html'">
-        <div class="product-card-img"><div class="img-placeholder img-dark"></div></div>
-        <div class="product-card-name">MONOLITH OVERCOAT</div>
-        <div class="product-card-price">$420.00</div>
-      </div>
-      <div class="product-card" onclick="location.href='product.html'">
-        <div class="product-card-img"><div class="img-placeholder img-medium"></div></div>
-        <div class="product-card-name">VOID TURTLENECK</div>
-        <div class="product-card-price">$130.00</div>
-      </div>
-      <div class="product-card" onclick="location.href='product.html'">
-        <div class="product-card-img"><div class="img-placeholder" style="background:#c0c0c0;"></div></div>
-        <div class="product-card-name">ARCHITECT BLAZER</div>
-        <div class="product-card-price">$310.00</div>
-      </div>
-      <div class="product-card" onclick="location.href='product.html'">
-        <div class="product-card-img"><div class="img-placeholder img-dark"></div></div>
-        <div class="product-card-name">SHADOW HOODIE</div>
-        <div class="product-card-price">$165.00</div>
-      </div>
-      <div class="product-card" onclick="location.href='product.html'">
-        <div class="product-card-img"><div class="img-placeholder" style="background:#444;"></div></div>
-        <div class="product-card-name">CARBON JACKET</div>
-        <div class="product-card-price">$360.00</div>
-      </div>
-      <div class="product-card" onclick="location.href='product.html'">
-        <div class="product-card-img"><div class="img-placeholder" style="background:#999;"></div></div>
-        <div class="product-card-name">SLATE JOGGERS</div>
-        <div class="product-card-price">$145.00</div>
+    <div class="carousel-track-outer">
+      <div class="carousel-track" id="relatedTrack">
+        <div class="product-card" onclick="location.href='product.html'">
+          <div class="product-card-img" style="aspect-ratio:3/4;"><div class="img-placeholder img-dark"></div></div>
+          <div class="product-card-name">MONOLITH OVERCOAT</div>
+          <div class="product-card-price"><span class="price-original">$588</span><span class="price-sale">$420</span></div>
+        </div>
+        <div class="product-card" onclick="location.href='product.html'">
+          <div class="product-card-img" style="aspect-ratio:3/4;"><div class="img-placeholder img-medium"></div></div>
+          <div class="product-card-name">VOID TURTLENECK</div>
+          <div class="product-card-price"><span class="price-original">$182</span><span class="price-sale">$130</span></div>
+        </div>
+        <div class="product-card" onclick="location.href='product.html'">
+          <div class="product-card-img" style="aspect-ratio:3/4;"><div class="img-placeholder" style="background:#c0c0c0;"></div></div>
+          <div class="product-card-name">ARCHITECT BLAZER</div>
+          <div class="product-card-price"><span class="price-original">$434</span><span class="price-sale">$310</span></div>
+        </div>
+        <div class="product-card" onclick="location.href='product.html'">
+          <div class="product-card-img" style="aspect-ratio:3/4;"><div class="img-placeholder img-dark"></div></div>
+          <div class="product-card-name">SHADOW HOODIE</div>
+          <div class="product-card-price"><span class="price-original">$231</span><span class="price-sale">$165</span></div>
+        </div>
+        <div class="product-card" onclick="location.href='product.html'">
+          <div class="product-card-img" style="aspect-ratio:3/4;"><div class="img-placeholder" style="background:#444;"></div></div>
+          <div class="product-card-name">CARBON JACKET</div>
+          <div class="product-card-price"><span class="price-original">$504</span><span class="price-sale">$360</span></div>
+        </div>
       </div>
     </div>
   </section>
@@ -224,7 +232,7 @@
         <p class="footer-newsletter-note">Subscribe to our newsletter for the latest features and updates.</p>
       </div>
       <div class="footer-col"><h4>Shop</h4><ul><li><a href="collections.html">Women</a></li><li><a href="collections.html">Men</a></li><li><a href="collections.html">Unisex</a></li><li><a href="custom.html">Custom</a></li></ul></div>
-      <div class="footer-col"><h4>Contact</h4><ul><li><a href="#">Join Us</a></li><li><a href="#">Customer Support</a></li><li><a href="#">Contact Us</a></li><li><a href="policies.html">Policies</a></li></ul></div>
+      <div class="footer-col"><h4>Contact</h4><ul><li><a href="contact.html">Contact Us</a></li><li><a href="#">Customer Support</a></li><li><a href="policies.html">Policies</a></li></ul></div>
       <div class="footer-col"><h4>Follow Us</h4><div class="footer-social"><div class="footer-social-item"><span class="footer-social-icon">✕</span> Instagram</div><div class="footer-social-item"><span class="footer-social-icon">𝕏</span> X</div><div class="footer-social-item"><span class="footer-social-icon">▶</span> YouTube</div></div></div>
     </div>
     <div class="footer-bottom">
@@ -236,8 +244,49 @@
 
   <button class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
   <div class="toast" id="toast"></div>
+
   <script src="scripts/main.js"></script>
   <script src="scripts/product.js"></script>
   <script src="scripts/ui.js"></script>
+  <script>
+  function changeQty(dir) {
+    var el = document.getElementById('qty');
+    var val = parseInt(el.textContent) + dir;
+    if (val < 1) val = 1;
+    el.textContent = val;
+  }
+
+  // Size selector
+  document.querySelectorAll('.size-btn').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      document.querySelectorAll('.size-btn').forEach(function(b){ b.classList.remove('active'); });
+      btn.classList.add('active');
+    });
+  });
+
+  // Color selector
+  document.querySelectorAll('.color-btn').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      document.querySelectorAll('.color-btn').forEach(function(b){ b.classList.remove('active'); });
+      btn.classList.add('active');
+    });
+  });
+
+  // Thumbnail switcher
+  document.querySelectorAll('.thumb').forEach(function(thumb) {
+    thumb.addEventListener('click', function() {
+      document.querySelectorAll('.thumb').forEach(function(t){ t.classList.remove('active'); });
+      thumb.classList.add('active');
+    });
+  });
+
+  function scrollCarousel(id, dir) {
+    var track = document.getElementById(id);
+    if (!track) return;
+    var card = track.querySelector('.product-card');
+    var cardW = card ? card.offsetWidth + 20 : 280;
+    track.parentElement.scrollBy({ left: dir * cardW * 2, behavior: 'smooth' });
+  }
+  </script>
 </body>
 </html>

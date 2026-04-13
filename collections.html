@@ -33,7 +33,6 @@
       <li><a href="index.html">Home</a></li>
       <li><a href="collections.html" style="color:var(--blue);">Collections</a></li>
       <li><a href="custom.html">Custom</a></li>
-      <li><a href="product.html">Products</a></li>
       <li><a href="wishlist.html">Wishlist</a></li>
     </ul>
     <div class="nav-search">
@@ -58,7 +57,6 @@
     <a href="index.html">Home</a>
     <a href="collections.html">Collections</a>
     <a href="custom.html">Custom</a>
-    <a href="product.html">Products</a>
     <a href="wishlist.html">Wishlist</a>
     <div class="nav-drawer-actions">
       <a href="profile.html" class="btn-outline">Account</a>
@@ -110,70 +108,44 @@
           </select>
         </div>
         <div class="carousel-arrows">
-          <button class="carousel-arrow" onclick="scrollCarousel('coll',-1)">←</button>
-          <button class="carousel-arrow" onclick="scrollCarousel('coll',1)">→</button>
+          <button class="carousel-arrow" onclick="scrollCarousel('collectionTrack',-1)">←</button>
+          <button class="carousel-arrow" onclick="scrollCarousel('collectionTrack',1)">→</button>
         </div>
       </div>
     </div>
     <div class="carousel-track-outer">
-    <div class="carousel-track" id="coll">
-      <div class="product-card" onclick="location.href='product.html'">
-        <div class="product-card-img" style="aspect-ratio:3/4;"><div class="img-placeholder img-dark"></div><span class="product-card-tag">FEATURED</span></div>
-        <div class="product-card-name">MONOLITH OVERCOAT</div><div class="product-card-price"><span class="price-original">$588.00</span><span class="price-sale">$420.00</span></div>
+      <div class="carousel-track" id="collectionTrack">
+        <div class="product-card" onclick="location.href='product.html'">
+          <div class="product-card-img" style="aspect-ratio:3/4;"><div class="img-placeholder img-dark"></div><span class="product-card-tag">FEATURED</span></div>
+          <div class="product-card-name">MONOLITH OVERCOAT</div>
+          <div class="product-card-price"><span class="price-original">$588</span><span class="price-sale">$420</span></div>
+        </div>
+        <div class="product-card" onclick="location.href='product.html'">
+          <div class="product-card-img" style="aspect-ratio:3/4;"><div class="img-placeholder" style="background:#3a3a3a;"></div></div>
+          <div class="product-card-name">VOID TURTLENECK</div>
+          <div class="product-card-price"><span class="price-original">$182</span><span class="price-sale">$130</span></div>
+        </div>
+        <div class="product-card" onclick="location.href='product.html'">
+          <div class="product-card-img" style="aspect-ratio:3/4;"><div class="img-placeholder img-medium"></div><span class="product-card-tag">NEW</span></div>
+          <div class="product-card-name">FRAGMENT PANTS</div>
+          <div class="product-card-price"><span class="price-original">$273</span><span class="price-sale">$195</span></div>
+        </div>
+        <div class="product-card" onclick="location.href='product.html'">
+          <div class="product-card-img" style="aspect-ratio:3/4;"><div class="img-placeholder" style="background:#555;"></div></div>
+          <div class="product-card-name">SHADOW HOODIE</div>
+          <div class="product-card-price"><span class="price-original">$231</span><span class="price-sale">$165</span></div>
+        </div>
+        <div class="product-card" onclick="location.href='product.html'">
+          <div class="product-card-img" style="aspect-ratio:3/4;"><div class="img-placeholder img-dark"></div></div>
+          <div class="product-card-name">ARCHITECT BLAZER</div>
+          <div class="product-card-price"><span class="price-original">$434</span><span class="price-sale">$310</span></div>
+        </div>
+        <div class="product-card" onclick="location.href='product.html'">
+          <div class="product-card-img" style="aspect-ratio:3/4;"><div class="img-placeholder" style="background:#aaa;"></div></div>
+          <div class="product-card-name">PHANTOM BOOTS</div>
+          <div class="product-card-price"><span class="price-original">$392</span><span class="price-sale">$280</span></div>
+        </div>
       </div>
-      <div class="product-card" onclick="location.href='product.html'">
-        <div class="product-card-img" style="aspect-ratio:3/4;"><div class="img-placeholder" style="background:#3a3a3a;"></div></div>
-        <div class="product-card-name">VOID TURTLENECK</div><div class="product-card-price"><span class="price-original">$182.00</span><span class="price-sale">$130.00</span></div>
-      </div>
-      <div class="product-card" onclick="location.href='product.html'">
-        <div class="product-card-img" style="aspect-ratio:3/4;"><div class="img-placeholder img-medium"></div><span class="product-card-tag">NEW</span></div>
-        <div class="product-card-name">FRAGMENT PANTS</div><div class="product-card-price"><span class="price-original">$273.00</span><span class="price-sale">$195.00</span></div>
-      </div>
-      <div class="product-card" onclick="location.href='product.html'">
-        <div class="product-card-img" style="aspect-ratio:3/4;"><div class="img-placeholder" style="background:#555;"></div></div>
-        <div class="product-card-name">SHADOW HOODIE</div><div class="product-card-price"><span class="price-original">$231.00</span><span class="price-sale">$165.00</span></div>
-      </div>
-      <div class="product-card" onclick="location.href='product.html'">
-        <div class="product-card-img" style="aspect-ratio:3/4;"><div class="img-placeholder img-dark"></div></div>
-        <div class="product-card-name">ARCHITECT BLAZER</div><div class="product-card-price"><span class="price-original">$434.00</span><span class="price-sale">$310.00</span></div>
-      </div>
-      <div class="product-card" onclick="location.href='product.html'">
-        <div class="product-card-img" style="aspect-ratio:3/4;"><div class="img-placeholder" style="background:#aaa;"></div></div>
-        <div class="product-card-name">PHANTOM BOOTS</div><div class="product-card-price"><span class="price-original">$392.00</span><span class="price-sale">$280.00</span></div>
-      </div>
-      <div class="product-card" onclick="location.href='product.html'">
-        <div class="product-card-img" style="aspect-ratio:3/4;"><div class="img-placeholder img-medium"></div><span class="product-card-tag">SALE</span></div>
-        <div class="product-card-name">STEEL CREWNECK</div><div class="product-card-price"><span class="price-original">$140.00</span><span class="price-sale">$89.00</span></div>
-      </div>
-      <div class="product-card" onclick="location.href='product.html'">
-        <div class="product-card-img" style="aspect-ratio:3/4;"><div class="img-placeholder img-dark"></div></div>
-        <div class="product-card-name">OBSIDIAN TROUSERS</div><div class="product-card-price"><span class="price-original">$294.00</span><span class="price-sale">$210.00</span></div>
-      </div>
-      <div class="product-card" onclick="location.href='product.html'">
-        <div class="product-card-img" style="aspect-ratio:3/4;"><div class="img-placeholder" style="background:#666;"></div></div>
-        <div class="product-card-name">MONOLITH HOODIE V2</div><div class="product-card-price"><span class="price-original">$259.00</span><span class="price-sale">$185.00</span></div>
-      </div>
-      <div class="product-card" onclick="location.href='product.html'">
-        <div class="product-card-img" style="aspect-ratio:3/4;"><div class="img-placeholder" style="background:#444;"></div><span class="product-card-tag">NEW</span></div>
-        <div class="product-card-name">CARBON JACKET</div><div class="product-card-price"><span class="price-original">$504.00</span><span class="price-sale">$360.00</span></div>
-      </div>
-      <div class="product-card" onclick="location.href='product.html'">
-        <div class="product-card-img" style="aspect-ratio:3/4;"><div class="img-placeholder" style="background:#999;"></div></div>
-        <div class="product-card-name">SLATE JOGGERS</div><div class="product-card-price"><span class="price-original">$203.00</span><span class="price-sale">$145.00</span></div>
-      </div>
-      <div class="product-card" onclick="location.href='product.html'">
-        <div class="product-card-img" style="aspect-ratio:3/4;"><div class="img-placeholder img-dark"></div></div>
-        <div class="product-card-name">VOID BOMBER</div><div class="product-card-price"><span class="price-original">$413.00</span><span class="price-sale">$295.00</span></div>
-      </div>
-      <div class="product-card" onclick="location.href='product.html'">
-        <div class="product-card-img" style="aspect-ratio:3/4;"><div class="img-placeholder img-medium"></div><span class="product-card-tag">SALE</span></div>
-        <div class="product-card-name">ARCH LONGSLEEVE</div><div class="product-card-price"><span class="price-original">$110.00</span><span class="price-sale">$72.00</span></div>
-      </div>
-      <div class="product-card" onclick="location.href='product.html'">
-        <div class="product-card-img" style="aspect-ratio:3/4;"><div class="img-placeholder" style="background:#333;"></div></div>
-        <div class="product-card-name">ONYX VEST</div><div class="product-card-price"><span class="price-original">$245.00</span><span class="price-sale">$175.00</span></div>
-      </div>
-    </div>
     </div>
   </section>
 
@@ -201,7 +173,7 @@
         <p class="footer-newsletter-note">Subscribe to our newsletter for the latest features and updates.</p>
       </div>
       <div class="footer-col"><h4>Shop</h4><ul><li><a href="collections.html">Women</a></li><li><a href="collections.html">Men</a></li><li><a href="collections.html">Unisex</a></li><li><a href="custom.html">Custom</a></li></ul></div>
-      <div class="footer-col"><h4>Contact</h4><ul><li><a href="#">Join Us</a></li><li><a href="#">Customer Support</a></li><li><a href="#">Contact Us</a></li><li><a href="policies.html">Policies</a></li></ul></div>
+      <div class="footer-col"><h4>Contact</h4><ul><li><a href="#">Join Us</a></li><li><a href="#">Customer Support</a></li><li><a href="contact.html">Contact Us</a></li><li><a href="policies.html">Policies</a></li></ul></div>
       <div class="footer-col"><h4>Follow Us</h4><div class="footer-social"><div class="footer-social-item"><span class="footer-social-icon">✕</span> Instagram</div><div class="footer-social-item"><span class="footer-social-icon">𝕏</span> X</div><div class="footer-social-item"><span class="footer-social-icon">▶</span> YouTube</div></div></div>
     </div>
     <div class="footer-bottom">
@@ -215,5 +187,6 @@
   <div class="toast" id="toast"></div>
   <script src="scripts/main.js"></script>
   <script src="scripts/ui.js"></script>
+  
 </body>
 </html>

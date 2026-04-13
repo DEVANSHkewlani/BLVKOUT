@@ -33,7 +33,6 @@
       <li><a href="index.html">Home</a></li>
       <li><a href="collections.html">Collections</a></li>
       <li><a href="custom.html">Custom</a></li>
-      <li><a href="product.html">Products</a></li>
       <li><a href="wishlist.html" style="color:var(--blue);">Wishlist</a></li>
     </ul>
     <div class="nav-search">
@@ -58,7 +57,6 @@
     <a href="index.html">Home</a>
     <a href="collections.html">Collections</a>
     <a href="custom.html">Custom</a>
-    <a href="product.html">Products</a>
     <a href="wishlist.html">Wishlist</a>
     <div class="nav-drawer-actions">
       <a href="profile.html" class="btn-outline">Account</a>
@@ -79,112 +77,55 @@
   </div>
 
   <section class="section">
-    <div class="wishlist-grid">
-
-      <!-- ITEM 1 -->
-      <div class="wishlist-card">
-        <div class="wishlist-img">
-          <div class="img-placeholder img-dark"></div>
-          <button class="wishlist-remove" onclick="removeWishItem(this)" title="Remove">✕</button>
+    <div class="section-header">
+      <div>
+        <p class="section-label">Saved Items</p>
+        <h2 class="section-title">YOUR WISHLIST</h2>
+      </div>
+      <div class="carousel-arrows">
+        <button class="carousel-arrow" onclick="scrollCarousel('wishlistTrack',-1)">←</button>
+        <button class="carousel-arrow" onclick="scrollCarousel('wishlistTrack',1)">→</button>
+      </div>
+    </div>
+    <div class="carousel-track-outer">
+      <div class="carousel-track" id="wishlistTrack">
+        <div class="product-card" onclick="location.href='product.html'">
+          <div class="product-card-img" style="aspect-ratio:3/4;"><div class="img-placeholder img-dark"></div></div>
+          <div class="product-card-name">OBSIDIAN JACKET</div>
+          <div class="product-card-price"><span class="price-sale">$340</span></div>
+          <div style="display:flex;gap:8px;margin-top:8px;">
+            <button class="btn-blue" style="flex:1;padding:8px;font-size:10px;" onclick="event.stopPropagation();location.href='cart.html'">ADD TO CART</button>
+            <button class="btn-outline" style="padding:8px 12px;font-size:10px;" onclick="event.stopPropagation();location.href='product.html'">VIEW</button>
+          </div>
         </div>
-        <div class="wishlist-info">
-          <div class="wishlist-name">OBSIDIAN JACKET</div>
-          <div class="wishlist-price">$340.00</div>
-          <div class="wishlist-meta">Size: M &nbsp;·&nbsp; Black</div>
-          <div class="wishlist-actions">
-            <button class="btn-blue" style="flex:1;padding:10px;" onclick="location.href='cart.html'">ADD TO CART</button>
-            <button class="btn-outline" style="padding:10px 14px;" onclick="location.href='product.html'">VIEW</button>
+        <div class="product-card" onclick="location.href='product.html'">
+          <div class="product-card-img" style="aspect-ratio:3/4;"><div class="img-placeholder img-medium"></div><span class="product-card-tag">BESTSELLER</span></div>
+          <div class="product-card-name">MONOLITH HOODIE V2</div>
+          <div class="product-card-price"><span class="price-sale">$185</span></div>
+          <div style="display:flex;gap:8px;margin-top:8px;">
+            <button class="btn-blue" style="flex:1;padding:8px;font-size:10px;" onclick="event.stopPropagation();location.href='cart.html'">ADD TO CART</button>
+            <button class="btn-outline" style="padding:8px 12px;font-size:10px;" onclick="event.stopPropagation();location.href='product.html'">VIEW</button>
+          </div>
+        </div>
+        <div class="product-card" onclick="location.href='product.html'">
+          <div class="product-card-img" style="aspect-ratio:3/4;"><div class="img-placeholder" style="background:#c0c0c0;"></div></div>
+          <div class="product-card-name">DIAMOND BOOTS</div>
+          <div class="product-card-price"><span class="price-sale">$310</span></div>
+          <div style="display:flex;gap:8px;margin-top:8px;">
+            <button class="btn-blue" style="flex:1;padding:8px;font-size:10px;" onclick="event.stopPropagation();location.href='cart.html'">ADD TO CART</button>
+            <button class="btn-outline" style="padding:8px 12px;font-size:10px;" onclick="event.stopPropagation();location.href='product.html'">VIEW</button>
+          </div>
+        </div>
+        <div class="product-card" onclick="location.href='product.html'">
+          <div class="product-card-img" style="aspect-ratio:3/4;"><div class="img-placeholder img-dark"></div></div>
+          <div class="product-card-name">VOID JACKET</div>
+          <div class="product-card-price"><span class="price-sale">$340</span></div>
+          <div style="display:flex;gap:8px;margin-top:8px;">
+            <button class="btn-blue" style="flex:1;padding:8px;font-size:10px;" onclick="event.stopPropagation();location.href='cart.html'">ADD TO CART</button>
+            <button class="btn-outline" style="padding:8px 12px;font-size:10px;" onclick="event.stopPropagation();location.href='product.html'">VIEW</button>
           </div>
         </div>
       </div>
-
-      <!-- ITEM 2 -->
-      <div class="wishlist-card">
-        <div class="wishlist-img">
-          <div class="img-placeholder img-medium"></div>
-          <button class="wishlist-remove" onclick="removeWishItem(this)" title="Remove">✕</button>
-          <span class="product-card-tag">BESTSELLER</span>
-        </div>
-        <div class="wishlist-info">
-          <div class="wishlist-name">MONOLITH HOODIE V2</div>
-          <div class="wishlist-price">$185.00</div>
-          <div class="wishlist-meta">Size: L &nbsp;·&nbsp; Charcoal</div>
-          <div class="wishlist-actions">
-            <button class="btn-blue" style="flex:1;padding:10px;" onclick="location.href='cart.html'">ADD TO CART</button>
-            <button class="btn-outline" style="padding:10px 14px;" onclick="location.href='product.html'">VIEW</button>
-          </div>
-        </div>
-      </div>
-
-      <!-- ITEM 3 -->
-      <div class="wishlist-card">
-        <div class="wishlist-img">
-          <div class="img-placeholder" style="background:#c0c0c0;"></div>
-          <button class="wishlist-remove" onclick="removeWishItem(this)" title="Remove">✕</button>
-        </div>
-        <div class="wishlist-info">
-          <div class="wishlist-name">DIAMOND BOOTS</div>
-          <div class="wishlist-price">$310.00</div>
-          <div class="wishlist-meta">Size: 42 &nbsp;·&nbsp; White</div>
-          <div class="wishlist-actions">
-            <button class="btn-blue" style="flex:1;padding:10px;" onclick="location.href='cart.html'">ADD TO CART</button>
-            <button class="btn-outline" style="padding:10px 14px;" onclick="location.href='product.html'">VIEW</button>
-          </div>
-        </div>
-      </div>
-
-      <!-- ITEM 4 -->
-      <div class="wishlist-card">
-        <div class="wishlist-img">
-          <div class="img-placeholder img-dark"></div>
-          <button class="wishlist-remove" onclick="removeWishItem(this)" title="Remove">✕</button>
-          <span class="product-card-tag">NEW</span>
-        </div>
-        <div class="wishlist-info">
-          <div class="wishlist-name">ARCHITECT BLAZER</div>
-          <div class="wishlist-price">$310.00</div>
-          <div class="wishlist-meta">Size: M &nbsp;·&nbsp; Black</div>
-          <div class="wishlist-actions">
-            <button class="btn-blue" style="flex:1;padding:10px;" onclick="location.href='cart.html'">ADD TO CART</button>
-            <button class="btn-outline" style="padding:10px 14px;" onclick="location.href='product.html'">VIEW</button>
-          </div>
-        </div>
-      </div>
-
-      <!-- ITEM 5 -->
-      <div class="wishlist-card">
-        <div class="wishlist-img">
-          <div class="img-placeholder" style="background:#444;"></div>
-          <button class="wishlist-remove" onclick="removeWishItem(this)" title="Remove">✕</button>
-        </div>
-        <div class="wishlist-info">
-          <div class="wishlist-name">CARBON JACKET</div>
-          <div class="wishlist-price">$360.00</div>
-          <div class="wishlist-meta">Size: L &nbsp;·&nbsp; Black</div>
-          <div class="wishlist-actions">
-            <button class="btn-blue" style="flex:1;padding:10px;" onclick="location.href='cart.html'">ADD TO CART</button>
-            <button class="btn-outline" style="padding:10px 14px;" onclick="location.href='product.html'">VIEW</button>
-          </div>
-        </div>
-      </div>
-
-      <!-- ITEM 6 -->
-      <div class="wishlist-card">
-        <div class="wishlist-img">
-          <div class="img-placeholder" style="background:#999;"></div>
-          <button class="wishlist-remove" onclick="removeWishItem(this)" title="Remove">✕</button>
-        </div>
-        <div class="wishlist-info">
-          <div class="wishlist-name">SLATE JOGGERS</div>
-          <div class="wishlist-price">$145.00</div>
-          <div class="wishlist-meta">Size: M &nbsp;·&nbsp; Grey</div>
-          <div class="wishlist-actions">
-            <button class="btn-blue" style="flex:1;padding:10px;" onclick="location.href='cart.html'">ADD TO CART</button>
-            <button class="btn-outline" style="padding:10px 14px;" onclick="location.href='product.html'">VIEW</button>
-          </div>
-        </div>
-      </div>
-
     </div>
   </section>
 
@@ -209,7 +150,7 @@
         <p class="footer-newsletter-note">Subscribe to our newsletter for the latest features and updates.</p>
       </div>
       <div class="footer-col"><h4>Shop</h4><ul><li><a href="collections.html">Women</a></li><li><a href="collections.html">Men</a></li><li><a href="collections.html">Unisex</a></li><li><a href="custom.html">Custom</a></li></ul></div>
-      <div class="footer-col"><h4>Contact</h4><ul><li><a href="#">Join Us</a></li><li><a href="#">Customer Support</a></li><li><a href="#">Contact Us</a></li><li><a href="policies.html">Policies</a></li></ul></div>
+      <div class="footer-col"><h4>Contact</h4><ul><li><a href="#">Join Us</a></li><li><a href="#">Customer Support</a></li><li><a href="contact.html">Contact Us</a></li><li><a href="policies.html">Policies</a></li></ul></div>
       <div class="footer-col"><h4>Follow Us</h4><div class="footer-social"><div class="footer-social-item"><span class="footer-social-icon">✕</span> Instagram</div><div class="footer-social-item"><span class="footer-social-icon">𝕏</span> X</div><div class="footer-social-item"><span class="footer-social-icon">▶</span> YouTube</div></div></div>
     </div>
     <div class="footer-bottom">
@@ -224,5 +165,6 @@
   <script src="scripts/main.js"></script>
   <script src="scripts/wishlist.js"></script>
   <script src="scripts/ui.js"></script>
+  
 </body>
 </html>

@@ -803,3 +803,423 @@ footer .footer-newsletter button {
   font-weight: 400;
   font-size: 13px;
 }
+
+
+/* =============================================
+   BRAND LANDING — full-screen intro
+   ============================================= */
+.brand-landing {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: #f5f5f3;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+  cursor: default;
+  /* Allow scroll events to pass through to window */
+  pointer-events: none;
+}
+
+/* Re-enable pointer events on interactive children */
+.brand-landing__topbar,
+.brand-landing__center,
+.brand-landing__bottombar,
+.brand-landing__scroll {
+  pointer-events: auto;
+}
+
+/* Giant stamp text as background */
+.brand-landing__bg-stamp {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: clamp(140px, 28vw, 340px);
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  color: #000;
+  user-select: none;
+  pointer-events: none;
+  line-height: 1;
+  /* Distressed stamp effect */
+  -webkit-text-stroke: 0px;
+  paint-order: stroke fill;
+  opacity: 0.88;
+  font-family: 'Impact', 'Arial Black', sans-serif;
+  /* Rough texture via filter */
+  filter: url(#stamp) contrast(1.1);
+}
+
+/* Noise overlay for paper texture */
+.brand-landing__noise {
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  opacity: 0.5;
+  mix-blend-mode: multiply;
+}
+
+/* Top bar */
+.brand-landing__topbar {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 28px 40px;
+}
+
+.brand-landing__logo {
+  font-size: 18px;
+  font-weight: 900;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: #000;
+}
+
+.brand-landing__topbar-right {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.brand-landing__cta-link {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  color: #000;
+  border: 1.5px solid rgba(0,0,0,0.3);
+  padding: 8px 20px;
+  border-radius: 100px;
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s;
+}
+
+.brand-landing__cta-link:hover {
+  background: #000;
+  color: #fff;
+  border-color: #000;
+}
+
+.brand-landing__menu-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 4px;
+}
+
+.brand-landing__menu-btn span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: #000;
+}
+
+/* Center content */
+.brand-landing__center {
+  position: relative;
+  z-index: 2;
+  padding: 0 40px;
+  /* Push to bottom-left like the reference */
+  margin-top: auto;
+  padding-bottom: 80px;
+}
+
+.brand-landing__eyebrow {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: rgba(0,0,0,0.45);
+  margin-bottom: 12px;
+}
+
+.brand-landing__title {
+  font-size: clamp(52px, 9vw, 110px);
+  font-weight: 900;
+  line-height: 0.95;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  color: #000;
+  mix-blend-mode: multiply;
+}
+
+/* Bottom bar */
+.brand-landing__bottombar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 40px;
+  border-top: 1px solid rgba(0,0,0,0.1);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: rgba(0,0,0,0.4);
+}
+
+/* Scroll indicator */
+.brand-landing__scroll {
+  position: absolute;
+  right: 40px;
+  bottom: 60px;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: rgba(0,0,0,0.35);
+}
+
+.brand-landing__scroll-line {
+  width: 1px;
+  height: 40px;
+  background: rgba(0,0,0,0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.brand-landing__scroll-line::after {
+  content: '';
+  position: absolute;
+  top: -100%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  animation: scrollLine 1.4s ease-in-out infinite;
+}
+
+@keyframes scrollLine {
+  0%   { top: -100%; }
+  100% { top: 100%; }
+}
+
+/* =============================================
+   PERSPECTIVE CAROUSEL
+   ============================================= */
+.persp-carousel {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0;
+  padding: 20px 0 32px;
+}
+
+.persp-track-outer {
+  flex: 1;
+  overflow: hidden;
+  /* perspective for 3D effect */
+  perspective: 1000px;
+  perspective-origin: 50% 50%;
+}
+
+.persp-track {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 420px;
+  position: relative;
+  transform-style: preserve-3d;
+}
+
+.persp-card {
+  position: absolute;
+  width: 280px;
+  flex-shrink: 0;
+  cursor: pointer;
+  transform-origin: center center;
+  will-change: transform, opacity;
+  transition: transform 0.5s cubic-bezier(0.4,0,0.2,1), opacity 0.5s ease;
+}
+
+.persp-card__img {
+  width: 100%;
+  height: 340px;
+  object-fit: cover;
+  position: relative;
+  overflow: hidden;
+  border: 2px solid #000;
+  box-shadow: 4px 4px 0 #000;
+}
+
+.persp-card--active .persp-card__img {
+  box-shadow: 6px 6px 0 #000;
+}
+
+.persp-card__info {
+  padding: 12px 0 0;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.3s ease 0.1s, transform 0.3s ease 0.1s;
+}
+
+.persp-card--active .persp-card__info {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.persp-card__name {
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-bottom: 4px;
+}
+
+.persp-card__price {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+/* Arrow buttons */
+.persp-arrow {
+  width: 44px;
+  height: 44px;
+  background: #fff;
+  border: 2px solid #000;
+  box-shadow: 3px 3px 0 #000;
+  font-size: 18px;
+  font-weight: 900;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  z-index: 10;
+  transition: background 0.15s, color 0.15s, transform 0.1s, box-shadow 0.1s;
+  line-height: 1;
+}
+
+.persp-arrow:hover {
+  background: #000;
+  color: #fff;
+}
+
+.persp-arrow:active {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0 #000;
+}
+
+.persp-arrow--prev { margin-right: 16px; }
+.persp-arrow--next { margin-left: 16px; }
+
+@media (max-width: 768px) {
+  .brand-landing__title { font-size: 48px; }
+  .brand-landing__bg-stamp { font-size: 120px; }
+  .brand-landing__bottombar { display: none; }
+  .persp-card { width: 220px; }
+  .persp-card__img { height: 270px; }
+  .persp-track { height: 340px; }
+}
+
+/* =============================================
+   ENTER SITE BUTTON (brand landing)
+   ============================================= */
+.brand-landing__enter-btn {
+  display: inline-block;
+  margin-top: 20px;
+  background: transparent;
+  color: #000;
+  border: 2px solid #000;
+  padding: 12px 32px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  cursor: pointer;
+  font-family: 'Inter', sans-serif;
+  transition: background 0.2s, color 0.2s;
+  box-shadow: 3px 3px 0 #000;
+}
+.brand-landing__enter-btn:hover {
+  background: #000;
+  color: #fff;
+}
+
+/* =============================================
+   NEW PERSPECTIVE CAROUSEL (persp-wrap)
+   ============================================= */
+.persp-wrap {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px 0 40px;
+  overflow: hidden;
+}
+.persp-stage {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 460px;
+  position: relative;
+  perspective: 1200px;
+}
+.persp-item {
+  position: absolute;
+  width: 260px;
+  cursor: pointer;
+  transition: transform 0.5s cubic-bezier(0.4,0,0.2,1), opacity 0.5s ease, z-index 0s;
+  transform-origin: center center;
+}
+.persp-item__img {
+  width: 100%;
+  height: 320px;
+  position: relative;
+  overflow: hidden;
+  border: 2px solid #000;
+  box-shadow: 4px 4px 0 #000;
+}
+.persp-item__info {
+  padding: 10px 0 0;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.persp-item--active .persp-item__info { opacity: 1; }
+.persp-item__name {
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-bottom: 4px;
+}
+.persp-item__price {
+  display: flex;
+  gap: 8px;
+  align-items: baseline;
+}
+.persp-btn {
+  width: 44px;
+  height: 44px;
+  background: #fff;
+  border: 2px solid #000;
+  box-shadow: 3px 3px 0 #000;
+  font-size: 18px;
+  font-weight: 900;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background 0.15s, color 0.15s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Inter', sans-serif;
+}
+.persp-btn:hover { background: #000; color: #fff; }
+.persp-btn:active { box-shadow: 1px 1px 0 #000; transform: translate(2px,2px); }
