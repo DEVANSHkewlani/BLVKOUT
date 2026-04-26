@@ -10,12 +10,18 @@
   background: #000;
   color: #fff;
   height: 36px;
-  overflow: hidden;
   display: flex;
   align-items: center;
   border-bottom: 1px solid #222;
-  position: relative;
-  z-index: 101;
+  /* position and z-index managed by main.css */
+}
+
+.ticker-track-wrap {
+  flex: 1;
+  overflow: hidden;
+  height: 36px;
+  display: flex;
+  align-items: center;
 }
 
 .ticker-track {
@@ -351,11 +357,17 @@ body {
 
   /* NAV */
   nav { padding: 0 20px; }
-  .nav-links { display: none; }
-  .nav-actions { display: none; }
+  .nav-links { gap: 16px; font-size: 10px; }
   .nav-search { display: none; }
-  .nav-hamburger { display: flex; }
-  .nav-drawer { display: flex; }
+  .nav-actions { display: none; }
+
+  /* Menu trigger */
+  .menu-trigger { right: 16px; top: 8px; }
+
+  /* Menu overlay links smaller on mobile */
+  .menu-nav-links li a { font-size: 28px; }
+  .menu-overlay-body { padding: 32px 28px; }
+  .menu-overlay-bar { padding: 0 20px; }
 
   /* TICKER */
   .ticker-bar { height: 30px; }
@@ -563,27 +575,6 @@ body {
 
 .product-card:hover .product-card-img::before {
   opacity: 1;
-}
-
-/* Brutalist active nav underline */
-nav .nav-links li a {
-  position: relative;
-  padding-bottom: 2px;
-}
-
-nav .nav-links li a::after {
-  content: '';
-  position: absolute;
-  bottom: -2px;
-  left: 0;
-  width: 0;
-  height: 1.5px;
-  background: var(--blue);
-  transition: width 0.25s;
-}
-
-nav .nav-links li a:hover::after {
-  width: 100%;
 }
 
 /* Nothing-style input focus */

@@ -10,58 +10,55 @@
 </head>
 <body>
 
-  <div class="scroll-progress" id="scrollProgress"></div>
   <div class="cursor-dot" id="cursorDot"></div>
   <div class="cursor-ring" id="cursorRing"></div>
 
-  <div class="ticker-bar">
-    <div class="ticker-track">
-      <span>FREE SHIPPING ON ORDERS OVER $150</span><span class="dot">·</span>
-      <span>NEW SS26 DROP — MONOLITH COLLECTION</span><span class="dot">·</span>
-      <span>CUSTOM STUDIO NOW LIVE</span><span class="dot">·</span>
-      <span>USE CODE BLVK10 FOR 10% OFF</span><span class="dot">·</span>
-      <span>FREE SHIPPING ON ORDERS OVER $150</span><span class="dot">·</span>
-      <span>NEW SS26 DROP — MONOLITH COLLECTION</span><span class="dot">·</span>
-      <span>CUSTOM STUDIO NOW LIVE</span><span class="dot">·</span>
-      <span>USE CODE BLVK10 FOR 10% OFF</span><span class="dot">·</span>
+  <!-- MENU OVERLAY — slides down from top over the page -->
+  <div class="menu-overlay" id="menuOverlay">
+    <div class="menu-overlay-bar">
+      <a href="index.html" class="menu-overlay-logo">BLVKOUT</a>
+      <button class="menu-close-btn" id="menuCloseBtn" aria-label="Close menu"></button>
+    </div>
+    <div class="menu-overlay-body" id="menuOverlayBody">
+      <div>
+        <ul class="menu-nav-links">
+          <li><a href="index.html" data-color="#0047FF">Home</a></li>
+          <li><a href="collections.html" data-color="#FF2020">Collections</a></li>
+          <li><a href="custom.html" data-color="#00C896">Custom Studio</a></li>
+          <li><a href="wishlist.html" data-color="#FFD600">Wishlist</a></li>
+          <li><a href="profile.html" data-color="#FF6B00">Profile</a></li>
+          <li><a href="cart.html" data-color="#CC00FF">Cart</a></li>
+        </ul>
+        <div class="menu-nav-meta">
+          <a href="contact.html">Contact</a>
+          <a href="policies.html">Policies</a>
+          <a href="login.html">Login</a>
+        </div>
+      </div>
     </div>
   </div>
 
-  <nav>
-    <div class="nav-logo">BLVKOUT</div>
-    <ul class="nav-links">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="collections.html">Collections</a></li>
-      <li><a href="custom.html">Custom</a></li>
-      <li><a href="wishlist.html">Wishlist</a></li>
-    </ul>
-    <div class="nav-search">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-      <input type="text" placeholder="Search..." />
-    </div>
-    <div class="nav-actions">
-      <a href="profile.html" class="nav-icon-btn" title="Account">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
-      </a>
-      <a href="cart.html" class="nav-icon-btn" title="Cart">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
-        <span class="cart-count">3</span>
-      </a>
-    </div>
-    <button class="nav-hamburger" id="hamburger" aria-label="Menu">
-      <span></span><span></span><span></span>
-    </button>
-  </nav>
+  <!-- SCROLL PROGRESS -->
+  <div class="scroll-progress" id="scrollProgress"></div>
 
-  <div class="nav-drawer" id="navDrawer">
-    <a href="index.html">Home</a>
-    <a href="collections.html">Collections</a>
-    <a href="custom.html">Custom</a>
-    <a href="wishlist.html">Wishlist</a>
-    <div class="nav-drawer-actions">
-      <a href="profile.html" class="btn-outline">Account</a>
-      <a href="cart.html" class="btn-blue">Cart (3)</a>
+  <!-- TICKER -->
+  <div class="ticker-bar" id="tickerBar">
+    <div class="ticker-track-wrap">
+      <div class="ticker-track">
+        <span>FREE SHIPPING ON ORDERS OVER $150</span><span class="dot">·</span>
+        <span>NEW SS26 DROP — MONOLITH COLLECTION</span><span class="dot">·</span>
+        <span>CUSTOM STUDIO NOW LIVE</span><span class="dot">·</span>
+        <span>USE CODE BLVK10 FOR 10% OFF</span><span class="dot">·</span>
+        <span>FREE SHIPPING ON ORDERS OVER $150</span><span class="dot">·</span>
+        <span>NEW SS26 DROP — MONOLITH COLLECTION</span><span class="dot">·</span>
+        <span>CUSTOM STUDIO NOW LIVE</span><span class="dot">·</span>
+        <span>USE CODE BLVK10 FOR 10% OFF</span><span class="dot">·</span>
+      </div>
     </div>
+    <button class="ticker-menu-btn" id="menuBtn" aria-label="Open menu">
+      <span class="menu-icon"><span></span><span></span><span></span></span>
+      MENU
+    </button>
   </div>
 
   <!-- POLICIES HERO -->
@@ -284,7 +281,7 @@
     <div class="footer-watermark">BLV.K</div>
   </footer>
 
-  <button class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+  <button class="scroll-top" id="scrollTop" >↑</button>
   <div class="toast" id="toast"></div>
   <script src="scripts/main.js"></script>
   <script src="scripts/policies.js"></script>

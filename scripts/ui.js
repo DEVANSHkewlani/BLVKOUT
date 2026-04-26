@@ -17,6 +17,9 @@ if (scrollTopBtn) {
   window.addEventListener('scroll', () => {
     scrollTopBtn.classList.toggle('visible', window.scrollY > 400);
   }, { passive: true });
+  scrollTopBtn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
 }
 
 // ---- CUSTOM CURSOR (dot only, no ring) ----
@@ -46,24 +49,50 @@ if (dot && window.matchMedia('(pointer:fine)').matches) {
   if (dot) dot.style.display = 'none';
 }
 
-// ---- HAMBURGER / MOBILE DRAWER ----
-const hamburger = document.getElementById('hamburger');
-const navDrawer = document.getElementById('navDrawer');
+// ---- REVEAL MENU SYSTEM — overlay slides down, page stays scrollable ----
+const menuBtn         = document.getElementById('menuBtn');
+const menuCloseBtn    = document.getElementById('menuCloseBtn');
+const menuOverlay     = document.getElementById('menuOverlay');
+const menuOverlayBody = document.getElementById('menuOverlayBody');
 
-if (hamburger && navDrawer) {
-  hamburger.addEventListener('click', () => {
-    const open = hamburger.classList.toggle('open');
-    navDrawer.classList.toggle('open', open);
-    document.body.style.overflow = open ? 'hidden' : '';
-  });
+if (menuBtn && menuOverlay) {
+  function openMenu() {
+    menuOverlay.classList.add('is-open');
+  }
 
-  // Close on link click
-  navDrawer.querySelectorAll('a').forEach(a => {
-    a.addEventListener('click', () => {
-      hamburger.classList.remove('open');
-      navDrawer.classList.remove('open');
-      document.body.style.overflow = '';
+  function closeMenu() {
+    menuOverlay.classList.remove('is-open');
+    if (menuOverlayBody) menuOverlayBody.style.background = '';
+  }
+
+  menuBtn.addEventListener('click', openMenu);
+  if (menuCloseBtn) menuCloseBtn.addEventListener('click', closeMenu);
+
+  // Background color changes on link hover — with contrast handling
+  if (menuOverlayBody) {
+    const allLinks = document.querySelectorAll('.menu-nav-links a');
+    allLinks.forEach(a => {
+      const color = a.dataset.color;
+      const needsDark = color === '#FFD600'; // yellow needs dark text
+      a.addEventListener('mouseenter', () => {
+        if (color) {
+          menuOverlayBody.style.background = color;
+          allLinks.forEach(l => {
+            l.style.color = needsDark ? 'rgba(0,0,0,0.6)' : 'rgba(255,255,255,0.65)';
+          });
+          a.style.color = needsDark ? '#000' : '#fff';
+        }
+      });
+      a.addEventListener('mouseleave', () => {
+        menuOverlayBody.style.background = '';
+        allLinks.forEach(l => { l.style.color = ''; });
+      });
     });
+  }
+
+  // Close on Escape
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeMenu();
   });
 }
 
@@ -78,7 +107,6 @@ if (reveals.length) {
       }
     });
   }, { threshold: 0.1 });
-
   reveals.forEach(el => observer.observe(el));
 }
 
