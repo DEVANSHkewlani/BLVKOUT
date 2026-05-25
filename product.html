@@ -6,6 +6,7 @@
   <title>BLVKOUT — Monolith Hoodie V2</title>
   <link rel="stylesheet" href="styles/main.css" />
   <link rel="stylesheet" href="styles/product.css" />
+  <link rel="stylesheet" href="styles/avatar.css" />
   <link rel="stylesheet" href="styles/responsive.css" />
 </head>
 <body>
@@ -141,6 +142,17 @@
         <button class="btn-outline" onclick="location.href='wishlist.html'" title="Add to Wishlist">♡</button>
       </div>
 
+      <!-- 3D AVATAR TRY-ON -->
+      <button class="btn-avatar" onclick="avatarPanel.open()">
+        <svg class="btn-avatar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="7" r="4"/>
+          <path d="M5.5 21a7 7 0 0 1 13 0"/>
+          <path d="M12 14v2m0 0c-2.5 0-4.5 1-4.5 2.5M12 16c2.5 0 4.5 1 4.5 2.5"/>
+        </svg>
+        <span>TRY ON — 3D AVATAR</span>
+        <span class="btn-avatar-badge">NEW</span>
+      </button>
+
       <!-- SPECIFICATIONS -->
       <div class="product-specs">
         <h3 class="specs-title">SPECIFICATIONS</h3>
@@ -217,6 +229,43 @@
     </div>
   </section>
 
+  <!-- COMPLETE THE FIT -->
+  <section class="section complete-fit-section" id="completeFitSection" style="display:none;background:#000;border-top:none;">
+    <div class="fit-header">
+      <div>
+        <span class="comic-label comic-label-blue">STYLED BY BLVKOUT</span>
+        <h2 class="section-title" style="color:#fff;margin-top:8px;">COMPLETE THE FIT</h2>
+        <p class="fit-subtitle">Pieces curated by us to wear with this item.</p>
+      </div>
+      <button class="btn-blue" id="addFitToCart" style="align-self:flex-end;">ADD FULL FIT TO CART</button>
+    </div>
+
+    <!-- Fit layout: hero product + fit pieces -->
+    <div class="fit-layout">
+      <!-- The current product (anchor) -->
+      <div class="fit-anchor">
+        <div class="fit-anchor-img">
+          <div class="img-placeholder img-dark"></div>
+          <span class="fit-anchor-tag">THIS ITEM</span>
+        </div>
+        <div class="fit-anchor-name">MONOLITH HOODIE V2</div>
+        <div class="fit-anchor-price">$185.00</div>
+      </div>
+
+      <div class="fit-plus">+</div>
+
+      <!-- Fit pieces injected by JS -->
+      <div class="fit-pieces" id="fitPieces"></div>
+    </div>
+
+    <!-- Total -->
+    <div class="fit-total-bar">
+      <div class="fit-total-label">FIT TOTAL</div>
+      <div class="fit-total-price" id="fitTotalPrice">—</div>
+      <div class="fit-total-note">Save when you buy the full fit</div>
+    </div>
+  </section>
+
   <!-- FOOTER -->
   <footer>
     <div class="footer-top">
@@ -239,12 +288,159 @@
     <div class="footer-watermark">BLV.K</div>
   </footer>
 
-  <button class="scroll-top" id="scrollTop" >↑</button>
+  <button class="scroll-top" id="scrollTop">↑</button>
   <div class="toast" id="toast"></div>
+
+  <!-- 3D AVATAR TRY-ON PANEL -->
+  <div class="av-backdrop" id="avatarBackdrop" onclick="avatarPanel.close()"></div>
+
+  <div class="av-panel" id="avatarPanel" role="dialog" aria-modal="true" aria-label="3D Avatar Try-On">
+
+    <div class="av-header">
+      <div class="av-header-left">
+        <span class="av-header-label">Virtual Fitting Room</span>
+        <span class="av-header-title">3D AVATAR TRY-ON</span>
+      </div>
+      <button class="av-close-btn" onclick="avatarPanel.close()" aria-label="Close panel">✕</button>
+    </div>
+
+    <div class="av-progress">
+      <div class="av-progress-step">
+        <div class="av-dot active" id="avDot1">1</div>
+        <span class="av-step-label">Face Scan</span>
+      </div>
+      <div class="av-progress-line"></div>
+      <div class="av-progress-step">
+        <div class="av-dot" id="avDot2">2</div>
+        <span class="av-step-label">Dimensions</span>
+      </div>
+      <div class="av-progress-line"></div>
+      <div class="av-progress-step">
+        <div class="av-dot" id="avDot3">3</div>
+        <span class="av-step-label">Your Avatar</span>
+      </div>
+    </div>
+
+    <div class="av-body">
+
+      <!-- STEP 1: Face Scan -->
+      <div class="av-step active" id="avStep1">
+        <div class="av-cam-wrap">
+          <video id="avVideo" autoplay playsinline muted></video>
+          <div class="av-cam-placeholder" id="avCamPlaceholder">
+            <span class="av-cam-icon">📷</span>
+            <p>Starting camera…</p>
+          </div>
+          <div class="av-face-guide">
+            <div class="av-face-oval"></div>
+          </div>
+          <div class="av-flash" id="avFlash"></div>
+          <div class="av-face-preview-wrap">
+            <img id="avFacePreview" alt="Captured face" />
+          </div>
+        </div>
+        <div class="av-scan-controls">
+          <p class="av-scan-hint">Position your face inside the oval, then tap Capture. Good lighting helps build a more accurate avatar.</p>
+          <div class="av-btn-row">
+            <button class="av-btn av-btn-secondary" onclick="avatarPanel.close()">CANCEL</button>
+            <button class="av-btn av-btn-capture" onclick="avatarPanel.captureface()">⊙ &nbsp;CAPTURE FACE</button>
+          </div>
+          <button class="av-btn av-btn-primary" id="avStep1Next" onclick="avatarPanel.goStep(2)" disabled>NEXT — ENTER DIMENSIONS →</button>
+        </div>
+      </div>
+
+      <!-- STEP 2: Dimensions -->
+      <div class="av-step" id="avStep2">
+        <div class="av-dims-wrap">
+          <p class="av-dims-title">Your Measurements</p>
+          <p class="av-dims-subtitle">Enter your body measurements so we can build a proportional avatar and show you the best fit.</p>
+          <div class="av-body-diagram">
+            <svg viewBox="0 0 60 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="30" cy="12" r="10" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/>
+              <rect x="18" y="24" width="24" height="30" rx="4" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/>
+              <rect x="8"  y="26" width="9"  height="26" rx="3" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/>
+              <rect x="43" y="26" width="9"  height="26" rx="3" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/>
+              <rect x="19" y="56" width="10" height="40" rx="3" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/>
+              <rect x="31" y="56" width="10" height="40" rx="3" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/>
+              <line x1="4" y1="0" x2="4" y2="96" stroke="rgba(0,71,255,0.5)" stroke-width="1" stroke-dasharray="3 2"/>
+              <line x1="2" y1="0"  x2="6" y2="0"  stroke="rgba(0,71,255,0.5)" stroke-width="1"/>
+              <line x1="2" y1="96" x2="6" y2="96" stroke="rgba(0,71,255,0.5)" stroke-width="1"/>
+            </svg>
+          </div>
+          <div class="av-field-grid">
+            <div class="av-field">
+              <label for="avHeight">Height</label>
+              <div class="av-input-unit" data-unit="cm">
+                <input class="av-input" id="avHeight" type="number" min="100" max="250" placeholder="175" />
+              </div>
+            </div>
+            <div class="av-field">
+              <label for="avWeight">Weight</label>
+              <div class="av-input-unit" data-unit="kg">
+                <input class="av-input" id="avWeight" type="number" min="30" max="300" placeholder="70" />
+              </div>
+            </div>
+            <div class="av-field">
+              <label for="avChest">Chest</label>
+              <div class="av-input-unit" data-unit="cm">
+                <input class="av-input" id="avChest" type="number" min="50" max="180" placeholder="96" />
+              </div>
+            </div>
+            <div class="av-field">
+              <label for="avWaist">Waist</label>
+              <div class="av-input-unit" data-unit="cm">
+                <input class="av-input" id="avWaist" type="number" min="40" max="180" placeholder="80" />
+              </div>
+            </div>
+            <div class="av-field full">
+              <label for="avHips">Hips</label>
+              <div class="av-input-unit" data-unit="cm">
+                <input class="av-input" id="avHips" type="number" min="50" max="200" placeholder="98" />
+              </div>
+            </div>
+          </div>
+          <div class="av-btn-row">
+            <button class="av-btn av-btn-secondary" onclick="avatarPanel.goStep(1)">← BACK</button>
+            <button class="av-btn av-btn-primary" onclick="avatarPanel.collectDims()">BUILD MY AVATAR →</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- STEP 3: 3D Avatar -->
+      <div class="av-step" id="avStep3">
+        <div class="av-avatar-wrap">
+          <div id="avCanvas"></div>
+          <p class="av-avatar-hint">Drag to rotate · Avatar wearing Monolith Hoodie V2</p>
+          <div class="av-stats-bar">
+            <div class="av-stat"><div class="av-stat-label">Height</div><div class="av-stat-val" id="avStatHeight">—</div></div>
+            <div class="av-stat"><div class="av-stat-label">Weight</div><div class="av-stat-val" id="avStatWeight">—</div></div>
+            <div class="av-stat"><div class="av-stat-label">Chest</div><div class="av-stat-val" id="avStatChest">—</div></div>
+            <div class="av-stat"><div class="av-stat-label">Waist</div><div class="av-stat-val" id="avStatWaist">—</div></div>
+            <div class="av-stat"><div class="av-stat-label">Hips</div><div class="av-stat-val" id="avStatHips">—</div></div>
+          </div>
+        </div>
+        <div class="av-avatar-actions">
+          <div class="av-product-tag">
+            <div class="av-product-tag-dot"></div>
+            <span class="av-product-tag-name">Monolith Hoodie V2</span>
+            <span class="av-product-tag-size">M</span>
+          </div>
+          <div class="av-btn-row">
+            <button class="av-btn av-btn-secondary" onclick="avatarPanel.goStep(2)">← EDIT</button>
+            <button class="av-btn av-btn-primary" onclick="location.href='cart.html'">ADD TO CART</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="av-toast" id="avToast"></div>
+  </div>
 
   <script src="scripts/main.js"></script>
   <script src="scripts/product.js"></script>
   <script src="scripts/ui.js"></script>
+  <script src="scripts/avatar.js"></script>
   <script>
   function changeQty(dir) {
     var el = document.getElementById('qty');

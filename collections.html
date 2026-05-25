@@ -6,6 +6,7 @@
   <title>BLVKOUT — Collections</title>
   <link rel="stylesheet" href="styles/main.css" />
   <link rel="stylesheet" href="styles/collections.css" />
+  <link rel="stylesheet" href="styles/filters.css" />
   <link rel="stylesheet" href="styles/responsive.css" />
 </head>
 <body>
@@ -63,13 +64,22 @@
 
   <div class="collections-header">
     <h1 class="collections-title">COLLECTIONS</h1>
-    <div class="collections-filters">
-      <button class="filter-btn active">ALL</button>
-      <button class="filter-btn">OUTERWEAR</button>
-      <button class="filter-btn">TOPS</button>
-      <button class="filter-btn">BOTTOMS</button>
-      <button class="filter-btn">FOOTWEAR</button>
-      <button class="filter-btn">ACCESSORIES</button>
+    <div class="collections-header-row">
+      <div class="collections-filters">
+        <button class="filter-btn active" data-cat="ALL">ALL</button>
+        <button class="filter-btn" data-cat="OUTERWEAR">OUTERWEAR</button>
+        <button class="filter-btn" data-cat="TOPS">TOPS</button>
+        <button class="filter-btn" data-cat="BOTTOMS">BOTTOMS</button>
+        <button class="filter-btn" data-cat="FOOTWEAR">FOOTWEAR</button>
+        <button class="filter-btn" data-cat="ACCESSORIES">ACCESSORIES</button>
+      </div>
+      <button class="btn-filter" onclick="filterPanel.open()" aria-label="Open filters">
+        <span class="btn-filter-icon">
+          <span></span><span></span><span></span>
+        </span>
+        FILTERS
+        <span class="filter-badge" id="filterBadge">0</span>
+      </button>
     </div>
   </div>
 
@@ -112,32 +122,32 @@
     </div>
     <div class="carousel-track-outer">
       <div class="carousel-track" id="collectionTrack">
-        <div class="product-card" onclick="location.href='product.html'">
+        <div class="product-card" onclick="location.href='product.html'" data-category="OUTERWEAR" data-price="420" data-avail="sale" data-sizes="S,M,L,XL" data-colors="black">
           <div class="product-card-img" style="aspect-ratio:3/4;"><div class="img-placeholder img-dark"></div><span class="product-card-tag">FEATURED</span></div>
           <div class="product-card-name">MONOLITH OVERCOAT</div>
           <div class="product-card-price"><span class="price-original">$588</span><span class="price-sale">$420</span></div>
         </div>
-        <div class="product-card" onclick="location.href='product.html'">
+        <div class="product-card" onclick="location.href='product.html'" data-category="TOPS" data-price="130" data-avail="sale" data-sizes="XS,S,M,L" data-colors="charcoal">
           <div class="product-card-img" style="aspect-ratio:3/4;"><div class="img-placeholder" style="background:#3a3a3a;"></div></div>
           <div class="product-card-name">VOID TURTLENECK</div>
           <div class="product-card-price"><span class="price-original">$182</span><span class="price-sale">$130</span></div>
         </div>
-        <div class="product-card" onclick="location.href='product.html'">
+        <div class="product-card" onclick="location.href='product.html'" data-category="BOTTOMS" data-price="195" data-avail="sale" data-sizes="S,M,L,XL,XXL" data-colors="grey">
           <div class="product-card-img" style="aspect-ratio:3/4;"><div class="img-placeholder img-medium"></div><span class="product-card-tag">NEW</span></div>
           <div class="product-card-name">FRAGMENT PANTS</div>
           <div class="product-card-price"><span class="price-original">$273</span><span class="price-sale">$195</span></div>
         </div>
-        <div class="product-card" onclick="location.href='product.html'">
+        <div class="product-card" onclick="location.href='product.html'" data-category="TOPS" data-price="165" data-avail="sale" data-sizes="M,L,XL,XXL" data-colors="black">
           <div class="product-card-img" style="aspect-ratio:3/4;"><div class="img-placeholder" style="background:#555;"></div></div>
           <div class="product-card-name">SHADOW HOODIE</div>
           <div class="product-card-price"><span class="price-original">$231</span><span class="price-sale">$165</span></div>
         </div>
-        <div class="product-card" onclick="location.href='product.html'">
+        <div class="product-card" onclick="location.href='product.html'" data-category="OUTERWEAR" data-price="310" data-avail="sale" data-sizes="S,M,L" data-colors="black,white">
           <div class="product-card-img" style="aspect-ratio:3/4;"><div class="img-placeholder img-dark"></div></div>
           <div class="product-card-name">ARCHITECT BLAZER</div>
           <div class="product-card-price"><span class="price-original">$434</span><span class="price-sale">$310</span></div>
         </div>
-        <div class="product-card" onclick="location.href='product.html'">
+        <div class="product-card" onclick="location.href='product.html'" data-category="FOOTWEAR" data-price="280" data-avail="sale" data-sizes="40,41,42,43,44,45" data-colors="black">
           <div class="product-card-img" style="aspect-ratio:3/4;"><div class="img-placeholder" style="background:#aaa;"></div></div>
           <div class="product-card-name">PHANTOM BOOTS</div>
           <div class="product-card-price"><span class="price-original">$392</span><span class="price-sale">$280</span></div>
@@ -182,8 +192,155 @@
 
   <button class="scroll-top" id="scrollTop" >↑</button>
   <div class="toast" id="toast"></div>
+
+  <!-- FILTER PANEL -->
+  <div class="fp-backdrop" id="filterBackdrop"></div>
+
+  <div class="fp-panel" id="filterPanel" role="dialog" aria-modal="true" aria-label="Filter products">
+
+    <!-- Header -->
+    <div class="fp-header">
+      <div class="fp-header-left">
+        <span class="fp-header-label">Refine Results</span>
+        <span class="fp-header-title">FILTERS</span>
+      </div>
+      <button class="fp-close-btn" onclick="filterPanel.close()" aria-label="Close filters">✕</button>
+    </div>
+
+    <!-- Result count + reset -->
+    <div class="fp-result-bar">
+      <span class="fp-result-count" id="fpResultCount">6 ITEMS</span>
+      <button class="fp-reset-link" id="fpResetBtn">CLEAR ALL</button>
+    </div>
+
+    <!-- Body -->
+    <div class="fp-body">
+
+      <!-- CATEGORY -->
+      <div class="fp-section">
+        <button class="fp-section-toggle">
+          <span class="fp-section-title">Category</span>
+          <span class="fp-section-arrow">▾</span>
+        </button>
+        <div class="fp-section-body">
+          <div class="fp-cat-grid">
+            <button class="fp-cat-btn active" data-cat="ALL">All</button>
+            <button class="fp-cat-btn" data-cat="OUTERWEAR">Outerwear</button>
+            <button class="fp-cat-btn" data-cat="TOPS">Tops</button>
+            <button class="fp-cat-btn" data-cat="BOTTOMS">Bottoms</button>
+            <button class="fp-cat-btn" data-cat="FOOTWEAR">Footwear</button>
+            <button class="fp-cat-btn" data-cat="ACCESSORIES">Accessories</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- SIZE -->
+      <div class="fp-section">
+        <button class="fp-section-toggle">
+          <span class="fp-section-title">Size</span>
+          <span class="fp-section-arrow">▾</span>
+        </button>
+        <div class="fp-section-body">
+          <div class="fp-size-grid">
+            <button class="fp-size-btn" data-size="XS">XS</button>
+            <button class="fp-size-btn" data-size="S">S</button>
+            <button class="fp-size-btn" data-size="M">M</button>
+            <button class="fp-size-btn" data-size="L">L</button>
+            <button class="fp-size-btn" data-size="XL">XL</button>
+            <button class="fp-size-btn" data-size="XXL">XXL</button>
+            <button class="fp-size-btn" data-size="40">40</button>
+            <button class="fp-size-btn" data-size="41">41</button>
+            <button class="fp-size-btn" data-size="42">42</button>
+            <button class="fp-size-btn" data-size="43">43</button>
+            <button class="fp-size-btn" data-size="44">44</button>
+            <button class="fp-size-btn" data-size="45">45</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- COLOR -->
+      <div class="fp-section">
+        <button class="fp-section-toggle">
+          <span class="fp-section-title">Color</span>
+          <span class="fp-section-arrow">▾</span>
+        </button>
+        <div class="fp-section-body">
+          <div class="fp-color-grid">
+            <button class="fp-color-btn" data-color="black"   style="background:#111; border-color:#444;"  title="Black"></button>
+            <button class="fp-color-btn" data-color="charcoal" style="background:#3a3a3a; border-color:#555;" title="Charcoal"></button>
+            <button class="fp-color-btn" data-color="grey"    style="background:#888; border-color:#aaa;"  title="Grey"></button>
+            <button class="fp-color-btn" data-color="white"   style="background:#f5f5f5; border-color:#ccc;" title="White"></button>
+            <button class="fp-color-btn" data-color="blue"    style="background:var(--blue); border-color:#0038cc;" title="Blue"></button>
+            <button class="fp-color-btn" data-color="navy"    style="background:#0f1a3a; border-color:#1a2a5a;" title="Navy"></button>
+          </div>
+          <p class="fp-color-label" id="fpColorLabel">Select a color</p>
+        </div>
+      </div>
+
+      <!-- PRICE RANGE -->
+      <div class="fp-section">
+        <button class="fp-section-toggle">
+          <span class="fp-section-title">Price Range</span>
+          <span class="fp-section-arrow">▾</span>
+        </button>
+        <div class="fp-section-body">
+          <div class="fp-price-display">
+            <span class="fp-price-val" id="fpPriceMinLbl">$0</span>
+            <span class="fp-price-val" id="fpPriceMaxLbl">$600+</span>
+          </div>
+          <div class="fp-range-wrap">
+            <div class="fp-range-track-bg"></div>
+            <div class="fp-range-track-fill" id="fpPriceTrack" style="left:0%;right:0%;"></div>
+            <input class="fp-range-input" id="fpPriceMin" type="range" min="0" max="600" value="0" step="10" />
+            <input class="fp-range-input" id="fpPriceMax" type="range" min="0" max="600" value="600" step="10" />
+          </div>
+        </div>
+      </div>
+
+      <!-- AVAILABILITY -->
+      <div class="fp-section">
+        <button class="fp-section-toggle">
+          <span class="fp-section-title">Availability</span>
+          <span class="fp-section-arrow">▾</span>
+        </button>
+        <div class="fp-section-body">
+          <div class="fp-avail-grid">
+            <button class="fp-avail-btn active" data-avail="all">All</button>
+            <button class="fp-avail-btn" data-avail="instock">In Stock</button>
+            <button class="fp-avail-btn" data-avail="sale">On Sale</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- SORT -->
+      <div class="fp-section">
+        <button class="fp-section-toggle">
+          <span class="fp-section-title">Sort By</span>
+          <span class="fp-section-arrow">▾</span>
+        </button>
+        <div class="fp-section-body">
+          <select class="fp-sort-select" id="fpSort">
+            <option value="featured">Featured</option>
+            <option value="price-asc">Price: Low to High</option>
+            <option value="price-desc">Price: High to Low</option>
+            <option value="newest">Newest</option>
+            <option value="sale">On Sale</option>
+          </select>
+        </div>
+      </div>
+
+    </div><!-- /fp-body -->
+
+    <!-- Footer -->
+    <div class="fp-footer">
+      <button class="fp-btn fp-btn-secondary" id="fpResetBtnFooter" onclick="filterPanel.reset()">RESET</button>
+      <button class="fp-btn fp-btn-primary" id="fpApplyBtn">VIEW RESULTS</button>
+    </div>
+
+  </div><!-- /fp-panel -->
+
   <script src="scripts/main.js"></script>
   <script src="scripts/ui.js"></script>
-  
+  <script src="scripts/filters.js"></script>
 </body>
 </html>

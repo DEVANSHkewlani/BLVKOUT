@@ -150,21 +150,6 @@
 
         <!-- PAYMENT METHOD -->
         <div class="payment-methods">
-          <div class="payment-label">Payment Method</div>
-          <div class="payment-options">
-            <div class="payment-opt active" onclick="selectPayment(this)">CARD</div>
-            <div class="payment-opt" onclick="selectPayment(this)">UPI</div>
-            <div class="payment-opt" onclick="selectPayment(this)">WALLET</div>
-            <div class="payment-opt" onclick="selectPayment(this)">COD</div>
-          </div>
-
-          <div class="payment-label" style="margin-top:16px;">Card Details</div>
-          <input class="payment-card-input" type="text" placeholder="•••• •••• •••• ••••" maxlength="19" />
-          <div class="payment-card-row">
-            <input class="payment-card-input" type="text" placeholder="MM / YY" />
-            <input class="payment-card-input" type="text" placeholder="CVV" maxlength="3" />
-          </div>
-          <input class="payment-card-input" type="text" placeholder="CARDHOLDER NAME" />
         </div>
 
         <div class="checkout-btn-wrap">
@@ -208,11 +193,6 @@
   <script src="scripts/main.js"></script>
   <script src="scripts/cart.js"></script>
   <script src="scripts/ui.js"></script>
-  <script>
-    function selectPayment(el) {
-      document.querySelectorAll('.payment-opt').forEach(o => o.classList.remove('active'));
-      el.classList.add('active');
-    }
-  </script>
+
 </body>
 </html>

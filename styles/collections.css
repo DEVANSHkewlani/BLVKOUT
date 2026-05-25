@@ -135,3 +135,16 @@
   display: flex;
   align-items: center;
 }
+
+/* ── Filter trigger row ── */
+.collections-header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.collections-filters {
+  flex: 1;
+}
