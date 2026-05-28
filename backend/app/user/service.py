@@ -8,6 +8,8 @@ from app.user.repository import (
     create_user
 )
 
+from app.auth.config import ADMIN_EMAIL
+
 def get_or_create_user(
     db,
     current_user
@@ -19,8 +21,15 @@ def get_or_create_user(
     )
 
     if user:
-
+        # Self-healing: if the user exists but has a customer role and matches ADMIN_EMAIL, promote them to admin
+        if user.email == ADMIN_EMAIL and user.role != "admin":
+            user.role = "admin"
+            db.commit()
+            db.refresh(user)
         return user
+
+    # Auto-assign admin role if email matches ADMIN_EMAIL
+    role = "admin" if current_user.email == ADMIN_EMAIL else "customer"
 
     new_user = User(
 
@@ -36,7 +45,7 @@ def get_or_create_user(
             "avatar_url"
         ),
 
-        role="customer",
+        role=role,
 
         is_active=True
     )

@@ -10,8 +10,41 @@ from app.wishlist.routes import (
 from app.cart.routes import (
     router as cart_router
 )
+from app.policies.routes import (
+    router as policies_router
+)
+from app.support.routes import (
+    router as support_router
+)
+from app.content.routes import (
+    router as content_router
+)
+from app.collections.routes import (
+    router as collections_router
+)
+from app.orders.routes import (
+    router as orders_router
+)
+from app.customers.routes import (
+    router as customers_router
+)
+from app.admin.routes import (
+    router as admin_router
+)
 
 from fastapi.middleware.cors import CORSMiddleware
+from app.core.database import Base, engine
+from app.content.models import SiteContent
+from app.collections.models import Collection
+
+# Create all tables in database one by one if they do not exist
+for table_name, table in Base.metadata.tables.items():
+    try:
+        # checkfirst=True avoids creating if it already exists
+        table.create(bind=engine, checkfirst=True)
+        print(f"Database table '{table_name}' initialized successfully.")
+    except Exception as e:
+        print(f"Database table '{table_name}' initialization warning: {e}")
 
 app = FastAPI(
     title="BLVKOUT API",
@@ -56,4 +89,39 @@ app.include_router(
     cart_router,
     prefix="/cart",
     tags=["Cart"]
+)
+app.include_router(
+    policies_router,
+    prefix="/policies",
+    tags=["Policies"]
+)
+app.include_router(
+    support_router,
+    prefix="/support",
+    tags=["Support"]
+)
+app.include_router(
+    content_router,
+    prefix="/content",
+    tags=["Content"]
+)
+app.include_router(
+    collections_router,
+    prefix="/collections",
+    tags=["Collections"]
+)
+app.include_router(
+    orders_router,
+    prefix="/orders",
+    tags=["Orders"]
+)
+app.include_router(
+    customers_router,
+    prefix="/customers",
+    tags=["Customers"]
+)
+app.include_router(
+    admin_router,
+    prefix="/admin",
+    tags=["Admin"]
 )
